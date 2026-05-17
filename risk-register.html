@@ -13,13 +13,13 @@
       --gold:     #F5C518;
       --ice:      #CADBFC;
       --light-bg: #EEF3FF;
-      --dark-txt: #111111;
-      --mid-gray: #111111;
+      --dark-txt: #000000;
+      --mid-gray: #000000;
       --white:    #FFFFFF;
       --border:   #DDE3F0;
     }
     body { font-family: 'Segoe UI', Calibri, sans-serif; color: var(--dark-txt);
-           background: #F8FAFF; line-height: 1.7; font-size: 15px; }
+           background: #F8FAFF; line-height: 1.7; font-size: 16px; }
     a { color: var(--teal); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
@@ -221,11 +221,46 @@
 
     /* FOOTER */
     footer {
-      background: var(--dark-txt); color: var(--ice);
+      background: #1E273D; color: var(--ice);
       text-align: center; padding: 28px 20px;
-      font-size: 0.82rem;
+      font-size: 0.88rem;
     }
     footer a { color: var(--gold); }
+
+    /* ── MOBILE / IPHONE RESPONSIVE ── */
+    @media (max-width: 768px) {
+      /* Nav: scrolls horizontally, no wrapping chaos */
+      .nav-inner { flex-wrap: nowrap; padding: 0 12px; overflow: hidden; }
+      .nav-brand  { font-size: 0.85rem; padding: 14px 12px 14px 0; }
+      .nav-links  {
+        overflow-x: auto; -webkit-overflow-scrolling: touch;
+        flex-wrap: nowrap; scrollbar-width: none;
+      }
+      .nav-links::-webkit-scrollbar { display: none; }
+      .nav-links a { padding: 16px 9px; font-size: 0.78rem; }
+      .nav-dl { font-size: 0.72rem; padding: 7px 10px !important; flex-shrink: 0; }
+
+      /* Page layout */
+      .page-wrap { padding: 28px 16px 56px; }
+      .page-header h1 { font-size: 1.4rem; }
+      .section-title  { font-size: 1.3rem; }
+      .content-card   { padding: 20px 16px; }
+
+      /* STAR blocks stack vertically */
+      .star-section { padding: 24px 16px; }
+      .star-grid    { grid-template-columns: 1fr; }
+      .star-block   { padding: 14px 16px; }
+
+      /* Tables: horizontal scroll on small screens */
+      .md-content table { font-size: 0.82rem; }
+      .md-content th, .md-content td { padding: 7px 10px; }
+    }
+
+    @media (max-width: 480px) {
+      .page-header h1 { font-size: 1.25rem; }
+      .content-card   { padding: 16px 12px; }
+      .star-section   { padding: 18px 12px; }
+    }
 </style>
 </head>
 <body>

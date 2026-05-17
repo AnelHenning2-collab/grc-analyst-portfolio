@@ -14,12 +14,12 @@
       --gold:      #F5C518;
       --ice:       #CADBFC;
       --light-bg:  #EEF3FF;
-      --dark-txt: #111111;
-      --mid-gray: #111111;
+      --dark-txt: #000000;
+      --mid-gray: #000000;
       --white:     #FFFFFF;
     }
 
-    body { font-size: 15px;
+    body { font-size: 16px;
       font-family: 'Segoe UI', Calibri, sans-serif;
       color: var(--dark-txt);
       background: var(--white);
@@ -302,6 +302,43 @@
       .wins-strip { padding: 48px 20px; }
       .download-band { padding: 40px 20px; }
     }
+
+    /* -- MOBILE / IPHONE RESPONSIVE -- */
+    @media (max-width: 768px) {
+      /* Nav */
+      nav > div { flex-wrap: nowrap !important; padding: 0 12px !important; overflow: hidden; }
+      nav a[href="index.html"]:first-child { font-size: 0.82rem !important; padding: 14px 10px 14px 0 !important; }
+      nav div[style*="flex-wrap"] { overflow-x: auto; -webkit-overflow-scrolling: touch; flex-wrap: nowrap !important; scrollbar-width: none; }
+      nav div[style*="flex-wrap"]::-webkit-scrollbar { display: none; }
+      nav div[style*="flex-wrap"] a { padding: 16px 8px !important; font-size: 0.76rem !important; white-space: nowrap; }
+      nav a[download] { font-size: 0.7rem !important; padding: 7px 10px !important; flex-shrink: 0; }
+
+      /* Hero */
+      .hero { padding: 40px 16px 36px !important; }
+      .hero h1 { font-size: clamp(1.8rem, 7vw, 2.6rem) !important; }
+      .hero .sub { font-size: 1rem !important; }
+      .pill-row { gap: 8px !important; margin-top: 20px !important; }
+      .hero-cta { padding: 12px 24px !important; font-size: 0.9rem !important; }
+
+      /* Sections */
+      section { padding: 40px 16px !important; }
+      .wins-strip { padding: 40px 16px !important; }
+      .download-band { padding: 36px 16px !important; }
+      .download-band h2 { font-size: 1.3rem !important; }
+
+      /* Cards */
+      .portfolio-card { padding: 18px 16px !important; }
+      .industry-grid, .portfolio-grid, .stats-grid { gap: 16px !important; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .stat-card .number { font-size: 1.8rem !important; }
+    }
+
+    @media (max-width: 480px) {
+      .hero { padding: 32px 14px 28px !important; }
+      .stats-grid { grid-template-columns: 1fr 1fr !important; }
+      .portfolio-card { padding: 14px 12px !important; }
+      .hero h1 { font-size: 1.8rem !important; }
+    }
   </style>
 </head>
 <body>
@@ -530,7 +567,7 @@
     &nbsp;·&nbsp;
     <a href="https://github.com/AnelHenning2-collab/grc-analyst-portfolio">GitHub Repository</a>
   </p>
-  <p style="margin-top:10px;color:#111111;font-size:0.78rem;">
+  <p style="margin-top:10px;color:#000000;font-size:0.78rem;">
     Frameworks: NIST CSF 2.0 &nbsp;·&nbsp; NIST 800-53 Rev.5 &nbsp;·&nbsp; ISO 27001:2022
     &nbsp;·&nbsp; SOC 2 TSC &nbsp;·&nbsp; HIPAA &nbsp;·&nbsp; NAIC Model Law &nbsp;·&nbsp; FedRAMP &nbsp;·&nbsp; FISMA
   </p>
