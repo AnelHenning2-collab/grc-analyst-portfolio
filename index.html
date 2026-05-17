@@ -59,21 +59,26 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 2px;
+      gap: 0;
       flex: 1;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      min-width: 0;
     }
+    .nav-links::-webkit-scrollbar { display: none; }
     .nav-links a {
       color: rgba(255,255,255,.82);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 500;
-      padding: 0 13px;
+      padding: 0 10px;
       height: 70px;
       display: flex;
       align-items: center;
       text-decoration: none;
       transition: color .2s, background .2s;
       white-space: nowrap;
+      flex-shrink: 0;
     }
     .nav-links a:hover {
       color: var(--white);
