@@ -6,6 +6,10 @@
   <title>NIST CSF Gap Analysis | Anél Henning GRC Portfolio</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* 12pt = 16px; set on html so rem units resolve correctly */
+    html { font-size: 16px; }
+
     :root {
       --navy:     #1E2761;
       --teal:     #028090;
@@ -18,8 +22,13 @@
       --white:    #FFFFFF;
       --border:   #DDE3F0;
     }
-    body { font-family: 'Segoe UI', Calibri, sans-serif; color: var(--dark-txt);
-           background: #F8FAFF; line-height: 1.7; font-size: 16px; }
+    body {
+      font-family: 'Segoe UI', Calibri, sans-serif;
+      color: var(--dark-txt);
+      background: #F8FAFF;
+      line-height: 1.75;
+      font-size: 1rem;   /* 16px = 12pt */
+    }
     a { color: var(--teal); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
@@ -35,7 +44,7 @@
       padding: 0 24px;
     }
     .nav-brand {
-      font-weight: 700; font-size: 0.95rem;
+      font-weight: 700; font-size: 1rem;
       color: var(--gold) !important;
       padding: 16px 20px 16px 0;
       white-space: nowrap;
@@ -46,8 +55,8 @@
     .nav-links { display: flex; flex-wrap: wrap; gap: 2px; }
     .nav-links a {
       color: var(--ice) !important;
-      font-size: 0.82rem; font-weight: 500;
-      padding: 18px 11px;
+      font-size: 0.9rem; font-weight: 500;
+      padding: 18px 12px;
       transition: color .15s, background .15s;
       white-space: nowrap;
     }
@@ -60,8 +69,8 @@
       margin-left: auto;
       background: var(--gold);
       color: var(--navy) !important;
-      font-weight: 700; font-size: 0.8rem;
-      padding: 8px 16px !important;
+      font-weight: 700; font-size: 0.875rem;
+      padding: 9px 18px !important;
       border-radius: 4px;
       white-space: nowrap;
     }
@@ -70,17 +79,13 @@
     /* PAGE WRAPPER */
     .page-wrap { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
 
-    /* BREADCRUMB */
-    .breadcrumb { font-size: 0.82rem; color: var(--mid-gray); margin-bottom: 28px; }
-    .breadcrumb a { color: var(--teal); }
-
     /* PAGE HEADER */
     .page-header { margin-bottom: 36px; }
     .page-header .industry-tag {
       display: inline-block;
-      font-size: 0.72rem; font-weight: 700;
+      font-size: 0.8rem; font-weight: 700;
       letter-spacing: 1px; text-transform: uppercase;
-      padding: 4px 12px; border-radius: 999px;
+      padding: 5px 14px; border-radius: 999px;
       color: var(--white); margin-bottom: 14px;
     }
     .page-header h1 {
@@ -89,7 +94,7 @@
       line-height: 1.2; margin-bottom: 10px;
     }
     .page-header .subtitle {
-      font-size: 0.95rem; color: var(--mid-gray);
+      font-size: 1rem; color: var(--mid-gray);
       max-width: 680px;
     }
 
@@ -102,58 +107,59 @@
       margin-bottom: 32px;
       box-shadow: 0 2px 12px rgba(0,0,0,.05);
     }
-    @media (max-width: 600px) { .content-card { padding: 24px 20px; } }
 
-    /* MARKDOWN CONTENT STYLES */
+    /* MARKDOWN CONTENT STYLES — all body text at 1rem = 16px = 12pt */
     .md-content h1 { font-size: 1.6rem; color: var(--navy); margin: 0 0 20px; }
     .md-content h2 {
-      font-size: 1.15rem; font-weight: 700;
-      color: var(--navy); margin: 32px 0 12px;
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--navy); margin: 32px 0 14px;
       padding-bottom: 6px;
       border-bottom: 2px solid var(--light-bg);
     }
-    .md-content h3 { font-size: 1rem; font-weight: 700; color: var(--teal); margin: 20px 0 8px; }
-    .md-content h4 { font-size: 0.95rem; font-weight: 700; color: var(--dark-txt); margin: 16px 0 6px; }
-    .md-content p  { margin-bottom: 14px; font-size: 0.95rem; }
-    .md-content ul, .md-content ol { margin: 10px 0 16px 24px; }
-    .md-content li { margin-bottom: 5px; font-size: 0.95rem; }
+    .md-content h3 { font-size: 1.05rem; font-weight: 700; color: var(--teal); margin: 20px 0 8px; }
+    .md-content h4 { font-size: 1rem; font-weight: 700; color: var(--dark-txt); margin: 16px 0 6px; }
+    .md-content p  { margin-bottom: 14px; font-size: 1rem; color: var(--dark-txt); }
+    .md-content ul, .md-content ol { margin: 10px 0 16px 26px; }
+    .md-content li { margin-bottom: 6px; font-size: 1rem; color: var(--dark-txt); }
     .md-content strong { color: var(--dark-txt); }
-    .md-content em { color: var(--mid-gray); }
+    .md-content em { color: var(--dark-txt); font-style: italic; }
     .md-content code {
       background: var(--light-bg); border-radius: 3px;
-      padding: 2px 6px; font-size: 0.85rem; font-family: Consolas, monospace;
+      padding: 2px 6px; font-size: 0.9rem; font-family: Consolas, monospace;
     }
     .md-content pre {
       background: var(--light-bg); border-radius: 6px;
       padding: 16px; overflow-x: auto; margin-bottom: 16px;
     }
-    .md-content pre code { background: none; padding: 0; }
+    .md-content pre code { background: none; padding: 0; font-size: 0.9rem; }
     .md-content blockquote {
       border-left: 4px solid var(--teal);
       background: var(--light-bg);
       padding: 12px 16px; margin: 16px 0;
       border-radius: 0 6px 6px 0;
-      font-style: italic; color: var(--mid-gray);
+      font-style: italic; color: var(--dark-txt);
     }
     .md-content hr { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
 
     /* TABLES */
     .md-content table {
       width: 100%; border-collapse: collapse;
-      margin: 16px 0 20px; font-size: 0.88rem;
+      margin: 16px 0 20px; font-size: 0.95rem;
       display: block; overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
     .md-content th {
       background: var(--navy); color: var(--white);
-      padding: 10px 14px; text-align: left; font-weight: 600;
+      padding: 11px 14px; text-align: left; font-weight: 600;
     }
     .md-content td {
-      padding: 9px 14px; border-bottom: 1px solid var(--border);
+      padding: 10px 14px; border-bottom: 1px solid var(--border);
+      color: var(--dark-txt);
     }
     .md-content tr:nth-child(even) td { background: var(--light-bg); }
     .md-content tr:hover td { background: #E4EDFF; }
 
-    /* STAR SECTION — special styling */
+    /* STAR SECTION */
     .star-section {
       background: linear-gradient(135deg, #0A1A50 0%, #1E2761 100%);
       border-radius: 10px;
@@ -161,9 +167,8 @@
       margin-bottom: 32px;
       color: var(--white);
     }
-    @media (max-width: 600px) { .star-section { padding: 24px 20px; } }
     .star-section .star-label {
-      font-size: 0.75rem; font-weight: 700;
+      font-size: 0.8rem; font-weight: 700;
       letter-spacing: 2px; text-transform: uppercase;
       color: var(--gold); margin-bottom: 6px;
     }
@@ -172,7 +177,7 @@
       margin-bottom: 6px; border: none; padding: 0;
     }
     .star-meta {
-      font-size: 0.83rem; color: var(--ice);
+      font-size: 0.95rem; color: var(--ice);
       font-style: italic; margin-bottom: 28px;
     }
     .star-grid {
@@ -181,40 +186,39 @@
       gap: 20px;
       margin-bottom: 20px;
     }
-    @media (max-width: 680px) { .star-grid { grid-template-columns: 1fr; } }
     .star-block {
       background: rgba(255,255,255,.07);
       border-radius: 8px; padding: 18px 20px;
     }
     .star-block .star-block-label {
-      font-size: 0.7rem; font-weight: 700;
+      font-size: 0.8rem; font-weight: 700;
       text-transform: uppercase; letter-spacing: 1.5px;
-      color: var(--teal); margin-bottom: 8px;
+      color: var(--teal); margin-bottom: 10px;
     }
     .star-block p, .star-block li {
-      font-size: 0.9rem; color: #D0DEFF; line-height: 1.6;
+      font-size: 1rem; color: #D0DEFF; line-height: 1.7;
     }
-    .star-block ul { margin-left: 16px; }
-    .star-block li { margin-bottom: 4px; }
+    .star-block ul { margin-left: 18px; }
+    .star-block li { margin-bottom: 6px; }
     .star-win {
       background: var(--green);
       border-radius: 8px; padding: 20px 24px;
     }
     .star-win .win-label {
-      font-size: 0.7rem; font-weight: 700;
+      font-size: 0.8rem; font-weight: 700;
       text-transform: uppercase; letter-spacing: 1.5px;
-      color: var(--gold); margin-bottom: 8px;
+      color: var(--gold); margin-bottom: 10px;
     }
     .star-win .win-headline {
-      font-size: 1.05rem; font-weight: 700;
-      color: var(--white); margin-bottom: 6px;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--white); margin-bottom: 8px;
     }
-    .star-win .win-detail { font-size: 0.88rem; color: #B2E8D0; }
+    .star-win .win-detail { font-size: 1rem; color: #B2E8D0; }
 
     /* BACK LINK */
     .back-link {
       display: inline-flex; align-items: center; gap: 6px;
-      font-size: 0.88rem; font-weight: 600;
+      font-size: 1rem; font-weight: 600;
       color: var(--teal); margin-bottom: 28px;
     }
     .back-link:hover { text-decoration: none; opacity: .8; }
@@ -223,7 +227,7 @@
     footer {
       background: #1E273D; color: var(--ice);
       text-align: center; padding: 28px 20px;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
     }
     footer a { color: var(--gold); }
 
