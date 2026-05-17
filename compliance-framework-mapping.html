@@ -7,29 +7,24 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ~13.5pt base; set on html so rem units resolve correctly */
     html { font-size: 18px; }
 
     :root {
       --navy:     #1E2761;
-      --teal:     #028090;
-      --green:    #04763A;
       --gold:     #F5C518;
-      --ice:      #CADBFC;
-      --light-bg: #EEF3FF;
       --dark-txt: #000000;
       --mid-gray: #000000;
       --white:    #FFFFFF;
-      --border:   #DDE3F0;
+      --border:   rgba(30,39,97,0.15);
     }
     body {
       font-family: 'Segoe UI', Calibri, sans-serif;
       color: var(--dark-txt);
-      background: #F8FAFF;
+      background: var(--white);
       line-height: 1.75;
-      font-size: 1rem;   /* 16px = 12pt */
+      font-size: 1rem;
     }
-    a { color: var(--teal); text-decoration: none; }
+    a { color: var(--navy); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
     /* NAV */
@@ -54,7 +49,7 @@
     .nav-brand:hover { text-decoration: none !important; }
     .nav-links { display: flex; flex-wrap: wrap; gap: 2px; }
     .nav-links a {
-      color: var(--ice) !important;
+      color: rgba(255,255,255,.82) !important;
       font-size: 0.9rem; font-weight: 500;
       padding: 18px 12px;
       transition: color .15s, background .15s;
@@ -86,7 +81,7 @@
       font-size: 0.8rem; font-weight: 700;
       letter-spacing: 1px; text-transform: uppercase;
       padding: 5px 14px; border-radius: 999px;
-      color: var(--white); margin-bottom: 14px;
+      background: var(--navy); color: var(--white); margin-bottom: 14px;
     }
     .page-header h1 {
       font-size: clamp(1.6rem, 4vw, 2.3rem);
@@ -108,15 +103,15 @@
       box-shadow: 0 2px 12px rgba(0,0,0,.05);
     }
 
-    /* MARKDOWN CONTENT STYLES — all body text at 1rem = 16px = 12pt */
+    /* MARKDOWN CONTENT STYLES */
     .md-content h1 { font-size: 1.6rem; color: var(--navy); margin: 0 0 20px; }
     .md-content h2 {
       font-size: 1.2rem; font-weight: 700;
       color: var(--navy); margin: 32px 0 14px;
       padding-bottom: 6px;
-      border-bottom: 2px solid var(--light-bg);
+      border-bottom: 2px solid rgba(30,39,97,0.12);
     }
-    .md-content h3 { font-size: 1.05rem; font-weight: 700; color: var(--teal); margin: 20px 0 8px; }
+    .md-content h3 { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin: 20px 0 8px; }
     .md-content h4 { font-size: 1rem; font-weight: 700; color: var(--dark-txt); margin: 16px 0 6px; }
     .md-content p  { margin-bottom: 14px; font-size: 1rem; color: var(--dark-txt); }
     .md-content ul, .md-content ol { margin: 10px 0 16px 26px; }
@@ -124,17 +119,17 @@
     .md-content strong { color: var(--dark-txt); }
     .md-content em { color: var(--dark-txt); font-style: italic; }
     .md-content code {
-      background: var(--light-bg); border-radius: 3px;
+      background: rgba(30,39,97,0.06); border-radius: 3px;
       padding: 2px 6px; font-size: 0.9rem; font-family: Consolas, monospace;
     }
     .md-content pre {
-      background: var(--light-bg); border-radius: 6px;
+      background: rgba(30,39,97,0.06); border-radius: 6px;
       padding: 16px; overflow-x: auto; margin-bottom: 16px;
     }
     .md-content pre code { background: none; padding: 0; font-size: 0.9rem; }
     .md-content blockquote {
-      border-left: 4px solid var(--teal);
-      background: var(--light-bg);
+      border-left: 4px solid var(--navy);
+      background: rgba(30,39,97,0.05);
       padding: 12px 16px; margin: 16px 0;
       border-radius: 0 6px 6px 0;
       font-style: italic; color: var(--dark-txt);
@@ -156,8 +151,8 @@
       padding: 10px 14px; border-bottom: 1px solid var(--border);
       color: var(--dark-txt);
     }
-    .md-content tr:nth-child(even) td { background: var(--light-bg); }
-    .md-content tr:hover td { background: #E4EDFF; }
+    .md-content tr:nth-child(even) td { background: rgba(30,39,97,0.04); }
+    .md-content tr:hover td { background: rgba(30,39,97,0.08); }
 
     /* STAR SECTION */
     .star-section {
@@ -177,7 +172,7 @@
       margin-bottom: 6px; border: none; padding: 0;
     }
     .star-meta {
-      font-size: 0.95rem; color: var(--ice);
+      font-size: 0.95rem; color: rgba(255,255,255,.75);
       font-style: italic; margin-bottom: 28px;
     }
     .star-grid {
@@ -193,39 +188,39 @@
     .star-block .star-block-label {
       font-size: 0.8rem; font-weight: 700;
       text-transform: uppercase; letter-spacing: 1.5px;
-      color: var(--teal); margin-bottom: 10px;
+      color: var(--gold); margin-bottom: 10px;
     }
     .star-block p, .star-block li {
-      font-size: 1rem; color: #D0DEFF; line-height: 1.7;
+      font-size: 1rem; color: rgba(255,255,255,.85); line-height: 1.7;
     }
     .star-block ul { margin-left: 18px; }
     .star-block li { margin-bottom: 6px; }
     .star-win {
-      background: var(--green);
+      background: var(--gold);
       border-radius: 8px; padding: 20px 24px;
     }
     .star-win .win-label {
       font-size: 0.8rem; font-weight: 700;
       text-transform: uppercase; letter-spacing: 1.5px;
-      color: var(--gold); margin-bottom: 10px;
+      color: var(--navy); margin-bottom: 10px;
     }
     .star-win .win-headline {
       font-size: 1.1rem; font-weight: 700;
-      color: var(--white); margin-bottom: 8px;
+      color: var(--navy); margin-bottom: 8px;
     }
-    .star-win .win-detail { font-size: 1rem; color: #B2E8D0; }
+    .star-win .win-detail { font-size: 1rem; color: rgba(30,39,97,.75); }
 
     /* BACK LINK */
     .back-link {
       display: inline-flex; align-items: center; gap: 6px;
       font-size: 1rem; font-weight: 600;
-      color: var(--teal); margin-bottom: 28px;
+      color: var(--navy); margin-bottom: 28px;
     }
     .back-link:hover { text-decoration: none; opacity: .8; }
 
     /* FOOTER */
     footer {
-      background: #1E273D; color: var(--ice);
+      background: var(--navy); color: rgba(255,255,255,.75);
       text-align: center; padding: 28px 20px;
       font-size: 0.9rem;
     }
@@ -233,7 +228,6 @@
 
     /* ── MOBILE / IPHONE RESPONSIVE ── */
     @media (max-width: 768px) {
-      /* Nav: scrolls horizontally, no wrapping chaos */
       .nav-inner { flex-wrap: nowrap; padding: 0 12px; overflow: hidden; }
       .nav-brand  { font-size: 0.85rem; padding: 14px 12px 14px 0; }
       .nav-links  {
@@ -244,18 +238,15 @@
       .nav-links a { padding: 16px 9px; font-size: 0.78rem; }
       .nav-dl { font-size: 0.72rem; padding: 7px 10px !important; flex-shrink: 0; }
 
-      /* Page layout */
       .page-wrap { padding: 28px 16px 56px; }
       .page-header h1 { font-size: 1.4rem; }
       .section-title  { font-size: 1.3rem; }
       .content-card   { padding: 20px 16px; }
 
-      /* STAR blocks stack vertically */
       .star-section { padding: 24px 16px; }
       .star-grid    { grid-template-columns: 1fr; }
       .star-block   { padding: 14px 16px; }
 
-      /* Tables: horizontal scroll on small screens */
       .md-content table { font-size: 0.82rem; }
       .md-content th, .md-content td { padding: 7px 10px; }
     }
@@ -290,7 +281,7 @@
 <div class="page-wrap">
   <a class="back-link" href="index.html">← Back to Portfolio</a>
   <div class="page-header">
-    <span class="industry-tag" style="background:#5B2186;">Federal IT Contractor · FedRAMP</span>
+    <span class="industry-tag" style="background:#1E2761;">Federal IT Contractor · FedRAMP</span>
     <h1>Cross-Framework Compliance Mapping</h1>
     <p class="subtitle">GRC work product · Includes full policy/framework and a STAR method scenario below.</p>
   </div>
@@ -815,7 +806,7 @@
     <strong style="color:#fff;">Anél Henning</strong> &nbsp;·&nbsp; GRC Analyst
     &nbsp;·&nbsp; <a href="mailto:logicalcoders@outlook.com">logicalcoders@outlook.com</a>
   </p>
-  <p style="margin-top:8px;color:#111111;">
+  <p style="margin-top:8px;color:rgba(255,255,255,.55);">
     NIST CSF 2.0 · NIST 800-53 Rev.5 · ISO 27001:2022 · SOC 2 TSC · HIPAA · NAIC · FedRAMP · FISMA
   </p>
 </footer>
