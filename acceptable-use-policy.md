@@ -1,142 +1,147 @@
 # Acceptable Use Policy (AUP)
-**Document Owner:** GRC / Information Security  
+
+**Document ID:** GRC-POL-001  
 **Version:** 1.0  
-**Effective Date:** May 2026  
-**Review Cycle:** Annual  
-**Classification:** Internal
+**Classification:** Internal  
+**Effective Date:** [Date]  
+**Review Date:** [Date + 1 Year]  
+**Owner:** Information Security Team  
+**Approved By:** [CISO / IT Director]
 
 ---
 
 ## 1. Purpose
 
-This Acceptable Use Policy (AUP) defines the acceptable use of information technology resources provided by the organization. It is designed to protect the organization, its employees, and its clients from risks arising from misuse of technology systems, and to ensure compliance with applicable laws and regulations.
+This Acceptable Use Policy (AUP) establishes the rules and guidelines governing the use of [Organization Name]'s information systems, network resources, devices, and data. The purpose is to protect the organization, its employees, customers, and partners from harm caused by the misuse of technology resources.
 
 ---
 
 ## 2. Scope
 
-This policy applies to **all employees, contractors, vendors, and third-party users** who access organizational IT systems, including but not limited to:
-- Corporate-owned devices (laptops, desktops, mobile devices)
-- Personally owned devices used to access organizational systems (BYOD)
-- Network infrastructure (wired, wireless, VPN)
-- Cloud services, SaaS applications, and email systems
-- Organizational data, regardless of where it is stored or processed
+This policy applies to:
+- All full-time and part-time employees
+- Contractors, consultants, and temporary staff
+- Third-party vendors with access to organizational systems
+- Any individual accessing organizational systems or data, on-site or remotely
+
+This policy covers all information systems owned, leased, or operated by [Organization Name], including but not limited to computers, mobile devices, email, internet access, cloud services, and internal networks.
 
 ---
 
-## 3. Definitions
+## 3. Policy Statements
 
-| Term | Definition |
-|---|---|
-| **IT Resources** | Any hardware, software, network, or data owned or operated by the organization |
-| **User** | Any individual granted access to organizational IT resources |
-| **Sensitive Data** | PII, financial records, health information, intellectual property, or confidential business data |
-| **Authorized Use** | Activities explicitly permitted under this policy or approved in writing by IT Security |
+### 3.1 Authorized Use
 
----
+Users are authorized to use organizational technology resources for legitimate business purposes only. Incidental personal use is permitted provided it does not:
+- Interfere with job responsibilities or productivity
+- Consume excessive system resources or bandwidth
+- Violate any provision of this policy
 
-## 4. Acceptable Use
+### 3.2 User Responsibilities
 
-Users may use organizational IT resources for:
-- Conducting authorized business activities in support of their job functions
-- Approved professional development and training activities
-- Incidental personal use that does not interfere with job performance or organizational operations (subject to Section 5 restrictions)
+All users must:
+- Use only accounts and credentials assigned to them
+- Keep passwords confidential and never share login credentials
+- Lock their screen when leaving a workstation unattended
+- Report suspected security incidents to the IT/Security team immediately
+- Complete all required security awareness training
 
----
+### 3.3 Prohibited Activities
 
-## 5. Prohibited Activities
+The following activities are strictly prohibited on all organizational systems:
 
-The following activities are **strictly prohibited** on organizational IT resources:
+**Legal Violations:**
+- Accessing, transmitting, or storing material that violates applicable law
+- Unauthorized copying or distribution of copyrighted material
+- Engaging in any form of fraud, harassment, or discrimination
 
-### 5.1 Data & Privacy
-- Accessing, copying, or transmitting sensitive organizational data without authorization
-- Sharing login credentials, passwords, or authentication tokens with any other person
-- Storing sensitive data on personal devices, unauthorized cloud storage, or removable media without encryption and approval
+**Security Violations:**
+- Attempting to bypass, disable, or circumvent security controls
+- Installing unauthorized software, applications, or browser extensions
+- Connecting unauthorized hardware or storage devices
+- Attempting to access systems, data, or accounts without authorization
 
-### 5.2 Network & System Use
-- Attempting to bypass, disable, or circumvent security controls, firewalls, or monitoring systems
-- Installing unauthorized software, applications, or browser extensions on organizational devices
-- Connecting unauthorized devices to the organizational network
-- Using organizational resources to conduct unauthorized port scanning, vulnerability testing, or network reconnaissance
+**Network Misuse:**
+- Using organizational network resources for cryptocurrency mining
+- Running unauthorized network scans or penetration tests
+- Deliberately consuming excessive bandwidth for non-business purposes
 
-### 5.3 Communication & Content
-- Sending, accessing, or distributing illegal, discriminatory, harassing, or sexually explicit content
-- Using organizational email or systems for unauthorized commercial activities or personal financial gain
-- Impersonating another user, employee, or external party in any communication
+**Inappropriate Content:**
+- Accessing or distributing offensive, pornographic, or discriminatory content
+- Sending threatening, harassing, or defamatory communications
+- Sharing confidential organizational information on unauthorized platforms
 
-### 5.4 Legal & Compliance
-- Downloading or distributing copyrighted materials without proper authorization or licensing
-- Engaging in any activity that violates local, state, or federal law
-- Circumventing data retention or legal hold requirements
+### 3.4 Remote Access
 
----
+Employees accessing organizational resources remotely must:
+- Use only organization-approved VPN connections
+- Ensure their home or remote network is reasonably secured
+- Never use public or unsecured Wi-Fi without a VPN
+- Comply with all other provisions of this policy
 
-## 6. Internet and Email Use
+### 3.5 Email and Communications
 
-- Organizational internet access is provided for business purposes. Incidental personal use is permitted provided it does not consume excessive bandwidth, expose the organization to legal risk, or conflict with this policy.
-- Email communications using organizational accounts are organizational records and may be monitored, retained, and disclosed in accordance with legal requirements.
-- Users must not open attachments or click links in unsolicited emails (phishing). Suspected phishing emails must be reported to the IT Security team immediately.
+Users must not:
+- Open email attachments or click links from unknown or suspicious sources
+- Forward confidential information to personal email accounts
+- Misrepresent themselves or the organization in electronic communications
 
----
+### 3.6 Data Handling
 
-## 7. Remote Work and BYOD
-
-- Users accessing organizational systems remotely must connect via approved VPN.
-- Personally owned devices used for work must have current antivirus software, full-disk encryption enabled, and operating system patches current within 30 days.
-- Organizational data must not be stored on personal devices except within approved, encrypted, and managed applications.
-
----
-
-## 8. Monitoring and Privacy
-
-The organization reserves the right to monitor, log, and audit all activity on organizational IT resources, including internet usage, email, and device activity, to the extent permitted by applicable law. Users should have no expectation of privacy when using organizational IT resources.
+- Confidential and sensitive data must be stored only on approved systems
+- Users must not store sensitive organizational data on personal devices or unapproved cloud services
+- Data must be disposed of in accordance with the Data Retention and Disposal Policy
 
 ---
 
-## 9. Reporting Violations
+## 4. Monitoring and Privacy
 
-Users who become aware of violations of this policy or suspicious activity must report it immediately to:
-- **IT Security Helpdesk:** [security@organization.com]
-- **GRC / Compliance Team:** [grc@organization.com]
-- **Anonymous Reporting:** [ethics hotline or reporting link]
+Users should have no expectation of privacy when using organizational technology resources. [Organization Name] reserves the right to monitor, log, and audit all activity on its systems to:
+- Ensure compliance with this and related policies
+- Investigate security incidents or policy violations
+- Meet legal or regulatory obligations
+
+Monitoring will be conducted in compliance with applicable privacy laws.
 
 ---
 
-## 10. Consequences of Violation
+## 5. Enforcement and Violations
 
 Violations of this policy may result in:
-- Suspension or revocation of IT access privileges
-- Disciplinary action up to and including termination of employment or contract
-- Civil or criminal legal action where applicable
+- Immediate suspension of system access
+- Disciplinary action up to and including termination of employment
+- Legal action where applicable
+
+The severity of the response will be commensurate with the nature and impact of the violation.
 
 ---
 
-## 11. Policy Exceptions
+## 6. Exceptions
 
-Exceptions to this policy must be requested in writing and approved by the CISO or designated security authority prior to the activity. Approved exceptions are documented and reviewed annually.
+Requests for exceptions to this policy must be submitted in writing to the Information Security team. Exceptions will be reviewed on a case-by-case basis and must be approved by the [CISO / IT Director].
 
 ---
 
-## 12. Related Policies and Documents
+## 7. Related Policies
 
-- Incident Response Policy
-- Access Control Policy
-- Data Classification Policy
-- Remote Work Policy
 - Information Security Policy
+- Data Classification Policy
+- Incident Response Policy
+- Remote Work Policy
+- Password Management Policy
 
 ---
 
-## 13. Policy Review and Approval
+## 8. Review and Maintenance
 
-| Role | Name | Date |
-|---|---|---|
-| Author | GRC Analyst | May 2026 |
-| Reviewer | IT Security Manager | |
-| Approver | CISO | |
-
-*This policy is reviewed annually or following significant organizational changes, security incidents, or regulatory updates.*
+This policy will be reviewed annually or following any significant change to the organization's technology environment or applicable regulations. The Information Security team is responsible for maintaining this document.
 
 ---
 
-**Document Control:** This is a sample policy created for portfolio demonstration purposes. It should be reviewed by legal counsel and adapted to the specific regulatory environment and organizational context before implementation.
+## 9. Acknowledgment
+
+By using [Organization Name]'s technology resources, users acknowledge that they have read, understood, and agree to comply with this Acceptable Use Policy.
+
+---
+
+*For questions about this policy, contact: security@[organization].com*

@@ -1,90 +1,63 @@
-# Anél Henning | GRC Analyst & Cybersecurity Professional
+# Hi, I'm [Your Name] 👋
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anel-henning-quantum)
-[![GRC Portfolio](https://img.shields.io/badge/GRC_Portfolio-View_Work-22C55E?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AnelHenning2-collab/grc-analyst-portfolio)
-[![Open To Work](https://img.shields.io/badge/Open_To-GRC_Analyst_Roles-22C55E?style=for-the-badge)](https://www.linkedin.com/in/anel-henning-quantum)
+## 🛡️ Aspiring GRC Analyst | Cybersecurity | Risk & Compliance
 
----
-
-## About Me
-
-Detail-oriented cybersecurity professional transitioning into **Governance, Risk & Compliance (GRC)**, with a strong foundation in security frameworks, technical documentation, and risk analysis. Currently completing an **MS in Cybersecurity Management at Purdue Global** with coursework covering quantitative risk assessment, platform security, and compliance methodology.
-
-Based in **Tampa, Florida** | Available for GRC Analyst, Compliance Analyst, and Risk Analyst roles.
-
-- 🎯 Targeting: **GRC Analyst** | **Compliance Analyst** | **Risk Analyst**
-- 📋 Frameworks: **NIST CSF** · **ISO 27001** · **SOC 2** · **NIST RMF** · **MITRE ATT&CK**
-- 🎓 Pursuing: **CompTIA Security+** (target: June 2026) | MS Cybersecurity — Purdue Global
-- 📍 Tampa, FL — open to hybrid/remote GRC roles
+I'm a cybersecurity professional focused on **Governance, Risk, and Compliance (GRC)** — helping organizations build security programs that are structured, auditable, and aligned with industry frameworks.
 
 ---
 
-## GRC Competencies
+### 🎯 What I Do
 
-| Domain | Skills |
+- **Policy Development** — Writing clear, enforceable security policies aligned to NIST, ISO 27001, and SOC 2
+- **Risk Management** — Building risk registers, scoring threats, and recommending controls
+- **Compliance Auditing** — Conducting gap analyses and mapping controls across multiple frameworks
+- **Security Awareness** — Developing training content to build a security-first culture
+
+---
+
+### 🧰 Frameworks & Standards
+
+![NIST CSF](https://img.shields.io/badge/NIST%20CSF-005A8B?style=flat-square)
+![ISO 27001](https://img.shields.io/badge/ISO%2027001-0072C6?style=flat-square)
+![SOC 2](https://img.shields.io/badge/SOC%202-6A4C93?style=flat-square)
+![HIPAA](https://img.shields.io/badge/HIPAA-C62828?style=flat-square)
+![NIST 800-53](https://img.shields.io/badge/NIST%20800--53-1565C0?style=flat-square)
+
+---
+
+### 📂 Portfolio Highlights
+
+| Repository | Description |
 |---|---|
-| **Risk Management** | Risk register development, qualitative & quantitative risk scoring, threat modeling, risk matrices |
-| **Compliance** | NIST CSF mapping, ISO 27001 controls, SOC 2 Trust Services Criteria, gap analysis |
-| **Policy & Documentation** | Policy writing (AUP, IRP, Access Control), procedure documentation, technical white papers |
-| **Audit & Controls** | Internal audit checklists, control testing, evidence gathering, remediation tracking |
-| **Access Reviews** | Identity & access management, least privilege review, access certification |
-| **Incident Response** | Playbook development, RACI matrices, escalation procedures |
+| [grc-policy-templates](./grc-policy-templates) | Acceptable Use, Incident Response, Data Classification policies |
+| [nist-csf-audit-lab](./nist-csf-audit-lab) | Mock NIST CSF audit with gap analysis & remediation roadmap |
+| [risk-register-template](./risk-register-template) | Risk scoring methodology and working risk register |
+| [compliance-mapping](./compliance-mapping) | Cross-framework control mapping (NIST ↔ ISO ↔ SOC 2) |
+| [security-awareness-training](./security-awareness-training) | Employee training materials on phishing, passwords & social engineering |
 
 ---
 
-## GRC Portfolio Highlights
+### 📜 Certifications & Education
 
-### 📁 [GRC Analyst Portfolio](https://github.com/AnelHenning2-collab/grc-analyst-portfolio)
-Dedicated GRC portfolio demonstrating real-world compliance and risk management skills:
-- **Risk Register** — Sample enterprise risk register with scoring methodology (NIST RMF aligned)
-- **Framework Mapping** — NIST CSF ↔ ISO 27001 ↔ SOC 2 cross-reference matrix
-- **Policy Samples** — Acceptable Use Policy, Incident Response Policy, Access Control Policy
-- **SOC 2 Audit Checklist** — Type II controls checklist with gap analysis template
-- **Compliance Dashboard** — Visual risk scoring and control tracking tool
-
-### 📚 [Cybersecurity Portfolio — Purdue Global MS](https://github.com/AnelHenning2-collab/purdue-grad-samples-2026)
-Graduate-level work including:
-- **IT628** Quantitative Risk Assessment — threat modeling, risk matrices, MITRE ATT&CK
-- **IT544** Platform Security — cloud IAM, zero-trust architecture, incident response
-- **Research Writing in IT** — graduate-level technical writing and literature review
-
-### 🔐 [Security+ Study & Reference Site](https://anelhenning2-collab.github.io/logical-learning/)
-Interactive CompTIA Security+ SY0-701 study platform covering threat analysis, cryptography, network security, and identity & access management.
+- 🏅 [Your Certification Here — e.g., CompTIA Security+]
+- 🎓 [Your Degree / Coursework — e.g., B.S. Cybersecurity, WGU]
+- 📘 Currently pursuing: [e.g., ISC² CISA / CompTIA CySA+]
 
 ---
 
-## Technical Skills
+### 🌱 Currently Learning
 
-**GRC Tools & Frameworks:** NIST CSF · NIST RMF · ISO 27001 · SOC 2 · MITRE ATT&CK · CIS Controls
-
-**Security Tools:** Wireshark · Kali Linux · SIEM concepts · Vulnerability scanning
-
-**Analysis & Reporting:** Excel · R · Python · Tableau · Risk matrices · KPI dashboards
-
-**Documentation:** Policy writing · Technical white papers · Audit evidence · APA research
+- NIST RMF (Risk Management Framework) Step-by-Step
+- GRC platforms: Archer, ServiceNow GRC, and open-source alternatives
+- Third-party vendor risk assessment methodologies
 
 ---
 
-## Education
+### 📬 Let's Connect
 
-| Degree | Institution | Focus |
-|---|---|---|
-| MS Cybersecurity Management *(in progress)* | Purdue Global | GRC, Risk Analysis, Platform Security |
-| BS Computer Science | Rasmussen University | Software Engineering, Databases, Networks |
-| BFA Graphic Design | — | Visual Communication, Documentation Design |
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/yourprofile)
+[![Email](https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:you@email.com)
 
 ---
 
-## Certifications
-
-| Certification | Status | Target |
-|---|---|---|
-| CompTIA Security+ SY0-701 | 🔄 In Progress | June 2026 |
-| CGRC (ISC² Certified in GRC) | 📋 Planned | Q4 2026 |
-| CISA | 📋 Planned | 2027 |
-
----
-
-> *"GRC isn't about checking boxes — it's about building organizational trust through consistent, documented, and auditable security practices."*
-
-📧 anelhenning2@student.purdueglobal.edu | 📍 Tampa, Florida
+> *"Security is not a product, but a process."* — Bruce Schneier
