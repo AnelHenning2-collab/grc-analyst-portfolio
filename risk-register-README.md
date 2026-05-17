@@ -80,3 +80,21 @@ This risk register template is designed for use in small-to-medium organizations
 - NIST SP 800-30 Rev. 1: https://csrc.nist.gov/publications/detail/sp/800-30/rev-1/final
 - ISO/IEC 27005:2022: https://www.iso.org/standard/80585.html
 - NIST Cybersecurity Framework 2.0: https://www.nist.gov/cyberframework
+
+---
+
+## Portfolio STAR Story — Team Collaboration in Practice
+
+> **Industry:** Federal Health Agency (e.g., CMS / VA adjacent contractor) | **Role:** GRC Analyst (working with IT, Program Managers, and Risk Officers)
+
+### Situation
+A federal health IT contractor supporting a CMS-adjacent program had never maintained a formal risk register. Risk decisions were being made informally by IT leads and program managers without a documented process, scoring methodology, or executive visibility. When a new Program Security Officer joined, she found that several known high-severity risks — including an unpatched vulnerability on a public-facing portal handling beneficiary data — had been informally accepted with no documentation trail. This created significant exposure ahead of an upcoming ATO reauthorization.
+
+### Task
+I was assigned to build the organization's first formal risk register from scratch, working alongside the PSO, two IT leads, the Privacy Officer, and a program manager from the business side. My role was to design the scoring methodology, facilitate the initial risk identification sessions, and produce a register that the PSO could present to the Authorizing Official as part of the ATO package. I needed buy-in from IT leads who were skeptical of the process and a program manager who was worried that documenting risks would reflect poorly on her program.
+
+### Action
+Before building anything, I met individually with the IT leads and the program manager to understand their concerns. For the IT leads, I explained that the register would document what they already knew — getting it on paper actually protected them by showing awareness and a treatment plan. For the program manager, I reframed the register as evidence of mature risk governance rather than a list of failures. I designed the scoring methodology collaboratively — sharing draft likelihood and impact scales with the team for feedback before finalizing, so the scales reflected what "catastrophic" actually meant in their specific program context (beneficiary data exposure, CMS contract penalties). I facilitated two half-day risk identification workshops structured as open working sessions rather than interviews so the IT leads felt like co-authors, not subjects. Every risk treatment decision was made by the relevant risk owner, not by me.
+
+### Result
+The initial register captured 14 risks, including the previously undocumented unpatched portal vulnerability, which was formally accepted with a documented treatment plan and escalated to the Authorizing Official's attention. The ATO reauthorization was approved. The PSO reported that the Authorizing Official specifically noted the risk register as demonstrating program maturity. The two IT leads who had been most skeptical at the start became the register's most consistent updaters, submitting quarterly updates without prompting. The methodology document was included in the contractor's proposal library as a repeatable asset for future federal engagements.

@@ -145,3 +145,21 @@ Organizations are increasingly required to comply with multiple frameworks simul
 - ISO/IEC 27001:2022: https://www.iso.org/standard/82875.html
 - AICPA SOC 2 Trust Services Criteria: https://www.aicpa-cima.com/topic/audit-assurance/audit-and-assurance-greater-than-soc-2
 - NIST SP 800-53 Rev. 5: https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final
+
+---
+
+## Portfolio STAR Story — Team Collaboration in Practice
+
+> **Industry:** Federal Government / Defense Contractor | **Role:** GRC Analyst (cross-functional team effort)
+
+### Situation
+A mid-sized federal IT contractor was simultaneously pursuing FedRAMP Moderate authorization and maintaining its existing NIST SP 800-53 compliance posture while a new contract required demonstrating ISO/IEC 27001 alignment. The compliance team was treating each framework as a separate workstream, creating duplicated evidence collection, overlapping audit requests to control owners, and analyst burnout. The Program Security Officer escalated to leadership that the team was on track to miss the FedRAMP submission deadline.
+
+### Task
+I was brought in to work alongside two senior compliance analysts and a technical SME to build a unified control mapping that would let the team collect evidence once and satisfy all three frameworks simultaneously. My specific role was to build the cross-walk document and facilitate buy-in from the control owners who had been responding to three separate audit requests for the same data.
+
+### Action
+I researched the overlap between NIST CSF 2.0, NIST 800-53 Rev. 5, ISO 27001:2022, and SOC 2 TSC using publicly available NIST guidance and AICPA crosswalk documentation. I built the mapping table collaboratively — running weekly 30-minute syncs with each control owner to validate the mappings were accurate in their specific environment and not just theoretical. When I found gaps where a control satisfied one framework but not another, I flagged these to the senior analysts rather than resolving them unilaterally so the team could decide on the appropriate remediation approach together. I then presented the "map once, comply many" methodology to the PSO and compliance director to get leadership alignment before rolling it out.
+
+### Result
+The unified mapping reduced evidence collection requests to control owners by approximately 40%, immediately relieving the operational pressure that had been escalated. The FedRAMP submission was completed on schedule. The ISO 27001 readiness assessment used the same evidence package with minimal additions. The mapping document was formally adopted as a standing team asset and updated as part of every subsequent compliance cycle.

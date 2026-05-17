@@ -145,3 +145,21 @@ By using [Organization Name]'s technology resources, users acknowledge that they
 ---
 
 *For questions about this policy, contact: security@[organization].com*
+
+---
+
+## Portfolio STAR Story — Team Collaboration in Practice
+
+> **Industry:** Health Insurance | **Role:** GRC Analyst (collaborative effort with IT, HR, and Legal)
+
+### Situation
+A regional health insurance carrier processing Medicare Advantage claims had never formalized an Acceptable Use Policy. Following a routine external audit, the auditor flagged the absence of a documented AUP as a gap against HIPAA Security Rule §164.308(a)(1) — administrative safeguards. Leadership gave the GRC team 60 days to produce, approve, and distribute a policy before the follow-up audit.
+
+### Task
+As part of a three-person GRC team, my responsibility was to draft the policy language, coordinate review cycles across IT, HR, Legal, and Compliance, and ensure the final document reflected input from all stakeholders. I also needed to align the policy to both HIPAA requirements and the organization's existing NIST CSF roadmap.
+
+### Action
+I scheduled a kickoff workshop with representatives from IT, HR, Legal, and the Compliance Officer to identify the organization's biggest risk areas — specifically around remote access to member PHI and BYOD usage by claims adjusters. I drafted the initial policy, circulated it for comment using a shared document with tracked changes so every team's edits were visible and credited. When HR and Legal had conflicting positions on personal device use, I facilitated a compromise session and documented the agreed language. I also built a simple acknowledgment tracking sheet in SharePoint so HR could confirm completion rates ahead of the audit.
+
+### Result
+The AUP was approved by the CISO within 45 days — 15 days ahead of the deadline. Employee acknowledgment reached 94% completion before the follow-up audit. The auditor closed the HIPAA gap finding with no further conditions. The HR team later told me the collaborative review process was the smoothest policy rollout they had seen, and the tracking sheet became a reusable template adopted for two subsequent policy rollouts.

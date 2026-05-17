@@ -266,3 +266,21 @@ Answer these questions to confirm your understanding:
 
 *Questions? Contact the Information Security Team at: security@[organization].com*  
 *Training completion must be recorded in [LMS / HR System] by [Due Date].*
+
+---
+
+## Portfolio STAR Story — Team Collaboration in Practice
+
+> **Industry:** Property & Casualty Insurance | **Role:** GRC Analyst (partnered with HR, IT, and Business Lines)
+
+### Situation
+A regional P&C insurance carrier had completed its annual security awareness training for three consecutive years with completion rates hovering around 55% and no measurable change in phishing click rates, which remained at 23% during simulated phishing tests. The CISO identified this as a significant risk given that claims adjusters and underwriters regularly handled sensitive policyholder PII and financial data. Regulators under the NAIC Insurance Data Security Model Law were beginning to ask questions about the effectiveness of the training program, not just its existence.
+
+### Task
+I was asked to co-lead a training redesign with the HR Learning & Development Manager and an IT Security Engineer. My responsibilities were to assess why the existing training was failing, redesign the content to be relevant to insurance-specific workflows, and build in measurable outcomes so the CISO could report effectiveness to regulators. The HR lead owned delivery and LMS logistics; the IT engineer owned the phishing simulation platform; I owned the GRC framework alignment and content design.
+
+### Action
+I started by sitting in on two existing training sessions to observe where employees disengaged, and I ran a short anonymous survey with a sample of claims and underwriting staff to understand what security risks felt real to them versus abstract. The feedback was clear: generic examples about "a company" meant nothing, but examples involving fake policyholder ACH transfers or spear-phishing impersonating a reinsurance partner resonated immediately. I rewrote the phishing and social engineering modules using insurance-specific scenarios developed in collaboration with a senior underwriter who volunteered to review the examples for realism. I worked with the HR lead to break the training into four 10-minute modules delivered quarterly rather than one 45-minute annual session, which she confirmed was consistent with adult learning best practices and LMS capability. The IT engineer and I coordinated the phishing simulations to run two weeks after each module so employees could apply what they had just learned.
+
+### Result
+Training completion rose to 91% in the first year under the new format — a 36-point improvement. Phishing simulation click rates dropped from 23% to 9% over four quarterly cycles. When the state insurance regulator conducted a cybersecurity examination, the CISO presented the before-and-after metrics and the regulator noted the program as a best-practice example in the examination report. The underwriter who helped design the scenarios later told me it was the first time she felt like GRC had asked her opinion before writing a policy, and that made her much more likely to champion security practices with her team.

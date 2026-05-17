@@ -163,3 +163,21 @@ The Legal and Compliance team will determine notification obligations for each i
 ---
 
 *For questions about this policy, contact: security@[organization].com*
+
+---
+
+## Portfolio STAR Story — Team Collaboration in Practice
+
+> **Industry:** Healthcare — Managed Care Organization | **Role:** GRC Analyst (partnered with IT Security, Legal, and Communications)
+
+### Situation
+A managed care organization serving Medicaid and CHIP populations discovered through a routine log review that a third-party billing vendor had experienced a breach exposing approximately 12,000 member records, including names, Medicaid IDs, and diagnosis codes. The organization had an incident response plan on paper but had never executed it in a real scenario. The IRT Lead had just joined the organization two weeks prior and the previous plan had not been updated in over two years, predating the current cloud environment.
+
+### Task
+I was asked to work alongside the new IRT Lead, the Privacy Officer, Legal counsel, and the Communications Manager to execute the response. My role was to map the active incident against the existing IR policy phases, identify where the plan's procedures were outdated or unclear, and help coordinate evidence gathering across IT, Legal, and the vendor to support the HHS breach notification determination — which had a 60-day deadline under the HIPAA Breach Notification Rule.
+
+### Action
+I created a shared incident timeline document that all team members updated in real time so no one was working from stale information. When I identified that the chain-of-custody procedure in the existing plan did not account for vendor-side evidence, I flagged this to the IRT Lead and Legal immediately rather than trying to adapt the procedure on my own. Together, we agreed to request a certified evidence package directly from the vendor and log receipt through our ticketing system. I drafted the internal notification communications for the IRT Lead's review and helped Legal structure the breach analysis against the HIPAA four-factor test. I also documented every gap I identified in the existing IR plan in a running list so the post-incident review would have a clear agenda.
+
+### Result
+The organization submitted its HHS breach notification within the 60-day window with no regulatory deficiencies noted in the submission. The post-incident review I facilitated identified seven specific updates needed to the IR plan, all of which were incorporated within 30 days. The new IRT Lead noted in the lessons-learned report that the shared timeline document was critical to keeping the cross-functional team coordinated under pressure. The updated IR plan was tested via tabletop exercise three months later and passed with no critical gaps.

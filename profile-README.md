@@ -15,6 +15,20 @@ I'm a cybersecurity professional focused on **Governance, Risk, and Compliance (
 
 ---
 
+### 🏥 Industry Focus
+
+I build GRC programs with a particular lens on regulated, high-stakes industries:
+
+| Industry | Focus Areas |
+|---|---|
+| **Healthcare** | HIPAA Security Rule, PHI data classification, breach notification, clinical workflow alignment |
+| **Insurance** | NAIC Data Security Model Law, policyholder PII, phishing risk in claims/underwriting environments |
+| **Federal / Government** | NIST 800-53, FedRAMP, FISMA, ATO packages, cross-framework compliance for contractors |
+
+Each portfolio piece includes a real-world STAR scenario demonstrating collaboration across IT, Legal, HR, clinical, and program teams in these environments.
+
+---
+
 ### 🧰 Frameworks & Standards
 
 ![NIST CSF](https://img.shields.io/badge/NIST%20CSF-005A8B?style=flat-square)

@@ -234,3 +234,21 @@ All findings reflect the state of controls at the time of assessment. This repor
 
 *Framework Reference: NIST Cybersecurity Framework 2.0 (February 2024)*  
 *https://www.nist.gov/cyberframework*
+
+---
+
+## Portfolio STAR Story — Team Collaboration in Practice
+
+> **Industry:** Federal Civilian Agency | **Role:** GRC Analyst (embedded in a joint government-contractor assessment team)
+
+### Situation
+A mid-size federal civilian agency was preparing for its annual FISMA assessment and wanted to use NIST CSF 2.0 as an overlay to communicate its security posture to non-technical leadership. The agency had not conducted a formal gap analysis in three years. The IT security team had deep technical knowledge but limited experience translating findings into risk language that program managers and the agency CIO could act on. The assessment team included two federal employees, a contractor SME for technical controls, and me as the GRC analyst responsible for framework alignment and the written assessment report.
+
+### Task
+My responsibility was to lead the structured gap analysis across all six CSF functions, facilitate stakeholder interviews with IT leads and program offices, score the subcategories consistently, and produce the written findings in language appropriate for both a technical audience and executive leadership. I also needed to ensure the assessment methodology was defensible — documented clearly enough that the agency could repeat it the following year without contractor support.
+
+### Action
+I developed the scoring rubric and interview guide before the first stakeholder session and shared drafts with the federal team leads for review, incorporating their feedback before use. During subcategory interviews, I deferred all technical judgments to the contractor SME and federal IT staff — my role was to ask the right questions and document findings accurately, not to impose conclusions. When I saw that the Detect function scores were significantly lower than the team's informal impression suggested, I raised this in our internal debrief and we agreed to schedule a follow-up session with the SOC team rather than accepting the initial scores. The remediation roadmap was built collaboratively: I drafted a priority ranking, the technical SME validated feasibility and timelines, and the federal team leads confirmed alignment with budget cycles before the roadmap was finalized.
+
+### Result
+The assessment report was accepted by the agency CIO without revision requests — the first time the team had achieved that outcome on this contract. The executive summary was specifically called out as clear and actionable by the agency's Deputy CIO. The documented methodology was handed off to the agency's internal team and used verbatim for the following year's self-assessment. Two of the immediate remediation actions — MFA enforcement for privileged accounts and endpoint encryption — were funded in the next budget cycle, with the gap analysis cited as the justification in the budget request.
