@@ -48,8 +48,8 @@ def tag_color(industry_str):
 SHARED_CSS = """
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* 12pt = 16px; set on html so rem units resolve correctly */
-    html { font-size: 16px; }
+    /* ~13.5pt base; set on html so rem units resolve correctly */
+    html { font-size: 18px; }
 
     :root {
       --navy:     #1E2761;
