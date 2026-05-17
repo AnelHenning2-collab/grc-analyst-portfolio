@@ -6,23 +6,24 @@
   <title>Anél Henning | GRC Analyst Portfolio</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 18px; }
+
+    html { font-size: 20px; }
 
     :root {
-      --navy:      #1E2761;
-      --teal:      #028090;
-      --green:     #04763A;
-      --gold:      #F5C518;
-      --ice:       #CADBFC;
-      --light-bg:  #EEF3FF;
-      --dark-txt: #000000;
-      --mid-gray: #000000;
-      --white:     #FFFFFF;
+      --navy:     #1E2761;
+      --teal:     #028090;
+      --green:    #04763A;
+      --gold:     #F5C518;
+      --ice:      #CADBFC;
+      --light-bg: #EEF3FF;
+      --white:    #FFFFFF;
+      --black:    #000000;
     }
 
-    body { font-size: 1rem;
+    body {
+      font-size: 1rem;
       font-family: 'Segoe UI', Calibri, sans-serif;
-      color: var(--dark-txt);
+      color: var(--black);
       background: var(--white);
       line-height: 1.6;
     }
@@ -30,183 +31,333 @@
     a { color: var(--teal); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* ── HERO ── */
+    /* ─── NAV ─── */
+    nav {
+      background: var(--navy);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 70px;
+      box-shadow: 0 2px 16px rgba(0,0,0,.30);
+    }
+    .nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding: 0 40px;
+      gap: 4px;
+    }
+    .nav-brand {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--gold);
+      white-space: nowrap;
+      border-right: 1px solid rgba(255,255,255,.18);
+      padding-right: 24px;
+      margin-right: 12px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      flex: 1;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      color: var(--ice);
+      font-size: 1.1rem;
+      font-weight: 500;
+      padding: 0 13px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      transition: color .2s, background .2s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover {
+      color: var(--white);
+      background: rgba(255,255,255,.08);
+      text-decoration: none;
+    }
+    .nav-dl {
+      margin-left: auto;
+      background: var(--gold);
+      color: var(--navy) !important;
+      font-weight: 700 !important;
+      font-size: 1rem !important;
+      padding: 10px 20px !important;
+      height: auto !important;
+      border-radius: 5px;
+      flex-shrink: 0;
+      transition: opacity .2s !important;
+    }
+    .nav-dl:hover { opacity: .87; background: var(--gold) !important; }
+
+    /* ─── HERO ─── */
     .hero {
       background: var(--navy);
       color: var(--white);
-      padding: 72px 40px 60px;
+      min-height: 85vh;
       position: relative;
       overflow: hidden;
+      display: flex;
+      align-items: center;
     }
+    /* Left teal accent bar */
     .hero::before {
       content: '';
       position: absolute;
       left: 0; top: 0; bottom: 0;
-      width: 10px;
+      width: 20px;
       background: var(--teal);
     }
-    .hero-inner { max-width: 1100px; margin: 0 auto; }
-    .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.6rem);
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      line-height: 1.1;
+    /* Gold decorative dots top-right */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 40px;
+      right: 60px;
+      width: 220px;
+      height: 220px;
+      background-image: radial-gradient(circle, var(--gold) 2.5px, transparent 2.5px);
+      background-size: 22px 22px;
+      opacity: .55;
+      pointer-events: none;
     }
-    .hero h1 span { color: var(--gold); }
-    .hero .sub {
-      font-size: 1.15rem;
+    .hero-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 100px 80px 100px 100px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-eyebrow {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(3.5rem, 6vw, 5.5rem);
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.08;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .hero-role {
+      font-size: clamp(3.5rem, 6vw, 5.5rem);
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.08;
+      color: var(--white);
+      margin-bottom: 20px;
+      display: block;
+    }
+    .hero-subtitle {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 28px;
+      letter-spacing: 1px;
+    }
+    .hero-body {
+      font-size: 1.2rem;
       color: var(--ice);
-      margin-top: 14px;
-      max-width: 680px;
+      max-width: 700px;
+      line-height: 1.7;
+      margin-bottom: 36px;
     }
     .pill-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 28px;
+      gap: 14px;
+      margin-bottom: 44px;
     }
     .pill {
-      padding: 6px 18px;
+      padding: 10px 26px;
       border-radius: 999px;
-      font-size: 0.9rem;
-      font-weight: 600;
+      font-size: 1rem;
+      font-weight: 700;
       color: var(--white);
+      letter-spacing: 0.5px;
     }
     .pill.healthcare { background: var(--teal); }
     .pill.insurance  { background: #175384; }
     .pill.federal    { background: #4B348C; }
-
     .hero-cta {
       display: inline-block;
-      margin-top: 36px;
-      padding: 13px 32px;
+      padding: 18px 44px;
       background: var(--gold);
       color: var(--navy);
-      border-radius: 6px;
+      border-radius: 7px;
       font-weight: 700;
-      font-size: 1rem;
-      transition: opacity .2s;
+      font-size: 1.15rem;
+      transition: opacity .2s, transform .15s;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(245,197,24,.35);
     }
-    .hero-cta:hover { opacity: .85; text-decoration: none; }
+    .hero-cta:hover {
+      opacity: .9;
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
 
-    /* ── SECTION WRAPPER ── */
-    section { padding: 64px 40px; }
-    section:nth-child(even) { background: var(--light-bg); }
-    .section-inner { max-width: 1100px; margin: 0 auto; }
+    /* ─── SECTION WRAPPER ─── */
+    section {
+      padding: 100px 60px;
+    }
+    section:nth-of-type(even) { background: var(--light-bg); }
+    .section-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
     .section-label {
       font-size: 1rem;
       font-weight: 700;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--teal);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
     .section-title {
-      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-size: clamp(1.8rem, 3.2vw, 2.6rem);
       font-weight: 700;
       color: var(--navy);
-      margin-bottom: 8px;
+      margin-bottom: 12px;
+      line-height: 1.15;
     }
     .section-desc {
-      font-size: 1.1rem; color: var(--dark-txt);
-      max-width: 700px;
-      margin-bottom: 40px;
+      font-size: 1rem;
+      color: var(--black);
+      max-width: 780px;
+      margin-bottom: 56px;
+      line-height: 1.7;
     }
 
-    /* ── INDUSTRY CARDS ── */
+    /* ─── INDUSTRY CARDS ─── */
     .industry-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
     }
     .industry-card {
-      border-radius: 8px;
+      border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 2px 12px rgba(0,0,0,.08);
+      box-shadow: 0 4px 20px rgba(0,0,0,.10);
       background: var(--white);
+      min-height: 480px;
+      display: flex;
+      flex-direction: column;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .industry-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(0,0,0,.16);
     }
     .industry-card .card-top {
-      padding: 16px 20px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      padding: 0 28px;
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 1.1rem;
       letter-spacing: 1px;
       color: var(--white);
+      flex-shrink: 0;
     }
-    .industry-card.hc .card-top  { background: var(--teal); }
+    .industry-card.hc  .card-top { background: var(--teal); }
     .industry-card.ins .card-top { background: #175384; }
     .industry-card.fed .card-top { background: #4B348C; }
     .industry-card ul {
       list-style: none;
-      padding: 16px 20px;
+      padding: 24px 28px 28px;
+      flex: 1;
     }
     .industry-card ul li {
-      padding: 5px 0;
+      padding: 11px 0;
       font-size: 1.1rem;
-      color: var(--dark-txt);
-      border-bottom: 1px solid #EEF0F5;
+      color: var(--black);
+      line-height: 2rem;
+      border-bottom: 1px solid #E8ECF5;
     }
     .industry-card ul li:last-child { border-bottom: none; }
-    .industry-card ul li::before { content: '▸  '; color: var(--teal); font-size: 0.9rem; }
+    .industry-card ul li::before {
+      content: '▸  ';
+      color: var(--teal);
+      font-size: 1rem;
+    }
 
-    /* ── PORTFOLIO ITEMS ── */
+    /* ─── PORTFOLIO GRID ─── */
     .portfolio-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
     }
     .portfolio-card {
-      border-radius: 8px;
+      border-radius: 10px;
       border: 1px solid #DDE3F0;
       background: var(--white);
-      padding: 24px;
+      padding: 32px;
       transition: box-shadow .2s, transform .2s;
       display: flex;
       flex-direction: column;
     }
     .portfolio-card:hover {
-      box-shadow: 0 6px 24px rgba(2,128,144,.15);
-      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(2,128,144,.18);
+      transform: translateY(-4px);
     }
     .portfolio-card .tag {
       display: inline-block;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
-      padding: 3px 10px;
+      padding: 5px 14px;
       border-radius: 999px;
       color: var(--white);
-      margin-bottom: 12px;
+      margin-bottom: 18px;
       width: fit-content;
     }
     .portfolio-card h3 {
-      font-size: 1.05rem;
+      font-size: 1.3rem;
       font-weight: 700;
       color: var(--navy);
-      margin-bottom: 8px;
+      margin-bottom: 12px;
+      line-height: 1.3;
     }
     .portfolio-card p {
-      font-size: 1.1rem;
-      color: var(--mid-gray);
+      font-size: 1rem;
+      color: var(--black);
       flex: 1;
-      margin-bottom: 16px;
+      margin-bottom: 22px;
+      line-height: 1.65;
     }
     .win-bar {
       background: var(--green);
-      border-radius: 5px;
-      padding: 9px 14px;
-      font-size: 0.9rem;
+      border-radius: 6px;
+      padding: 12px 18px;
+      font-size: 1rem;
       font-weight: 600;
       color: var(--white);
-      margin-bottom: 16px;
+      margin-bottom: 22px;
+      line-height: 1.5;
     }
     .win-bar span { color: var(--gold); }
     .portfolio-card a.view-btn {
       display: inline-block;
-      padding: 8px 18px;
+      padding: 11px 24px;
       border: 2px solid var(--teal);
-      border-radius: 5px;
-      font-size: 0.9rem;
+      border-radius: 6px;
+      font-size: 1rem;
       font-weight: 600;
       color: var(--teal);
       width: fit-content;
@@ -218,185 +369,197 @@
       text-decoration: none;
     }
 
-    /* ── WINS STRIP ── */
+    /* ─── WINS STRIP ─── */
     .wins-strip {
       background: var(--navy);
-      padding: 56px 40px;
+      padding: 100px 60px;
     }
-    .wins-strip .section-title { color: var(--white); }
+    .wins-strip .section-inner { max-width: 1400px; margin: 0 auto; }
     .wins-strip .section-label { color: var(--gold); }
-    .wins-strip .section-desc  { color: var(--ice); }
+    .wins-strip .section-title { color: var(--white); }
+    .wins-strip .section-desc  { color: var(--ice); margin-bottom: 56px; }
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin-top: 36px;
+      gap: 24px;
     }
     .stat-card {
-      background: rgba(255,255,255,.07);
-      border-radius: 8px;
-      padding: 24px 20px;
+      background: rgba(255,255,255,.08);
+      border-radius: 10px;
+      padding: 36px 24px;
       text-align: center;
+      border: 1px solid rgba(255,255,255,.10);
     }
     .stat-card .number {
-      font-size: 2.4rem;
+      font-size: 3.5rem;
       font-weight: 700;
       color: var(--gold);
       line-height: 1;
     }
     .stat-card .label {
-      font-size: 0.9rem;
-      font-weight: 600;
+      font-size: 1.1rem;
+      font-weight: 700;
       color: var(--white);
-      margin-top: 8px;
+      margin-top: 12px;
     }
     .stat-card .context {
-      font-size: 0.9rem;
+      font-size: 1rem;
       color: var(--ice);
-      margin-top: 5px;
+      margin-top: 8px;
       font-style: italic;
+      line-height: 1.5;
     }
 
-    /* ── DOWNLOAD ── */
+    /* ─── DOWNLOAD BAND ─── */
     .download-band {
       background: var(--teal);
-      padding: 48px 40px;
+      padding: 100px 60px;
       text-align: center;
     }
     .download-band h2 {
-      font-size: 1.7rem;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
       font-weight: 700;
       color: var(--white);
-      margin-bottom: 10px;
+      margin-bottom: 16px;
     }
     .download-band p {
       color: var(--ice);
-      margin-bottom: 28px;
-      font-size: 1rem;
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.65;
     }
     .dl-btn {
       display: inline-block;
-      padding: 14px 36px;
+      padding: 18px 48px;
       background: var(--white);
       color: var(--teal);
-      border-radius: 6px;
+      border-radius: 7px;
       font-weight: 700;
-      font-size: 1rem;
-      transition: opacity .2s;
+      font-size: 1.1rem;
+      transition: opacity .2s, transform .15s;
     }
-    .dl-btn:hover { opacity: .88; text-decoration: none; }
+    .dl-btn:hover {
+      opacity: .9;
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
 
-    /* ── FOOTER ── */
+    /* ─── FOOTER ─── */
     footer {
-      background: var(--dark-txt);
+      background: #111111;
       color: var(--ice);
       text-align: center;
-      padding: 32px 20px;
-      font-size: 0.9rem;
+      padding: 56px 40px;
+      font-size: 1rem;
     }
     footer a { color: var(--gold); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 600px) {
-      .hero { padding: 48px 20px 44px; }
-      section { padding: 48px 20px; }
-      .wins-strip { padding: 48px 20px; }
-      .download-band { padding: 40px 20px; }
+    footer .footer-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    footer .footer-frameworks {
+      margin-top: 18px;
+      color: var(--ice);
+      font-size: 0.9rem;
+      opacity: .75;
+      line-height: 1.8;
     }
 
-    /* -- MOBILE / IPHONE RESPONSIVE -- */
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1100px) {
+      .industry-grid,
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 768px) {
-      /* Nav */
-      nav > div { flex-wrap: nowrap !important; padding: 0 12px !important; overflow: hidden; }
-      nav a[href="index.html"]:first-child { font-size: 0.9rem !important; padding: 14px 10px 14px 0 !important; }
-      nav div[style*="flex-wrap"] { overflow-x: auto; -webkit-overflow-scrolling: touch; flex-wrap: nowrap !important; scrollbar-width: none; }
-      nav div[style*="flex-wrap"]::-webkit-scrollbar { display: none; }
-      nav div[style*="flex-wrap"] a { padding: 16px 8px !important; font-size: 0.76rem !important; white-space: nowrap; }
-      nav a[download] { font-size: 0.7rem !important; padding: 7px 10px !important; flex-shrink: 0; }
-
-      /* Hero */
-      .hero { padding: 40px 16px 36px !important; }
-      .hero h1 { font-size: clamp(1.8rem, 7vw, 2.6rem) !important; }
-      .hero .sub { font-size: 1rem !important; }
-      .pill-row { gap: 8px !important; margin-top: 20px !important; }
-      .hero-cta { padding: 12px 24px !important; font-size: 1rem !important; }
-
-      /* Sections */
-      section { padding: 40px 16px !important; }
-      .wins-strip { padding: 40px 16px !important; }
-      .download-band { padding: 36px 16px !important; }
-      .download-band h2 { font-size: 1.3rem !important; }
-
-      /* Cards */
-      .portfolio-card { padding: 18px 16px !important; }
-      .industry-grid, .portfolio-grid, .stats-grid { gap: 16px !important; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
-      .stat-card .number { font-size: 1.8rem !important; }
+      html { font-size: 17px; }
+      nav { height: auto; min-height: 60px; }
+      .nav-inner { flex-wrap: wrap; padding: 10px 16px; height: auto; gap: 6px; }
+      .nav-brand { border-right: none; padding-right: 0; margin-right: 0; }
+      .nav-links { overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+      .nav-links::-webkit-scrollbar { display: none; }
+      .nav-links a { font-size: 0.85rem; padding: 8px 10px; height: auto; }
+      .nav-dl { margin-left: 0; }
+      .hero-inner { padding: 60px 40px 60px 52px; }
+      .hero::after { display: none; }
+      section { padding: 70px 30px; }
+      .wins-strip { padding: 70px 30px; }
+      .download-band { padding: 70px 30px; }
+      .industry-grid,
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
     }
-
     @media (max-width: 480px) {
-      .hero { padding: 32px 14px 28px !important; }
-      .stats-grid { grid-template-columns: 1fr 1fr !important; }
-      .portfolio-card { padding: 14px 12px !important; }
-      .hero h1 { font-size: 1.8rem !important; }
+      html { font-size: 16px; }
+      .hero-inner { padding: 48px 28px 48px 36px; }
+      section { padding: 56px 20px; }
+      .wins-strip { padding: 56px 20px; }
+      .download-band { padding: 56px 20px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stat-card .number { font-size: 2.4rem; }
     }
   </style>
 </head>
 <body>
 
 <!-- ═══════════ NAV ═══════════ -->
-<nav style="background:#1E2761;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.25);">
-  <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;flex-wrap:wrap;padding:0 24px;">
-    <a href="index.html" style="font-weight:700;font-size:1rem;color:#F5C518;padding:16px 20px 16px 0;white-space:nowrap;border-right:1px solid rgba(255,255,255,.15);margin-right:8px;text-decoration:none;">Anél Henning · GRC Portfolio</a>
-    <div style="display:flex;flex-wrap:wrap;gap:2px;">
-      <a href="index.html" style="color:#CADBFC;font-size:0.9rem;font-weight:500;padding:18px 11px;text-decoration:none;">Home</a>
-      <a href="acceptable-use-policy.html" style="color:#CADBFC;font-size:0.9rem;font-weight:500;padding:18px 11px;text-decoration:none;">AUP</a>
-      <a href="data-classification-policy.html" style="color:#CADBFC;font-size:0.9rem;font-weight:500;padding:18px 11px;text-decoration:none;">Data Classification</a>
-      <a href="incident-response-policy.html" style="color:#CADBFC;font-size:0.9rem;font-weight:500;padding:18px 11px;text-decoration:none;">Incident Response</a>
-      <a href="nist-csf-gap-analysis.html" style="color:#CADBFC;font-size:0.9rem;font-weight:500;padding:18px 11px;text-decoration:none;">NIST CSF</a>
-      <a href="compliance-framework-mapping.html" style="color:#CADBFC;font-size:0.9rem;font-weight:500;padding:18px 11px;text-decoration:none;">Framework Mapping</a>
-      <a href="security-awareness-training.html" style="color:#CADBFC;font-size:0.9rem;font-weight:500;padding:18px 11px;text-decoration:none;">Security Training</a>
-      <a href="risk-register.html" style="color:#CADBFC;font-size:0.9rem;font-weight:500;padding:18px 11px;text-decoration:none;">Risk Register</a>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Anél Henning · GRC Portfolio</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="acceptable-use-policy.html">AUP</a>
+      <a href="data-classification-policy.html">Data Classification</a>
+      <a href="incident-response-policy.html">Incident Response</a>
+      <a href="nist-csf-gap-analysis.html">NIST CSF Analysis</a>
+      <a href="compliance-framework-mapping.html">Framework Mapping</a>
+      <a href="security-awareness-training.html">Security Training</a>
+      <a href="risk-register.html">Risk Register</a>
     </div>
-    <a href="GRC_Analyst_Portfolio_Anel_Henning.pptx" download style="margin-left:auto;background:#F5C518;color:#1E2761;font-weight:700;font-size:0.9rem;padding:8px 16px;border-radius:4px;text-decoration:none;white-space:nowrap;">⬇ Download Deck</a>
+    <a href="GRC_Analyst_Portfolio_Anel_Henning.pptx" download class="nav-links nav-dl" style="display:inline-block;height:auto;flex:none;">⬇ Download Deck</a>
   </div>
 </nav>
 
 <!-- ═══════════ HERO ═══════════ -->
 <header class="hero">
   <div class="hero-inner">
-    <p class="section-label" style="color:var(--gold);margin-bottom:12px;">GRC ANALYST PORTFOLIO</p>
-    <h1>Anél Henning<br><span>Governance · Risk · Compliance</span></h1>
-    <p class="sub">
+    <p class="hero-eyebrow">GRC Analyst Portfolio</p>
+    <h1>Anél Henning</h1>
+    <span class="hero-role">GRC Analyst</span>
+    <p class="hero-subtitle">Governance · Risk · Compliance</p>
+    <p class="hero-body">
       I build security programs that are structured, auditable, and aligned with industry frameworks —
-      backed by real STAR method scenarios in healthcare, insurance, and federal environments.
+      backed by real STAR method scenarios across healthcare, insurance, and federal environments.
+      MICA-trained designer turned compliance professional: I make governance documentation that
+      stakeholders actually read, understand, and follow.
     </p>
     <div class="pill-row">
       <span class="pill healthcare">Healthcare</span>
       <span class="pill insurance">Insurance</span>
       <span class="pill federal">Federal / Government</span>
     </div>
-    <a class="hero-cta"
-       href="GRC_Analyst_Portfolio_Anel_Henning.pptx"
-       download>
-      ⬇ Download Interview Portfolio (PPTX)
+    <a class="hero-cta" href="GRC_Analyst_Portfolio_Anel_Henning.pptx" download>
+      ⬇ Download Interview Deck
     </a>
   </div>
 </header>
 
-<!-- ═══════════ INDUSTRY FOCUS ═══════════ -->
+<!-- ═══════════ WHAT I BRING ═══════════ -->
 <section>
   <div class="section-inner">
     <p class="section-label">Industry Expertise</p>
-    <h2 class="section-title">Where I Deliver Results</h2>
+    <h2 class="section-title">What I Bring to Each Industry</h2>
     <p class="section-desc">
-      Every portfolio piece is grounded in real regulatory requirements and operational realities
-      specific to these three industries.
+      Every portfolio piece is grounded in real regulatory requirements and the operational realities
+      specific to these three industries — not generic templates.
     </p>
     <div class="industry-grid">
 
       <div class="industry-card hc">
-        <div class="card-top">🏥 HEALTHCARE</div>
+        <div class="card-top">🏥 Healthcare</div>
         <ul>
           <li>HIPAA Security Rule §164.308–164.312</li>
           <li>PHI data classification aligned to clinical workflows</li>
@@ -407,7 +570,7 @@
       </div>
 
       <div class="industry-card ins">
-        <div class="card-top">🏢 INSURANCE</div>
+        <div class="card-top">🏢 Insurance</div>
         <ul>
           <li>NAIC Insurance Data Security Model Law</li>
           <li>Security awareness for claims &amp; underwriting staff</li>
@@ -418,7 +581,7 @@
       </div>
 
       <div class="industry-card fed">
-        <div class="card-top">🏛 FEDERAL / GOVERNMENT</div>
+        <div class="card-top">🏛 Federal / Government</div>
         <ul>
           <li>NIST SP 800-53 Rev. 5 control implementation</li>
           <li>FISMA annual assessment &amp; CSF gap analysis</li>
@@ -438,8 +601,8 @@
     <p class="section-label">Portfolio Pieces</p>
     <h2 class="section-title">7 Work Products · 7 STAR Scenarios</h2>
     <p class="section-desc">
-      Each document is a real, employer-ready work product. Click to read the full policy, framework, or analysis —
-      including the STAR scenario showing how I implemented it and the measurable win it produced.
+      Each document is a real, employer-ready work product. Click to read the full policy, framework,
+      or analysis — including the STAR scenario showing how I implemented it and the measurable win it produced.
     </p>
     <div class="portfolio-grid">
 
@@ -448,7 +611,7 @@
         <h3>Acceptable Use Policy</h3>
         <p>Full AUP aligned to HIPAA Security Rule §164.308 administrative safeguards, covering remote access, data handling, prohibited activities, and enforcement.</p>
         <div class="win-bar"><span>94%</span> employee acknowledgment · HIPAA audit gap closed 15 days early</div>
-        <a class="view-btn" href="acceptable-use-policy.html">View Policy + STAR Story →</a>
+        <a class="view-btn" href="acceptable-use-policy.html">View + STAR Story →</a>
       </div>
 
       <div class="portfolio-card">
@@ -456,15 +619,15 @@
         <h3>Data Classification Policy</h3>
         <p>Four-tier classification framework (Public → Restricted) with handling matrix, labeling requirements, and PHI-specific controls designed around clinical workflows.</p>
         <div class="win-bar">Ratified by CISO + CMO in <span>6 weeks</span> · Zero workflow complaints</div>
-        <a class="view-btn" href="data-classification-policy.html">View Policy + STAR Story →</a>
+        <a class="view-btn" href="data-classification-policy.html">View + STAR Story →</a>
       </div>
 
       <div class="portfolio-card">
-        <span class="tag" style="background:#175384;">Managed Care — Medicaid</span>
+        <span class="tag" style="background:#175384;">Managed Care</span>
         <h3>Incident Response Policy</h3>
         <p>Six-phase IR policy (Prepare → Recover) with severity matrix, role assignments, chain-of-custody procedure, and HIPAA breach notification workflow.</p>
         <div class="win-bar">HHS notification filed within <span>60 days</span> · No regulatory deficiencies</div>
-        <a class="view-btn" href="incident-response-policy.html">View Policy + STAR Story →</a>
+        <a class="view-btn" href="incident-response-policy.html">View + STAR Story →</a>
       </div>
 
       <div class="portfolio-card">
@@ -472,7 +635,7 @@
         <h3>NIST CSF Gap Analysis</h3>
         <p>Full mock FISMA gap analysis across all 6 CSF 2.0 functions — scored, prioritized, and packaged with an executive summary and phased remediation roadmap.</p>
         <div class="win-bar"><span>0</span> revision requests from the CIO · 2 actions funded next budget cycle</div>
-        <a class="view-btn" href="nist-csf-gap-analysis.html">View Analysis + STAR Story →</a>
+        <a class="view-btn" href="nist-csf-gap-analysis.html">View + STAR Story →</a>
       </div>
 
       <div class="portfolio-card">
@@ -480,15 +643,15 @@
         <h3>Cross-Framework Compliance Mapping</h3>
         <p>Control equivalence mapping across NIST CSF 2.0, NIST 800-53 Rev. 5, ISO 27001:2022, and SOC 2 TSC — enabling a single evidence package across all four frameworks.</p>
         <div class="win-bar"><span>40%</span> reduction in audit evidence requests · FedRAMP on schedule</div>
-        <a class="view-btn" href="compliance-framework-mapping.html">View Mapping + STAR Story →</a>
+        <a class="view-btn" href="compliance-framework-mapping.html">View + STAR Story →</a>
       </div>
 
       <div class="portfolio-card">
-        <span class="tag" style="background:#92400E;">P&amp;C Insurance — NAIC</span>
+        <span class="tag" style="background:#92400E;">P&amp;C Insurance</span>
         <h3>Security Awareness Training</h3>
         <p>Industry-specific training redesign covering phishing, password security, social engineering, and safe device use — built with claims and underwriting staff in mind.</p>
-        <div class="win-bar">Phishing click rate <span>23% → 9%</span> · Cited as best practice by state regulator</div>
-        <a class="view-btn" href="security-awareness-training.html">View Training + STAR Story →</a>
+        <div class="win-bar">Phishing click rate <span>23%→9%</span> · State regulator cited as best practice</div>
+        <a class="view-btn" href="security-awareness-training.html">View + STAR Story →</a>
       </div>
 
       <div class="portfolio-card">
@@ -496,26 +659,26 @@
         <h3>Risk Register &amp; Methodology</h3>
         <p>NIST 800-30 aligned risk register with 10 scored risks, likelihood × impact methodology, treatment options, and ownership assignments — built for ATO readiness.</p>
         <div class="win-bar">ATO reauthorization <span>approved</span> · AO noted "program maturity"</div>
-        <a class="view-btn" href="risk-register.html">View Register + STAR Story →</a>
+        <a class="view-btn" href="risk-register.html">View + STAR Story →</a>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ═══════════ WINS STRIP ═══════════ -->
+<!-- ═══════════ WINS AT A GLANCE ═══════════ -->
 <div class="wins-strip">
   <div class="section-inner">
     <p class="section-label">Measurable Outcomes</p>
-    <h2 class="section-title" style="color:var(--white);">The Wins at a Glance</h2>
-    <p class="section-desc" style="color:var(--ice);">
+    <h2 class="section-title">Wins at a Glance</h2>
+    <p class="section-desc">
       Every result below is tied to a specific portfolio piece with a documented STAR scenario explaining how it was achieved.
     </p>
     <div class="stats-grid">
       <div class="stat-card">
         <div class="number">94%</div>
         <div class="label">AUP Acknowledgment</div>
-        <div class="context">Health Insurance · HIPAA gap closed</div>
+        <div class="context">Health Insurance · HIPAA gap closed 15 days early</div>
       </div>
       <div class="stat-card">
         <div class="number">6 wks</div>
@@ -551,10 +714,13 @@
   </div>
 </div>
 
-<!-- ═══════════ DOWNLOAD ═══════════ -->
+<!-- ═══════════ DOWNLOAD BAND ═══════════ -->
 <div class="download-band">
   <h2>Ready to See the Full Picture?</h2>
-  <p>Download the 11-slide interview portfolio deck — all 7 STAR scenarios, the wins dashboard, and framework list in one shareable file.</p>
+  <p>
+    Download the 11-slide interview portfolio deck — all 7 STAR scenarios, the wins dashboard,
+    and framework list in one shareable file.
+  </p>
   <a class="dl-btn" href="GRC_Analyst_Portfolio_Anel_Henning.pptx" download>
     ⬇ Download Portfolio Presentation (PPTX)
   </a>
@@ -563,12 +729,12 @@
 <!-- ═══════════ FOOTER ═══════════ -->
 <footer>
   <p>
-    <strong style="color:var(--white);">Anél Henning</strong> &nbsp;·&nbsp; GRC Analyst
+    <span class="footer-name">Anél Henning</span>
+    &nbsp;·&nbsp; GRC Analyst
     &nbsp;·&nbsp; <a href="mailto:logicalcoders@outlook.com">logicalcoders@outlook.com</a>
-    &nbsp;·&nbsp;
-    <a href="https://github.com/AnelHenning2-collab/grc-analyst-portfolio">GitHub Repository</a>
+    &nbsp;·&nbsp; <a href="https://github.com/AnelHenning2-collab/grc-analyst-portfolio">GitHub Repository</a>
   </p>
-  <p style="margin-top:10px;color:#000000;font-size:0.78rem;">
+  <p class="footer-frameworks">
     Frameworks: NIST CSF 2.0 &nbsp;·&nbsp; NIST 800-53 Rev.5 &nbsp;·&nbsp; ISO 27001:2022
     &nbsp;·&nbsp; SOC 2 TSC &nbsp;·&nbsp; HIPAA &nbsp;·&nbsp; NAIC Model Law &nbsp;·&nbsp; FedRAMP &nbsp;·&nbsp; FISMA
   </p>
