@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Security Awareness Training | Anél Henning GRC Portfolio</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:     #1E2761;
+      --teal:     #028090;
+      --green:    #04763A;
+      --gold:     #F5C518;
+      --ice:      #CADBFC;
+      --light-bg: #EEF3FF;
+      --dark-txt: #1E273D;
+      --mid-gray: #55657A;
+      --white:    #FFFFFF;
+      --border:   #DDE3F0;
+    }
+    body { font-family: 'Segoe UI', Calibri, sans-serif; color: var(--dark-txt);
+           background: #F8FAFF; line-height: 1.7; }
+    a { color: var(--teal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      background: var(--navy);
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.25);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; flex-wrap: wrap;
+      padding: 0 24px;
+    }
+    .nav-brand {
+      font-weight: 700; font-size: 0.95rem;
+      color: var(--gold) !important;
+      padding: 16px 20px 16px 0;
+      white-space: nowrap;
+      border-right: 1px solid rgba(255,255,255,.15);
+      margin-right: 8px;
+    }
+    .nav-brand:hover { text-decoration: none !important; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 2px; }
+    .nav-links a {
+      color: var(--ice) !important;
+      font-size: 0.82rem; font-weight: 500;
+      padding: 18px 11px;
+      transition: color .15s, background .15s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--white) !important;
+      background: rgba(255,255,255,.08);
+      text-decoration: none;
+    }
+    .nav-dl {
+      margin-left: auto;
+      background: var(--gold);
+      color: var(--navy) !important;
+      font-weight: 700; font-size: 0.8rem;
+      padding: 8px 16px !important;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .nav-dl:hover { opacity: .85; background: var(--gold); text-decoration: none !important; }
+
+    /* PAGE WRAPPER */
+    .page-wrap { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    /* BREADCRUMB */
+    .breadcrumb { font-size: 0.82rem; color: var(--mid-gray); margin-bottom: 28px; }
+    .breadcrumb a { color: var(--teal); }
+
+    /* PAGE HEADER */
+    .page-header { margin-bottom: 36px; }
+    .page-header .industry-tag {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 999px;
+      color: var(--white); margin-bottom: 14px;
+    }
+    .page-header h1 {
+      font-size: clamp(1.6rem, 4vw, 2.3rem);
+      font-weight: 700; color: var(--navy);
+      line-height: 1.2; margin-bottom: 10px;
+    }
+    .page-header .subtitle {
+      font-size: 0.95rem; color: var(--mid-gray);
+      max-width: 680px;
+    }
+
+    /* CONTENT CARD */
+    .content-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 40px 44px;
+      margin-bottom: 32px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.05);
+    }
+    @media (max-width: 600px) { .content-card { padding: 24px 20px; } }
+
+    /* MARKDOWN CONTENT STYLES */
+    .md-content h1 { font-size: 1.6rem; color: var(--navy); margin: 0 0 20px; }
+    .md-content h2 {
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--navy); margin: 32px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--light-bg);
+    }
+    .md-content h3 { font-size: 1rem; font-weight: 700; color: var(--teal); margin: 20px 0 8px; }
+    .md-content h4 { font-size: 0.95rem; font-weight: 700; color: var(--dark-txt); margin: 16px 0 6px; }
+    .md-content p  { margin-bottom: 14px; font-size: 0.95rem; }
+    .md-content ul, .md-content ol { margin: 10px 0 16px 24px; }
+    .md-content li { margin-bottom: 5px; font-size: 0.95rem; }
+    .md-content strong { color: var(--dark-txt); }
+    .md-content em { color: var(--mid-gray); }
+    .md-content code {
+      background: var(--light-bg); border-radius: 3px;
+      padding: 2px 6px; font-size: 0.85rem; font-family: Consolas, monospace;
+    }
+    .md-content pre {
+      background: var(--light-bg); border-radius: 6px;
+      padding: 16px; overflow-x: auto; margin-bottom: 16px;
+    }
+    .md-content pre code { background: none; padding: 0; }
+    .md-content blockquote {
+      border-left: 4px solid var(--teal);
+      background: var(--light-bg);
+      padding: 12px 16px; margin: 16px 0;
+      border-radius: 0 6px 6px 0;
+      font-style: italic; color: var(--mid-gray);
+    }
+    .md-content hr { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+
+    /* TABLES */
+    .md-content table {
+      width: 100%; border-collapse: collapse;
+      margin: 16px 0 20px; font-size: 0.88rem;
+      display: block; overflow-x: auto;
+    }
+    .md-content th {
+      background: var(--navy); color: var(--white);
+      padding: 10px 14px; text-align: left; font-weight: 600;
+    }
+    .md-content td {
+      padding: 9px 14px; border-bottom: 1px solid var(--border);
+    }
+    .md-content tr:nth-child(even) td { background: var(--light-bg); }
+    .md-content tr:hover td { background: #E4EDFF; }
+
+    /* STAR SECTION — special styling */
+    .star-section {
+      background: linear-gradient(135deg, #0A1A50 0%, #1E2761 100%);
+      border-radius: 10px;
+      padding: 36px 40px;
+      margin-bottom: 32px;
+      color: var(--white);
+    }
+    @media (max-width: 600px) { .star-section { padding: 24px 20px; } }
+    .star-section .star-label {
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 6px;
+    }
+    .star-section h2 {
+      font-size: 1.3rem; color: var(--white);
+      margin-bottom: 6px; border: none; padding: 0;
+    }
+    .star-meta {
+      font-size: 0.83rem; color: var(--ice);
+      font-style: italic; margin-bottom: 28px;
+    }
+    .star-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 680px) { .star-grid { grid-template-columns: 1fr; } }
+    .star-block {
+      background: rgba(255,255,255,.07);
+      border-radius: 8px; padding: 18px 20px;
+    }
+    .star-block .star-block-label {
+      font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--teal); margin-bottom: 8px;
+    }
+    .star-block p, .star-block li {
+      font-size: 0.9rem; color: #D0DEFF; line-height: 1.6;
+    }
+    .star-block ul { margin-left: 16px; }
+    .star-block li { margin-bottom: 4px; }
+    .star-win {
+      background: var(--green);
+      border-radius: 8px; padding: 20px 24px;
+    }
+    .star-win .win-label {
+      font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--gold); margin-bottom: 8px;
+    }
+    .star-win .win-headline {
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--white); margin-bottom: 6px;
+    }
+    .star-win .win-detail { font-size: 0.88rem; color: #B2E8D0; }
+
+    /* BACK LINK */
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--teal); margin-bottom: 28px;
+    }
+    .back-link:hover { text-decoration: none; opacity: .8; }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark-txt); color: var(--ice);
+      text-align: center; padding: 28px 20px;
+      font-size: 0.82rem;
+    }
+    footer a { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">Anél Henning · GRC Portfolio</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="acceptable-use-policy.html">AUP</a>
+      <a href="data-classification-policy.html">Data Classification</a>
+      <a href="incident-response-policy.html">Incident Response</a>
+      <a href="nist-csf-gap-analysis.html">NIST CSF Analysis</a>
+      <a href="compliance-framework-mapping.html">Framework Mapping</a>
+      <a href="security-awareness-training.html" class="active">Security Training</a>
+      <a href="risk-register.html">Risk Register</a>
+      
+    </div>
+    <a class="nav-links nav-dl" href="GRC_Analyst_Portfolio_Anel_Henning.pptx" download>⬇ Download Deck</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <a class="back-link" href="index.html">← Back to Portfolio</a>
+  <div class="page-header">
+    <span class="industry-tag" style="background:#92400E;">P&C Insurance · NAIC</span>
+    <h1>Security Awareness Training</h1>
+    <p class="subtitle">GRC work product · Includes full policy/framework and a STAR method scenario below.</p>
+  </div>
+  
+<div class="star-section">
+  <div class="star-label">STAR Method · Real-World Scenario</div>
+  <h2>Portfolio STAR Story</h2>
+  <div class="star-meta">Property & Casualty Insurance | **Role:** GRC Analyst (partnered with HR, IT, and Business Lines)</div>
+  <div class="star-grid">
+    <div class="star-block">
+      <div class="star-block-label">Situation</div>
+      <p>A regional P&C insurance carrier had completed its annual security awareness training for three consecutive years with completion rates hovering around 55% and no measurable change in phishing click rates, which remained at 23% during simulated phishing tests. The CISO identified this as a significant risk given that claims adjusters and underwriters regularly handled sensitive policyholder PII and financial data. Regulators under the NAIC Insurance Data Security Model Law were beginning to ask questions about the effectiveness of the training program, not just its existence.</p>
+    </div>
+    <div class="star-block">
+      <div class="star-block-label">Task</div>
+      <p>I was asked to co-lead a training redesign with the HR Learning & Development Manager and an IT Security Engineer. My responsibilities were to assess why the existing training was failing, redesign the content to be relevant to insurance-specific workflows, and build in measurable outcomes so the CISO could report effectiveness to regulators. The HR lead owned delivery and LMS logistics; the IT engineer owned the phishing simulation platform; I owned the GRC framework alignment and content design.</p>
+    </div>
+    <div class="star-block" style="grid-column: 1 / -1;">
+      <div class="star-block-label">Actions I Took</div>
+      <p>I started by sitting in on two existing training sessions to observe where employees disengaged, and I ran a short anonymous survey with a sample of claims and underwriting staff to understand what security risks felt real to them versus abstract. The feedback was clear: generic examples about "a company" meant nothing, but examples involving fake policyholder ACH transfers or spear-phishing impersonating a reinsurance partner resonated immediately. I rewrote the phishing and social engineering modules using insurance-specific scenarios developed in collaboration with a senior underwriter who volunteered to review the examples for realism. I worked with the HR lead to break the training into four 10-minute modules delivered quarterly rather than one 45-minute annual session, which she confirmed was consistent with adult learning best practices and LMS capability. The IT engineer and I coordinated the phishing simulations to run two weeks after each module so employees could apply what they had just learned.</p>
+    </div>
+  </div>
+  <div class="star-win">
+    <div class="win-label">🏆 The Win</div>
+    <div class="win-headline">Training completion rose to 91% in the first year under the new format — a 36-point improvement. Phishing simulation click rates dropped from 23% to 9% over four quarterly cycles. When the state insurance regulator conducted a cybersecurity examination, the CISO presented the before-and-after metrics and the regulator noted the program as a best-practice example in the examination report. The underwriter who helped design the scenarios later told me it was the first time she felt like GRC had asked her opinion before writing a policy, and that made her much more likely to champion security practices with her team.</div>
+    <div class="win-detail"></div>
+  </div>
+</div>
+
+  <div class="content-card">
+    <div class="md-content">
+      <h2>Protecting Yourself and [Organization Name] from Cyber Threats</h2>
+<p><strong>Audience:</strong> All Employees<br />
+<strong>Estimated Time:</strong> 30–45 minutes<br />
+<strong>Review Frequency:</strong> Annual (or after major incidents)<br />
+<strong>Owner:</strong> Information Security Team</p>
+<hr />
+<h2>Welcome</h2>
+<p>Cybersecurity is everyone's responsibility — not just IT's. Attackers frequently target employees directly because it's often easier to trick a person than to hack a system. This training will help you recognize threats, respond correctly, and protect yourself and the organization.</p>
+<hr />
+<h2>Module 1: Phishing — The #1 Threat</h2>
+<h3>What Is Phishing?</h3>
+<p>Phishing is a cyberattack where criminals send fraudulent messages — usually emails — that appear to come from a trusted source (your bank, your company, a colleague, or a vendor) to trick you into:
+- Clicking a malicious link
+- Downloading malware
+- Entering your username and password
+- Transferring money or sharing sensitive data</p>
+<p><strong>By the numbers:</strong>
+- 91% of cyberattacks begin with a phishing email
+- The average cost of a phishing attack on a mid-sized company is $1.6 million
+- Attackers craft emails in under 5 minutes using AI tools</p>
+<hr />
+<h3>Types of Phishing</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Phishing</strong></td>
+<td>Mass emails sent to thousands of people</td>
+<td>"Your account will be suspended — click here"</td>
+</tr>
+<tr>
+<td><strong>Spear Phishing</strong></td>
+<td>Targeted email using personal details</td>
+<td>"Hi [Your Name], please review the attached invoice"</td>
+</tr>
+<tr>
+<td><strong>Whaling</strong></td>
+<td>Targeting executives (CEO, CFO)</td>
+<td>Fake board communication or legal notice</td>
+</tr>
+<tr>
+<td><strong>Smishing</strong></td>
+<td>Phishing via SMS/text message</td>
+<td>"Your package is delayed — verify your address"</td>
+</tr>
+<tr>
+<td><strong>Vishing</strong></td>
+<td>Phishing via phone call</td>
+<td>Fake IT support asking for your password</td>
+</tr>
+<tr>
+<td><strong>Business Email Compromise (BEC)</strong></td>
+<td>Impersonating an executive to authorize wire transfers</td>
+<td>"I need you to process this payment urgently — CEO"</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>How to Spot a Phishing Email</h3>
+<p>Look for these red flags:</p>
+<p><strong>Sender Address</strong>
+- ✅ Legitimate: <code>support@microsoft.com</code>
+- ❌ Suspicious: <code>support@micros0ft-help.com</code> or <code>noreply@microsoft.support-portal.net</code>
+- Always hover over the sender name to see the actual email address</p>
+<p><strong>Urgency and Pressure</strong>
+- "Act now or your account will be deleted"
+- "You have 24 hours to respond"
+- "Don't tell anyone — this is confidential"</p>
+<p><strong>Generic Greetings</strong>
+- "Dear Customer" or "Dear User" instead of your actual name</p>
+<p><strong>Suspicious Links</strong>
+- Hover over links before clicking — the URL shown should match the expected domain
+- Short URLs (bit.ly, tinyurl) are often used to hide malicious destinations</p>
+<p><strong>Unexpected Attachments</strong>
+- Unexpected Word docs, Excel files, or ZIP archives (even from known contacts)
+- Files named things like <code>Invoice_2024.exe</code> or <code>Urgent_Review.docm</code></p>
+<p><strong>Requests for Sensitive Info</strong>
+- Legitimate companies never ask for passwords, SSNs, or credit cards via email
+- IT will never email you asking for your password</p>
+<hr />
+<h3>What to Do If You Suspect a Phishing Email</h3>
+<ol>
+<li><strong>Do NOT click any links or open attachments</strong></li>
+<li><strong>Do NOT reply to the email</strong></li>
+<li><strong>Report it</strong> using the phishing report button in your email client, or forward to: <code>security@[organization].com</code></li>
+<li><strong>Delete the email</strong> after reporting</li>
+<li>If you already clicked — <strong>report it immediately</strong> and disconnect your device from the network. You will not be in trouble for reporting quickly.</li>
+</ol>
+<hr />
+<h2>Module 2: Password Security</h2>
+<h3>Why Passwords Matter</h3>
+<p>Credentials are the keys to your organization's data. Attackers use:
+- <strong>Brute force:</strong> Trying millions of passwords automatically
+- <strong>Credential stuffing:</strong> Using passwords leaked from other breaches
+- <strong>Password spraying:</strong> Trying common passwords against many accounts</p>
+<h3>Creating Strong Passwords</h3>
+<table>
+<thead>
+<tr>
+<th>Weak</th>
+<th>Strong</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>password123</code></td>
+<td><code>correct-horse-battery-staple</code></td>
+</tr>
+<tr>
+<td><code>Summer2024!</code></td>
+<td><code>J9#mP2@xQ7!rLvKn</code></td>
+</tr>
+<tr>
+<td><code>[YourName]2024</code></td>
+<td>Use a password manager to generate</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rules:</strong>
+- Minimum 12 characters (16+ is better)
+- Mix of uppercase, lowercase, numbers, and symbols
+- Never reuse passwords across accounts
+- Never use personal info (birthdate, pet name, address)</p>
+<h3>Use a Password Manager</h3>
+<p>A password manager securely stores all your passwords so you only need to remember one master password. Approved options may include:
+- 1Password
+- Bitwarden (open source)
+- LastPass
+- KeePass</p>
+<p>Ask IT for the organization's approved password manager.</p>
+<h3>Multi-Factor Authentication (MFA)</h3>
+<p>MFA requires a second verification step beyond your password. Even if an attacker steals your password, they cannot log in without the second factor.</p>
+<p><strong>MFA methods (most to least secure):</strong>
+1. <strong>Hardware key</strong> (YubiKey) — Most secure
+2. <strong>Authenticator app</strong> (Google Authenticator, Microsoft Authenticator) — Recommended
+3. <strong>SMS/Text code</strong> — Better than nothing, but SIM-swapping is a risk
+4. <strong>Email code</strong> — Weakest form of MFA</p>
+<p><strong>Enable MFA on every account that supports it — especially:</strong>
+- Work email and Microsoft 365 / Google Workspace
+- VPN and remote access
+- Cloud services (AWS, Azure, Salesforce)
+- Financial accounts</p>
+<hr />
+<h2>Module 3: Social Engineering</h2>
+<p>Social engineering is manipulating people into giving up information or access — no malware required.</p>
+<h3>Common Tactics</h3>
+<p><strong>Pretexting</strong>
+An attacker creates a believable false scenario.</p>
+<blockquote>
+<p><em>"Hi, this is Mike from IT. We're running an urgent security update on your machine. I'll need your login credentials to push the patch remotely."</em></p>
+</blockquote>
+<p><strong>Impersonation</strong>
+Pretending to be someone you trust — a colleague, IT staff, a vendor, or even your manager.</p>
+<p><strong>Tailgating / Piggybacking</strong>
+Following an employee through a secure door without badging in by acting like they belong.</p>
+<p><strong>Quid Pro Quo</strong>
+Offering something (fake tech support, prizes) in exchange for information.</p>
+<hr />
+<h3>How to Defend Against Social Engineering</h3>
+<ul>
+<li><strong>Verify identities</strong> — If someone calls claiming to be IT, hang up and call IT using the number in the company directory</li>
+<li><strong>Never share credentials</strong> — No legitimate IT staff member will ever ask for your password</li>
+<li><strong>When in doubt, slow down</strong> — Urgency is a manipulation tactic; take time to verify</li>
+<li><strong>Badge in separately</strong> — Never allow someone to tailgating behind you through a secure door, even if they look familiar</li>
+<li><strong>Report suspicious interactions</strong> — If something feels off, report it to security</li>
+</ul>
+<hr />
+<h2>Module 4: Safe Internet and Device Use</h2>
+<h3>Browsing Safety</h3>
+<ul>
+<li>Only use company-approved browsers with security extensions enabled</li>
+<li>Don't install unauthorized browser extensions or plugins</li>
+<li>Avoid entering work credentials on personal or unfamiliar devices</li>
+<li>Do not download software from unofficial or pirated sources</li>
+</ul>
+<h3>Public Wi-Fi</h3>
+<p>Public Wi-Fi (coffee shops, airports, hotels) is inherently insecure.</p>
+<p><strong>Always:</strong>
+- Connect through the company VPN when on public Wi-Fi
+- Avoid accessing sensitive systems (banking, HR, email) without VPN</p>
+<p><strong>Never:</strong>
+- Conduct sensitive work on open public Wi-Fi without a VPN</p>
+<h3>Removable Media (USB Drives)</h3>
+<p><strong>Never plug in a USB drive you didn't purchase yourself.</strong></p>
+<p>Attackers commonly leave infected USB drives in parking lots or common areas hoping someone will plug them in ("USB drop attacks").</p>
+<p>If you find a USB drive, hand it to IT — do not plug it in to "see what's on it."</p>
+<hr />
+<h2>Module 5: Reporting and Incident Response</h2>
+<h3>The Golden Rule: Report Fast</h3>
+<p>If you think you've fallen for a phishing email, clicked a bad link, or noticed anything suspicious — <strong>report it immediately.</strong></p>
+<ul>
+<li><strong>You will not get in trouble for reporting.</strong> You may get in trouble for hiding it.</li>
+<li>The faster a security team responds, the less damage an attacker can do.</li>
+<li>Many breaches take months to discover because employees were afraid to report.</li>
+</ul>
+<h3>How to Report</h3>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>How to Report</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Suspicious email</td>
+<td>Report button in email client or <code>security@[org].com</code></td>
+</tr>
+<tr>
+<td>Clicked a bad link</td>
+<td>Call IT immediately: [Phone]</td>
+</tr>
+<tr>
+<td>Saw something unusual on your computer</td>
+<td>Call IT immediately: [Phone]</td>
+</tr>
+<tr>
+<td>Someone asked for your password</td>
+<td>Report to IT and your manager</td>
+</tr>
+<tr>
+<td>Physical security concern</td>
+<td>Report to Facilities or your manager</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Module 6: Compliance and Your Responsibilities</h2>
+<p>By completing this training, you acknowledge that you understand and will comply with:</p>
+<ul>
+<li><strong>Acceptable Use Policy (AUP)</strong> — Governs appropriate use of company systems</li>
+<li><strong>Data Classification Policy</strong> — How to handle different types of data</li>
+<li><strong>Password Policy</strong> — Requirements for password strength and MFA</li>
+<li><strong>Incident Response Policy</strong> — Your obligation to report security incidents promptly</li>
+</ul>
+<p>Violations of these policies may result in disciplinary action.</p>
+<hr />
+<h2>Knowledge Check</h2>
+<p>Answer these questions to confirm your understanding:</p>
+<ol>
+<li>
+<p>You receive an email from your CEO asking you to urgently wire $15,000 to a new vendor. The sender address is <code>ceo@[yourcompany].biz</code>. What should you do?</p>
+</li>
+<li>
+<p>A colleague who you don't recognize holds the secure door open for you and waves you through. What should you do?</p>
+</li>
+<li>
+<p>You receive a pop-up saying your computer is infected and you should call a phone number immediately. What should you do?</p>
+</li>
+<li>
+<p>IT sends you an email asking you to confirm your password to prevent your account from being suspended. What should you do?</p>
+</li>
+</ol>
+<p><strong>Answers:</strong>
+1. Do NOT transfer. Verify directly with your CEO via phone or in person. This is a Business Email Compromise (BEC) red flag — wrong domain.
+2. Politely decline, badge in separately, and report the tailgating attempt to security.
+3. Do NOT call the number. This is a fake alert (scareware). Close the pop-up and report to IT.
+4. Do NOT provide your password. Legitimate IT will never ask for your password. Report the email.</p>
+<hr />
+<h2>Summary: Your Security Checklist</h2>
+<ul>
+<li>[ ] Enable MFA on all work accounts</li>
+<li>[ ] Use a password manager with unique passwords for every account</li>
+<li>[ ] Report suspicious emails using the phishing report button</li>
+<li>[ ] Connect through VPN on public Wi-Fi</li>
+<li>[ ] Never share credentials with anyone, including IT</li>
+<li>[ ] Lock your screen when stepping away from your desk</li>
+<li>[ ] Report security incidents immediately — no judgment</li>
+</ul>
+<hr />
+<p><em>Questions? Contact the Information Security Team at: security@[organization].com</em><br />
+<em>Training completion must be recorded in [LMS / HR System] by [Due Date].</em></p>
+<hr />
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>
+    <strong style="color:#fff;">Anél Henning</strong> &nbsp;·&nbsp; GRC Analyst
+    &nbsp;·&nbsp; <a href="mailto:logicalcoders@outlook.com">logicalcoders@outlook.com</a>
+  </p>
+  <p style="margin-top:8px;color:#55657A;">
+    NIST CSF 2.0 · NIST 800-53 Rev.5 · ISO 27001:2022 · SOC 2 TSC · HIPAA · NAIC · FedRAMP · FISMA
+  </p>
+</footer>
+
+</body>
+</html>

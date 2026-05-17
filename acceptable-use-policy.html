@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Acceptable Use Policy | Anél Henning GRC Portfolio</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:     #1E2761;
+      --teal:     #028090;
+      --green:    #04763A;
+      --gold:     #F5C518;
+      --ice:      #CADBFC;
+      --light-bg: #EEF3FF;
+      --dark-txt: #1E273D;
+      --mid-gray: #55657A;
+      --white:    #FFFFFF;
+      --border:   #DDE3F0;
+    }
+    body { font-family: 'Segoe UI', Calibri, sans-serif; color: var(--dark-txt);
+           background: #F8FAFF; line-height: 1.7; }
+    a { color: var(--teal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      background: var(--navy);
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.25);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; flex-wrap: wrap;
+      padding: 0 24px;
+    }
+    .nav-brand {
+      font-weight: 700; font-size: 0.95rem;
+      color: var(--gold) !important;
+      padding: 16px 20px 16px 0;
+      white-space: nowrap;
+      border-right: 1px solid rgba(255,255,255,.15);
+      margin-right: 8px;
+    }
+    .nav-brand:hover { text-decoration: none !important; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 2px; }
+    .nav-links a {
+      color: var(--ice) !important;
+      font-size: 0.82rem; font-weight: 500;
+      padding: 18px 11px;
+      transition: color .15s, background .15s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--white) !important;
+      background: rgba(255,255,255,.08);
+      text-decoration: none;
+    }
+    .nav-dl {
+      margin-left: auto;
+      background: var(--gold);
+      color: var(--navy) !important;
+      font-weight: 700; font-size: 0.8rem;
+      padding: 8px 16px !important;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .nav-dl:hover { opacity: .85; background: var(--gold); text-decoration: none !important; }
+
+    /* PAGE WRAPPER */
+    .page-wrap { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    /* BREADCRUMB */
+    .breadcrumb { font-size: 0.82rem; color: var(--mid-gray); margin-bottom: 28px; }
+    .breadcrumb a { color: var(--teal); }
+
+    /* PAGE HEADER */
+    .page-header { margin-bottom: 36px; }
+    .page-header .industry-tag {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 999px;
+      color: var(--white); margin-bottom: 14px;
+    }
+    .page-header h1 {
+      font-size: clamp(1.6rem, 4vw, 2.3rem);
+      font-weight: 700; color: var(--navy);
+      line-height: 1.2; margin-bottom: 10px;
+    }
+    .page-header .subtitle {
+      font-size: 0.95rem; color: var(--mid-gray);
+      max-width: 680px;
+    }
+
+    /* CONTENT CARD */
+    .content-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 40px 44px;
+      margin-bottom: 32px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.05);
+    }
+    @media (max-width: 600px) { .content-card { padding: 24px 20px; } }
+
+    /* MARKDOWN CONTENT STYLES */
+    .md-content h1 { font-size: 1.6rem; color: var(--navy); margin: 0 0 20px; }
+    .md-content h2 {
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--navy); margin: 32px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--light-bg);
+    }
+    .md-content h3 { font-size: 1rem; font-weight: 700; color: var(--teal); margin: 20px 0 8px; }
+    .md-content h4 { font-size: 0.95rem; font-weight: 700; color: var(--dark-txt); margin: 16px 0 6px; }
+    .md-content p  { margin-bottom: 14px; font-size: 0.95rem; }
+    .md-content ul, .md-content ol { margin: 10px 0 16px 24px; }
+    .md-content li { margin-bottom: 5px; font-size: 0.95rem; }
+    .md-content strong { color: var(--dark-txt); }
+    .md-content em { color: var(--mid-gray); }
+    .md-content code {
+      background: var(--light-bg); border-radius: 3px;
+      padding: 2px 6px; font-size: 0.85rem; font-family: Consolas, monospace;
+    }
+    .md-content pre {
+      background: var(--light-bg); border-radius: 6px;
+      padding: 16px; overflow-x: auto; margin-bottom: 16px;
+    }
+    .md-content pre code { background: none; padding: 0; }
+    .md-content blockquote {
+      border-left: 4px solid var(--teal);
+      background: var(--light-bg);
+      padding: 12px 16px; margin: 16px 0;
+      border-radius: 0 6px 6px 0;
+      font-style: italic; color: var(--mid-gray);
+    }
+    .md-content hr { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+
+    /* TABLES */
+    .md-content table {
+      width: 100%; border-collapse: collapse;
+      margin: 16px 0 20px; font-size: 0.88rem;
+      display: block; overflow-x: auto;
+    }
+    .md-content th {
+      background: var(--navy); color: var(--white);
+      padding: 10px 14px; text-align: left; font-weight: 600;
+    }
+    .md-content td {
+      padding: 9px 14px; border-bottom: 1px solid var(--border);
+    }
+    .md-content tr:nth-child(even) td { background: var(--light-bg); }
+    .md-content tr:hover td { background: #E4EDFF; }
+
+    /* STAR SECTION — special styling */
+    .star-section {
+      background: linear-gradient(135deg, #0A1A50 0%, #1E2761 100%);
+      border-radius: 10px;
+      padding: 36px 40px;
+      margin-bottom: 32px;
+      color: var(--white);
+    }
+    @media (max-width: 600px) { .star-section { padding: 24px 20px; } }
+    .star-section .star-label {
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 6px;
+    }
+    .star-section h2 {
+      font-size: 1.3rem; color: var(--white);
+      margin-bottom: 6px; border: none; padding: 0;
+    }
+    .star-meta {
+      font-size: 0.83rem; color: var(--ice);
+      font-style: italic; margin-bottom: 28px;
+    }
+    .star-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 680px) { .star-grid { grid-template-columns: 1fr; } }
+    .star-block {
+      background: rgba(255,255,255,.07);
+      border-radius: 8px; padding: 18px 20px;
+    }
+    .star-block .star-block-label {
+      font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--teal); margin-bottom: 8px;
+    }
+    .star-block p, .star-block li {
+      font-size: 0.9rem; color: #D0DEFF; line-height: 1.6;
+    }
+    .star-block ul { margin-left: 16px; }
+    .star-block li { margin-bottom: 4px; }
+    .star-win {
+      background: var(--green);
+      border-radius: 8px; padding: 20px 24px;
+    }
+    .star-win .win-label {
+      font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--gold); margin-bottom: 8px;
+    }
+    .star-win .win-headline {
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--white); margin-bottom: 6px;
+    }
+    .star-win .win-detail { font-size: 0.88rem; color: #B2E8D0; }
+
+    /* BACK LINK */
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--teal); margin-bottom: 28px;
+    }
+    .back-link:hover { text-decoration: none; opacity: .8; }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark-txt); color: var(--ice);
+      text-align: center; padding: 28px 20px;
+      font-size: 0.82rem;
+    }
+    footer a { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">Anél Henning · GRC Portfolio</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="acceptable-use-policy.html" class="active">AUP</a>
+      <a href="data-classification-policy.html">Data Classification</a>
+      <a href="incident-response-policy.html">Incident Response</a>
+      <a href="nist-csf-gap-analysis.html">NIST CSF Analysis</a>
+      <a href="compliance-framework-mapping.html">Framework Mapping</a>
+      <a href="security-awareness-training.html">Security Training</a>
+      <a href="risk-register.html">Risk Register</a>
+      
+    </div>
+    <a class="nav-links nav-dl" href="GRC_Analyst_Portfolio_Anel_Henning.pptx" download>⬇ Download Deck</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <a class="back-link" href="index.html">← Back to Portfolio</a>
+  <div class="page-header">
+    <span class="industry-tag" style="background:#028090;">Health Insurance · HIPAA</span>
+    <h1>Acceptable Use Policy</h1>
+    <p class="subtitle">GRC work product · Includes full policy/framework and a STAR method scenario below.</p>
+  </div>
+  
+<div class="star-section">
+  <div class="star-label">STAR Method · Real-World Scenario</div>
+  <h2>Portfolio STAR Story</h2>
+  <div class="star-meta">Health Insurance | **Role:** GRC Analyst (collaborative effort with IT, HR, and Legal)</div>
+  <div class="star-grid">
+    <div class="star-block">
+      <div class="star-block-label">Situation</div>
+      <p>A regional health insurance carrier processing Medicare Advantage claims had never formalized an Acceptable Use Policy. Following a routine external audit, the auditor flagged the absence of a documented AUP as a gap against HIPAA Security Rule §164.308(a)(1) — administrative safeguards. Leadership gave the GRC team 60 days to produce, approve, and distribute a policy before the follow-up audit.</p>
+    </div>
+    <div class="star-block">
+      <div class="star-block-label">Task</div>
+      <p>As part of a three-person GRC team, my responsibility was to draft the policy language, coordinate review cycles across IT, HR, Legal, and Compliance, and ensure the final document reflected input from all stakeholders. I also needed to align the policy to both HIPAA requirements and the organization's existing NIST CSF roadmap.</p>
+    </div>
+    <div class="star-block" style="grid-column: 1 / -1;">
+      <div class="star-block-label">Actions I Took</div>
+      <p>I scheduled a kickoff workshop with representatives from IT, HR, Legal, and the Compliance Officer to identify the organization's biggest risk areas — specifically around remote access to member PHI and BYOD usage by claims adjusters. I drafted the initial policy, circulated it for comment using a shared document with tracked changes so every team's edits were visible and credited. When HR and Legal had conflicting positions on personal device use, I facilitated a compromise session and documented the agreed language. I also built a simple acknowledgment tracking sheet in SharePoint so HR could confirm completion rates ahead of the audit.</p>
+    </div>
+  </div>
+  <div class="star-win">
+    <div class="win-label">🏆 The Win</div>
+    <div class="win-headline">The AUP was approved by the CISO within 45 days — 15 days ahead of the deadline. Employee acknowledgment reached 94% completion before the follow-up audit. The auditor closed the HIPAA gap finding with no further conditions. The HR team later told me the collaborative review process was the smoothest policy rollout they had seen, and the tracking sheet became a reusable template adopted for two subsequent policy rollouts.</div>
+    <div class="win-detail"></div>
+  </div>
+</div>
+
+  <div class="content-card">
+    <div class="md-content">
+      <p><strong>Document ID:</strong> GRC-POL-001<br />
+<strong>Version:</strong> 1.0<br />
+<strong>Classification:</strong> Internal<br />
+<strong>Effective Date:</strong> [Date]<br />
+<strong>Review Date:</strong> [Date + 1 Year]<br />
+<strong>Owner:</strong> Information Security Team<br />
+<strong>Approved By:</strong> [CISO / IT Director]</p>
+<hr />
+<h2>1. Purpose</h2>
+<p>This Acceptable Use Policy (AUP) establishes the rules and guidelines governing the use of [Organization Name]'s information systems, network resources, devices, and data. The purpose is to protect the organization, its employees, customers, and partners from harm caused by the misuse of technology resources.</p>
+<hr />
+<h2>2. Scope</h2>
+<p>This policy applies to:
+- All full-time and part-time employees
+- Contractors, consultants, and temporary staff
+- Third-party vendors with access to organizational systems
+- Any individual accessing organizational systems or data, on-site or remotely</p>
+<p>This policy covers all information systems owned, leased, or operated by [Organization Name], including but not limited to computers, mobile devices, email, internet access, cloud services, and internal networks.</p>
+<hr />
+<h2>3. Policy Statements</h2>
+<h3>3.1 Authorized Use</h3>
+<p>Users are authorized to use organizational technology resources for legitimate business purposes only. Incidental personal use is permitted provided it does not:
+- Interfere with job responsibilities or productivity
+- Consume excessive system resources or bandwidth
+- Violate any provision of this policy</p>
+<h3>3.2 User Responsibilities</h3>
+<p>All users must:
+- Use only accounts and credentials assigned to them
+- Keep passwords confidential and never share login credentials
+- Lock their screen when leaving a workstation unattended
+- Report suspected security incidents to the IT/Security team immediately
+- Complete all required security awareness training</p>
+<h3>3.3 Prohibited Activities</h3>
+<p>The following activities are strictly prohibited on all organizational systems:</p>
+<p><strong>Legal Violations:</strong>
+- Accessing, transmitting, or storing material that violates applicable law
+- Unauthorized copying or distribution of copyrighted material
+- Engaging in any form of fraud, harassment, or discrimination</p>
+<p><strong>Security Violations:</strong>
+- Attempting to bypass, disable, or circumvent security controls
+- Installing unauthorized software, applications, or browser extensions
+- Connecting unauthorized hardware or storage devices
+- Attempting to access systems, data, or accounts without authorization</p>
+<p><strong>Network Misuse:</strong>
+- Using organizational network resources for cryptocurrency mining
+- Running unauthorized network scans or penetration tests
+- Deliberately consuming excessive bandwidth for non-business purposes</p>
+<p><strong>Inappropriate Content:</strong>
+- Accessing or distributing offensive, pornographic, or discriminatory content
+- Sending threatening, harassing, or defamatory communications
+- Sharing confidential organizational information on unauthorized platforms</p>
+<h3>3.4 Remote Access</h3>
+<p>Employees accessing organizational resources remotely must:
+- Use only organization-approved VPN connections
+- Ensure their home or remote network is reasonably secured
+- Never use public or unsecured Wi-Fi without a VPN
+- Comply with all other provisions of this policy</p>
+<h3>3.5 Email and Communications</h3>
+<p>Users must not:
+- Open email attachments or click links from unknown or suspicious sources
+- Forward confidential information to personal email accounts
+- Misrepresent themselves or the organization in electronic communications</p>
+<h3>3.6 Data Handling</h3>
+<ul>
+<li>Confidential and sensitive data must be stored only on approved systems</li>
+<li>Users must not store sensitive organizational data on personal devices or unapproved cloud services</li>
+<li>Data must be disposed of in accordance with the Data Retention and Disposal Policy</li>
+</ul>
+<hr />
+<h2>4. Monitoring and Privacy</h2>
+<p>Users should have no expectation of privacy when using organizational technology resources. [Organization Name] reserves the right to monitor, log, and audit all activity on its systems to:
+- Ensure compliance with this and related policies
+- Investigate security incidents or policy violations
+- Meet legal or regulatory obligations</p>
+<p>Monitoring will be conducted in compliance with applicable privacy laws.</p>
+<hr />
+<h2>5. Enforcement and Violations</h2>
+<p>Violations of this policy may result in:
+- Immediate suspension of system access
+- Disciplinary action up to and including termination of employment
+- Legal action where applicable</p>
+<p>The severity of the response will be commensurate with the nature and impact of the violation.</p>
+<hr />
+<h2>6. Exceptions</h2>
+<p>Requests for exceptions to this policy must be submitted in writing to the Information Security team. Exceptions will be reviewed on a case-by-case basis and must be approved by the [CISO / IT Director].</p>
+<hr />
+<h2>7. Related Policies</h2>
+<ul>
+<li>Information Security Policy</li>
+<li>Data Classification Policy</li>
+<li>Incident Response Policy</li>
+<li>Remote Work Policy</li>
+<li>Password Management Policy</li>
+</ul>
+<hr />
+<h2>8. Review and Maintenance</h2>
+<p>This policy will be reviewed annually or following any significant change to the organization's technology environment or applicable regulations. The Information Security team is responsible for maintaining this document.</p>
+<hr />
+<h2>9. Acknowledgment</h2>
+<p>By using [Organization Name]'s technology resources, users acknowledge that they have read, understood, and agree to comply with this Acceptable Use Policy.</p>
+<hr />
+<p><em>For questions about this policy, contact: security@[organization].com</em></p>
+<hr />
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>
+    <strong style="color:#fff;">Anél Henning</strong> &nbsp;·&nbsp; GRC Analyst
+    &nbsp;·&nbsp; <a href="mailto:logicalcoders@outlook.com">logicalcoders@outlook.com</a>
+  </p>
+  <p style="margin-top:8px;color:#55657A;">
+    NIST CSF 2.0 · NIST 800-53 Rev.5 · ISO 27001:2022 · SOC 2 TSC · HIPAA · NAIC · FedRAMP · FISMA
+  </p>
+</footer>
+
+</body>
+</html>

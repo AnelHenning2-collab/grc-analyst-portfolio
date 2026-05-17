@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NIST CSF Gap Analysis | Anél Henning GRC Portfolio</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:     #1E2761;
+      --teal:     #028090;
+      --green:    #04763A;
+      --gold:     #F5C518;
+      --ice:      #CADBFC;
+      --light-bg: #EEF3FF;
+      --dark-txt: #1E273D;
+      --mid-gray: #55657A;
+      --white:    #FFFFFF;
+      --border:   #DDE3F0;
+    }
+    body { font-family: 'Segoe UI', Calibri, sans-serif; color: var(--dark-txt);
+           background: #F8FAFF; line-height: 1.7; }
+    a { color: var(--teal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      background: var(--navy);
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.25);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; flex-wrap: wrap;
+      padding: 0 24px;
+    }
+    .nav-brand {
+      font-weight: 700; font-size: 0.95rem;
+      color: var(--gold) !important;
+      padding: 16px 20px 16px 0;
+      white-space: nowrap;
+      border-right: 1px solid rgba(255,255,255,.15);
+      margin-right: 8px;
+    }
+    .nav-brand:hover { text-decoration: none !important; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 2px; }
+    .nav-links a {
+      color: var(--ice) !important;
+      font-size: 0.82rem; font-weight: 500;
+      padding: 18px 11px;
+      transition: color .15s, background .15s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--white) !important;
+      background: rgba(255,255,255,.08);
+      text-decoration: none;
+    }
+    .nav-dl {
+      margin-left: auto;
+      background: var(--gold);
+      color: var(--navy) !important;
+      font-weight: 700; font-size: 0.8rem;
+      padding: 8px 16px !important;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .nav-dl:hover { opacity: .85; background: var(--gold); text-decoration: none !important; }
+
+    /* PAGE WRAPPER */
+    .page-wrap { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    /* BREADCRUMB */
+    .breadcrumb { font-size: 0.82rem; color: var(--mid-gray); margin-bottom: 28px; }
+    .breadcrumb a { color: var(--teal); }
+
+    /* PAGE HEADER */
+    .page-header { margin-bottom: 36px; }
+    .page-header .industry-tag {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 999px;
+      color: var(--white); margin-bottom: 14px;
+    }
+    .page-header h1 {
+      font-size: clamp(1.6rem, 4vw, 2.3rem);
+      font-weight: 700; color: var(--navy);
+      line-height: 1.2; margin-bottom: 10px;
+    }
+    .page-header .subtitle {
+      font-size: 0.95rem; color: var(--mid-gray);
+      max-width: 680px;
+    }
+
+    /* CONTENT CARD */
+    .content-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 40px 44px;
+      margin-bottom: 32px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.05);
+    }
+    @media (max-width: 600px) { .content-card { padding: 24px 20px; } }
+
+    /* MARKDOWN CONTENT STYLES */
+    .md-content h1 { font-size: 1.6rem; color: var(--navy); margin: 0 0 20px; }
+    .md-content h2 {
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--navy); margin: 32px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--light-bg);
+    }
+    .md-content h3 { font-size: 1rem; font-weight: 700; color: var(--teal); margin: 20px 0 8px; }
+    .md-content h4 { font-size: 0.95rem; font-weight: 700; color: var(--dark-txt); margin: 16px 0 6px; }
+    .md-content p  { margin-bottom: 14px; font-size: 0.95rem; }
+    .md-content ul, .md-content ol { margin: 10px 0 16px 24px; }
+    .md-content li { margin-bottom: 5px; font-size: 0.95rem; }
+    .md-content strong { color: var(--dark-txt); }
+    .md-content em { color: var(--mid-gray); }
+    .md-content code {
+      background: var(--light-bg); border-radius: 3px;
+      padding: 2px 6px; font-size: 0.85rem; font-family: Consolas, monospace;
+    }
+    .md-content pre {
+      background: var(--light-bg); border-radius: 6px;
+      padding: 16px; overflow-x: auto; margin-bottom: 16px;
+    }
+    .md-content pre code { background: none; padding: 0; }
+    .md-content blockquote {
+      border-left: 4px solid var(--teal);
+      background: var(--light-bg);
+      padding: 12px 16px; margin: 16px 0;
+      border-radius: 0 6px 6px 0;
+      font-style: italic; color: var(--mid-gray);
+    }
+    .md-content hr { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+
+    /* TABLES */
+    .md-content table {
+      width: 100%; border-collapse: collapse;
+      margin: 16px 0 20px; font-size: 0.88rem;
+      display: block; overflow-x: auto;
+    }
+    .md-content th {
+      background: var(--navy); color: var(--white);
+      padding: 10px 14px; text-align: left; font-weight: 600;
+    }
+    .md-content td {
+      padding: 9px 14px; border-bottom: 1px solid var(--border);
+    }
+    .md-content tr:nth-child(even) td { background: var(--light-bg); }
+    .md-content tr:hover td { background: #E4EDFF; }
+
+    /* STAR SECTION — special styling */
+    .star-section {
+      background: linear-gradient(135deg, #0A1A50 0%, #1E2761 100%);
+      border-radius: 10px;
+      padding: 36px 40px;
+      margin-bottom: 32px;
+      color: var(--white);
+    }
+    @media (max-width: 600px) { .star-section { padding: 24px 20px; } }
+    .star-section .star-label {
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 6px;
+    }
+    .star-section h2 {
+      font-size: 1.3rem; color: var(--white);
+      margin-bottom: 6px; border: none; padding: 0;
+    }
+    .star-meta {
+      font-size: 0.83rem; color: var(--ice);
+      font-style: italic; margin-bottom: 28px;
+    }
+    .star-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 680px) { .star-grid { grid-template-columns: 1fr; } }
+    .star-block {
+      background: rgba(255,255,255,.07);
+      border-radius: 8px; padding: 18px 20px;
+    }
+    .star-block .star-block-label {
+      font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--teal); margin-bottom: 8px;
+    }
+    .star-block p, .star-block li {
+      font-size: 0.9rem; color: #D0DEFF; line-height: 1.6;
+    }
+    .star-block ul { margin-left: 16px; }
+    .star-block li { margin-bottom: 4px; }
+    .star-win {
+      background: var(--green);
+      border-radius: 8px; padding: 20px 24px;
+    }
+    .star-win .win-label {
+      font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--gold); margin-bottom: 8px;
+    }
+    .star-win .win-headline {
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--white); margin-bottom: 6px;
+    }
+    .star-win .win-detail { font-size: 0.88rem; color: #B2E8D0; }
+
+    /* BACK LINK */
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--teal); margin-bottom: 28px;
+    }
+    .back-link:hover { text-decoration: none; opacity: .8; }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark-txt); color: var(--ice);
+      text-align: center; padding: 28px 20px;
+      font-size: 0.82rem;
+    }
+    footer a { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">Anél Henning · GRC Portfolio</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="acceptable-use-policy.html">AUP</a>
+      <a href="data-classification-policy.html">Data Classification</a>
+      <a href="incident-response-policy.html">Incident Response</a>
+      <a href="nist-csf-gap-analysis.html" class="active">NIST CSF Analysis</a>
+      <a href="compliance-framework-mapping.html">Framework Mapping</a>
+      <a href="security-awareness-training.html">Security Training</a>
+      <a href="risk-register.html">Risk Register</a>
+      
+    </div>
+    <a class="nav-links nav-dl" href="GRC_Analyst_Portfolio_Anel_Henning.pptx" download>⬇ Download Deck</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <a class="back-link" href="index.html">← Back to Portfolio</a>
+  <div class="page-header">
+    <span class="industry-tag" style="background:#4B348C;">Federal Civilian Agency · FISMA</span>
+    <h1>NIST CSF Gap Analysis</h1>
+    <p class="subtitle">GRC work product · Includes full policy/framework and a STAR method scenario below.</p>
+  </div>
+  
+<div class="star-section">
+  <div class="star-label">STAR Method · Real-World Scenario</div>
+  <h2>Portfolio STAR Story</h2>
+  <div class="star-meta">Federal Civilian Agency | **Role:** GRC Analyst (embedded in a joint government-contractor assessment team)</div>
+  <div class="star-grid">
+    <div class="star-block">
+      <div class="star-block-label">Situation</div>
+      <p>A mid-size federal civilian agency was preparing for its annual FISMA assessment and wanted to use NIST CSF 2.0 as an overlay to communicate its security posture to non-technical leadership. The agency had not conducted a formal gap analysis in three years. The IT security team had deep technical knowledge but limited experience translating findings into risk language that program managers and the agency CIO could act on. The assessment team included two federal employees, a contractor SME for technical controls, and me as the GRC analyst responsible for framework alignment and the written assessment report.</p>
+    </div>
+    <div class="star-block">
+      <div class="star-block-label">Task</div>
+      <p>My responsibility was to lead the structured gap analysis across all six CSF functions, facilitate stakeholder interviews with IT leads and program offices, score the subcategories consistently, and produce the written findings in language appropriate for both a technical audience and executive leadership. I also needed to ensure the assessment methodology was defensible — documented clearly enough that the agency could repeat it the following year without contractor support.</p>
+    </div>
+    <div class="star-block" style="grid-column: 1 / -1;">
+      <div class="star-block-label">Actions I Took</div>
+      <p>I developed the scoring rubric and interview guide before the first stakeholder session and shared drafts with the federal team leads for review, incorporating their feedback before use. During subcategory interviews, I deferred all technical judgments to the contractor SME and federal IT staff — my role was to ask the right questions and document findings accurately, not to impose conclusions. When I saw that the Detect function scores were significantly lower than the team's informal impression suggested, I raised this in our internal debrief and we agreed to schedule a follow-up session with the SOC team rather than accepting the initial scores. The remediation roadmap was built collaboratively: I drafted a priority ranking, the technical SME validated feasibility and timelines, and the federal team leads confirmed alignment with budget cycles before the roadmap was finalized.</p>
+    </div>
+  </div>
+  <div class="star-win">
+    <div class="win-label">🏆 The Win</div>
+    <div class="win-headline">The assessment report was accepted by the agency CIO without revision requests — the first time the team had achieved that outcome on this contract. The executive summary was specifically called out as clear and actionable by the agency's Deputy CIO. The documented methodology was handed off to the agency's internal team and used verbatim for the following year's self-assessment. Two of the immediate remediation actions — MFA enforcement for privileged accounts and endpoint encryption — were funded in the next budget cycle, with the gap analysis cited as the justification in the budget request.</div>
+    <div class="win-detail"></div>
+  </div>
+</div>
+
+  <div class="content-card">
+    <div class="md-content">
+      <h2>Mock Audit — Acme Corp (Fictional Organization)</h2>
+<p><strong>Prepared By:</strong> [Your Name]<br />
+<strong>Date:</strong> [Date]<br />
+<strong>Framework Version:</strong> NIST CSF 2.0<br />
+<strong>Assessment Scope:</strong> Enterprise IT environment (excluding OT/ICS)<br />
+<strong>Overall Maturity Score:</strong> 2.1 / 5.0 (Partial → Risk-Informed transition)</p>
+<hr />
+<h2>Executive Summary</h2>
+<p>This gap analysis assesses Acme Corp's cybersecurity posture against the NIST Cybersecurity Framework (CSF) 2.0. The assessment identified significant gaps primarily in the <strong>Govern</strong>, <strong>Detect</strong>, and <strong>Respond</strong> functions. The organization has foundational controls in place for <strong>Protect</strong> and <strong>Identify</strong>, but lacks formalized policies, incident response capability, and continuous monitoring.</p>
+<p><strong>Key Findings:</strong>
+- No formal cybersecurity governance program or documented risk appetite
+- Asset inventory is incomplete and not maintained regularly
+- Security monitoring is reactive with no SIEM or centralized logging
+- Incident response plan exists but has never been tested
+- Recovery planning is limited to IT disaster recovery with no documented BCP</p>
+<p><strong>Priority Recommendations:</strong>
+1. Establish a cybersecurity steering committee and define risk appetite (Govern)
+2. Complete and automate asset inventory (Identify)
+3. Deploy centralized logging and SIEM (Detect)
+4. Conduct tabletop exercise against the IR plan (Respond)
+5. Develop and test a full Business Continuity Plan (Recover)</p>
+<hr />
+<h2>Scoring Methodology</h2>
+<p>Each subcategory is scored on the NIST CSF Implementation Tier scale:</p>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Partial</td>
+<td>Ad hoc, reactive, limited awareness</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Risk-Informed</td>
+<td>Practices exist but not organization-wide</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Repeatable</td>
+<td>Formal policies, consistent execution</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Adaptive</td>
+<td>Data-driven, continuously improving</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Function 1: GOVERN (GV)</h2>
+<p><em>New in CSF 2.0 — establishes cybersecurity strategy, governance, and risk management.</em></p>
+<table>
+<thead>
+<tr>
+<th>Subcategory</th>
+<th>Description</th>
+<th>Current State</th>
+<th>Score</th>
+<th>Gap</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GV.OC-01</td>
+<td>Organizational mission understood</td>
+<td>Partially defined</td>
+<td>2</td>
+<td>No formal cybersecurity mission statement</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>GV.OC-02</td>
+<td>Internal/external stakeholders identified</td>
+<td>Informal only</td>
+<td>1</td>
+<td>No stakeholder register</td>
+<td>High</td>
+</tr>
+<tr>
+<td>GV.RM-01</td>
+<td>Risk management policy established</td>
+<td>Draft exists</td>
+<td>2</td>
+<td>Not approved or enforced</td>
+<td>High</td>
+</tr>
+<tr>
+<td>GV.RM-02</td>
+<td>Risk appetite defined</td>
+<td>Not defined</td>
+<td>1</td>
+<td>No documented risk tolerance</td>
+<td>High</td>
+</tr>
+<tr>
+<td>GV.RM-03</td>
+<td>Senior leadership accountable for risk</td>
+<td>Informal</td>
+<td>1</td>
+<td>No CISO or security steering committee</td>
+<td>High</td>
+</tr>
+<tr>
+<td>GV.PO-01</td>
+<td>Policy established and communicated</td>
+<td>Some policies exist</td>
+<td>2</td>
+<td>Inconsistent, not all employees trained</td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Function Score: 1.5 / 4</strong> — Critical gaps in governance structure and risk oversight.</p>
+<p><strong>Remediation Actions:</strong>
+- Appoint a security owner or establish a virtual CISO function
+- Conduct risk appetite workshop with executive leadership
+- Formalize and ratify the risk management policy</p>
+<hr />
+<h2>Function 2: IDENTIFY (ID)</h2>
+<p><em>Understanding the organization's assets, risks, and vulnerabilities.</em></p>
+<table>
+<thead>
+<tr>
+<th>Subcategory</th>
+<th>Description</th>
+<th>Current State</th>
+<th>Score</th>
+<th>Gap</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ID.AM-01</td>
+<td>Hardware asset inventory</td>
+<td>Spreadsheet, 60% complete</td>
+<td>2</td>
+<td>Incomplete, manually maintained</td>
+<td>High</td>
+</tr>
+<tr>
+<td>ID.AM-02</td>
+<td>Software asset inventory</td>
+<td>Incomplete</td>
+<td>1</td>
+<td>No software management tool</td>
+<td>High</td>
+</tr>
+<tr>
+<td>ID.AM-03</td>
+<td>Network flows documented</td>
+<td>Not documented</td>
+<td>1</td>
+<td>No network diagram or flow mapping</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>ID.AM-07</td>
+<td>Data inventory maintained</td>
+<td>Partial</td>
+<td>2</td>
+<td>No data classification scheme applied</td>
+<td>High</td>
+</tr>
+<tr>
+<td>ID.RA-01</td>
+<td>Vulnerabilities identified</td>
+<td>Quarterly scans</td>
+<td>2</td>
+<td>Not continuous, no CVE tracking</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>ID.RA-03</td>
+<td>Threats identified and assessed</td>
+<td>Ad hoc</td>
+<td>1</td>
+<td>No threat intelligence program</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>ID.RA-05</td>
+<td>Threats, vulnerabilities, likelihoods consolidated</td>
+<td>Not performed</td>
+<td>1</td>
+<td>No formal risk register</td>
+<td>High</td>
+</tr>
+<tr>
+<td>ID.IM-01</td>
+<td>Improvements identified from assessments</td>
+<td>Informal</td>
+<td>2</td>
+<td>No formal tracking or remediation program</td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Function Score: 1.6 / 4</strong> — Asset management and risk assessment need significant improvement.</p>
+<p><strong>Remediation Actions:</strong>
+- Implement automated asset discovery tool (e.g., Lansweeper, Qualys CSAM)
+- Deploy and maintain a formal risk register
+- Apply the Data Classification Policy to all known data stores</p>
+<hr />
+<h2>Function 3: PROTECT (PR)</h2>
+<p><em>Implementing safeguards to limit cybersecurity event impact.</em></p>
+<table>
+<thead>
+<tr>
+<th>Subcategory</th>
+<th>Description</th>
+<th>Current State</th>
+<th>Score</th>
+<th>Gap</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PR.AA-01</td>
+<td>Identities managed</td>
+<td>AD in place</td>
+<td>3</td>
+<td>No privileged access management (PAM)</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>PR.AA-02</td>
+<td>Authentication managed</td>
+<td>Passwords + some MFA</td>
+<td>2</td>
+<td>MFA not enforced org-wide</td>
+<td>High</td>
+</tr>
+<tr>
+<td>PR.AA-05</td>
+<td>Access permissions managed</td>
+<td>RBAC partially applied</td>
+<td>2</td>
+<td>No periodic access reviews</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>PR.AT-01</td>
+<td>Security awareness training</td>
+<td>Annual training</td>
+<td>2</td>
+<td>Not phishing-simulated, completion not tracked</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>PR.DS-01</td>
+<td>Data-at-rest protected</td>
+<td>Partial encryption</td>
+<td>2</td>
+<td>Laptops not all encrypted</td>
+<td>High</td>
+</tr>
+<tr>
+<td>PR.DS-02</td>
+<td>Data-in-transit protected</td>
+<td>TLS on web apps</td>
+<td>3</td>
+<td>Internal traffic not consistently encrypted</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>PR.IR-01</td>
+<td>Networks segmented</td>
+<td>Basic VLANs</td>
+<td>2</td>
+<td>No micro-segmentation, flat internal network</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>PR.PS-01</td>
+<td>Config management practices</td>
+<td>Informal baselines</td>
+<td>1</td>
+<td>No CIS benchmark hardening applied</td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Function Score: 2.4 / 4</strong> — Best function; basic controls exist but have consistency gaps.</p>
+<p><strong>Remediation Actions:</strong>
+- Enforce MFA for all users, starting with privileged accounts
+- Enable full-disk encryption on all endpoints (BitLocker/FileVault)
+- Implement quarterly access reviews
+- Apply CIS Benchmark Level 1 hardening to servers and endpoints</p>
+<hr />
+<h2>Function 4: DETECT (DE)</h2>
+<p><em>Identifying cybersecurity events in a timely manner.</em></p>
+<table>
+<thead>
+<tr>
+<th>Subcategory</th>
+<th>Description</th>
+<th>Current State</th>
+<th>Score</th>
+<th>Gap</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DE.CM-01</td>
+<td>Networks monitored</td>
+<td>Firewall logs only</td>
+<td>1</td>
+<td>No SIEM, no centralized log aggregation</td>
+<td>Critical</td>
+</tr>
+<tr>
+<td>DE.CM-03</td>
+<td>Personnel activity monitored</td>
+<td>Not performed</td>
+<td>1</td>
+<td>No user behavior analytics (UEBA)</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>DE.CM-06</td>
+<td>External services monitored</td>
+<td>Not performed</td>
+<td>1</td>
+<td>No cloud security monitoring</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>DE.CM-09</td>
+<td>Computing hardware monitored</td>
+<td>Basic antivirus</td>
+<td>2</td>
+<td>No EDR solution deployed</td>
+<td>High</td>
+</tr>
+<tr>
+<td>DE.AE-02</td>
+<td>Events analyzed</td>
+<td>Manual, ad hoc</td>
+<td>1</td>
+<td>No correlation, no alert triage process</td>
+<td>High</td>
+</tr>
+<tr>
+<td>DE.AE-06</td>
+<td>Alerts communicated to responders</td>
+<td>Email only</td>
+<td>1</td>
+<td>No ticketing integration or escalation path</td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Function Score: 1.2 / 4</strong> — Most critical gap area. Detection capability is minimal.</p>
+<p><strong>Remediation Actions:</strong>
+- Deploy a SIEM solution (e.g., Microsoft Sentinel, Elastic SIEM, Splunk)
+- Implement EDR on all endpoints (e.g., CrowdStrike, SentinelOne, Defender for Endpoint)
+- Establish a log retention policy (minimum 12 months)
+- Define and document alert triage and escalation procedures</p>
+<hr />
+<h2>Function 5: RESPOND (RS)</h2>
+<p><em>Taking action regarding a detected cybersecurity incident.</em></p>
+<table>
+<thead>
+<tr>
+<th>Subcategory</th>
+<th>Description</th>
+<th>Current State</th>
+<th>Score</th>
+<th>Gap</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RS.MA-01</td>
+<td>Incident response plan exists</td>
+<td>Draft plan</td>
+<td>2</td>
+<td>Never tested; not all stakeholders aware</td>
+<td>High</td>
+</tr>
+<tr>
+<td>RS.MA-02</td>
+<td>Incidents triaged and categorized</td>
+<td>Ad hoc</td>
+<td>1</td>
+<td>No severity matrix or triage playbooks</td>
+<td>High</td>
+</tr>
+<tr>
+<td>RS.CO-02</td>
+<td>Incidents reported internally</td>
+<td>Informal</td>
+<td>2</td>
+<td>No formal internal notification process</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>RS.CO-03</td>
+<td>Regulatory reporting capability</td>
+<td>Unknown</td>
+<td>1</td>
+<td>No legal/compliance review of obligations</td>
+<td>High</td>
+</tr>
+<tr>
+<td>RS.AN-03</td>
+<td>Analysis performed</td>
+<td>Not formalized</td>
+<td>1</td>
+<td>No forensic capability or chain of custody</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>RS.MI-01</td>
+<td>Incidents contained</td>
+<td>Case-by-case</td>
+<td>2</td>
+<td>No documented containment playbooks</td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Function Score: 1.5 / 4</strong> — IR plan exists on paper but lacks operational readiness.</p>
+<p><strong>Remediation Actions:</strong>
+- Conduct a tabletop exercise against the current IR plan within 90 days
+- Develop at least 3 response playbooks (ransomware, phishing, insider threat)
+- Engage legal counsel to determine regulatory breach notification obligations
+- Establish a formal chain-of-custody procedure for evidence handling</p>
+<hr />
+<h2>Function 6: RECOVER (RC)</h2>
+<p><em>Restoring capabilities after a cybersecurity incident.</em></p>
+<table>
+<thead>
+<tr>
+<th>Subcategory</th>
+<th>Description</th>
+<th>Current State</th>
+<th>Score</th>
+<th>Gap</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RC.RP-01</td>
+<td>Recovery plan in place</td>
+<td>IT DR plan only</td>
+<td>2</td>
+<td>No business-aligned BCP</td>
+<td>High</td>
+</tr>
+<tr>
+<td>RC.RP-02</td>
+<td>Recovery strategy updated post-incident</td>
+<td>Not performed</td>
+<td>1</td>
+<td>No lessons-learned process</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>RC.CO-03</td>
+<td>Recovery communicated to stakeholders</td>
+<td>Not formalized</td>
+<td>1</td>
+<td>No communications plan for incidents</td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Function Score: 1.3 / 4</strong> — Recovery capability limited to IT systems; no holistic BCP.</p>
+<p><strong>Remediation Actions:</strong>
+- Develop a full Business Continuity Plan (BCP) with RTOs and RPOs
+- Establish a post-incident lessons-learned process
+- Test backups and recovery procedures quarterly</p>
+<hr />
+<h2>Overall Maturity Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Score</th>
+<th>Tier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Govern (GV)</td>
+<td>1.5</td>
+<td>Partial</td>
+</tr>
+<tr>
+<td>Identify (ID)</td>
+<td>1.6</td>
+<td>Partial → Risk-Informed</td>
+</tr>
+<tr>
+<td>Protect (PR)</td>
+<td>2.4</td>
+<td>Risk-Informed</td>
+</tr>
+<tr>
+<td>Detect (DE)</td>
+<td>1.2</td>
+<td><strong>Partial (Critical)</strong></td>
+</tr>
+<tr>
+<td>Respond (RS)</td>
+<td>1.5</td>
+<td>Partial</td>
+</tr>
+<tr>
+<td>Recover (RC)</td>
+<td>1.3</td>
+<td>Partial</td>
+</tr>
+<tr>
+<td><strong>Overall</strong></td>
+<td><strong>1.8</strong></td>
+<td><strong>Partial</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Remediation Roadmap</h2>
+<h3>Immediate (0–30 days)</h3>
+<ul>
+<li>[ ] Enforce MFA for all privileged accounts</li>
+<li>[ ] Enable full-disk encryption on unencrypted endpoints</li>
+<li>[ ] Begin SIEM evaluation and procurement</li>
+<li>[ ] Schedule tabletop exercise</li>
+</ul>
+<h3>Short-Term (30–90 days)</h3>
+<ul>
+<li>[ ] Complete hardware and software asset inventory</li>
+<li>[ ] Implement EDR solution</li>
+<li>[ ] Develop risk register with top 10 risks scored</li>
+<li>[ ] Conduct tabletop exercise</li>
+</ul>
+<h3>Medium-Term (90–180 days)</h3>
+<ul>
+<li>[ ] Deploy SIEM and establish log retention policy</li>
+<li>[ ] Draft and ratify Risk Management Policy</li>
+<li>[ ] Develop BCP with RTO/RPO targets</li>
+<li>[ ] Implement quarterly access reviews</li>
+</ul>
+<h3>Long-Term (180–365 days)</h3>
+<ul>
+<li>[ ] Establish formal security governance committee</li>
+<li>[ ] Apply CIS Benchmark hardening to all critical systems</li>
+<li>[ ] Build 3+ IR playbooks</li>
+<li>[ ] Achieve Tier 2 (Risk-Informed) across all functions</li>
+</ul>
+<hr />
+<h2>Appendix: Assessment Methodology</h2>
+<p>This assessment was conducted using the following methods:
+- Document review (policies, procedures, previous assessments)
+- Stakeholder interviews (IT, HR, Finance, Legal)
+- Technical observation (network scans, configuration reviews)
+- Self-assessment questionnaires mapped to NIST CSF 2.0 subcategories</p>
+<p>All findings reflect the state of controls at the time of assessment. This report is intended for internal use only and classified as <strong>Confidential</strong>.</p>
+<hr />
+<p><em>Framework Reference: NIST Cybersecurity Framework 2.0 (February 2024)</em><br />
+<em>https://www.nist.gov/cyberframework</em></p>
+<hr />
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>
+    <strong style="color:#fff;">Anél Henning</strong> &nbsp;·&nbsp; GRC Analyst
+    &nbsp;·&nbsp; <a href="mailto:logicalcoders@outlook.com">logicalcoders@outlook.com</a>
+  </p>
+  <p style="margin-top:8px;color:#55657A;">
+    NIST CSF 2.0 · NIST 800-53 Rev.5 · ISO 27001:2022 · SOC 2 TSC · HIPAA · NAIC · FedRAMP · FISMA
+  </p>
+</footer>
+
+</body>
+</html>

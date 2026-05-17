@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Risk Register & Methodology | Anél Henning GRC Portfolio</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:     #1E2761;
+      --teal:     #028090;
+      --green:    #04763A;
+      --gold:     #F5C518;
+      --ice:      #CADBFC;
+      --light-bg: #EEF3FF;
+      --dark-txt: #1E273D;
+      --mid-gray: #55657A;
+      --white:    #FFFFFF;
+      --border:   #DDE3F0;
+    }
+    body { font-family: 'Segoe UI', Calibri, sans-serif; color: var(--dark-txt);
+           background: #F8FAFF; line-height: 1.7; }
+    a { color: var(--teal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      background: var(--navy);
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.25);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; flex-wrap: wrap;
+      padding: 0 24px;
+    }
+    .nav-brand {
+      font-weight: 700; font-size: 0.95rem;
+      color: var(--gold) !important;
+      padding: 16px 20px 16px 0;
+      white-space: nowrap;
+      border-right: 1px solid rgba(255,255,255,.15);
+      margin-right: 8px;
+    }
+    .nav-brand:hover { text-decoration: none !important; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 2px; }
+    .nav-links a {
+      color: var(--ice) !important;
+      font-size: 0.82rem; font-weight: 500;
+      padding: 18px 11px;
+      transition: color .15s, background .15s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--white) !important;
+      background: rgba(255,255,255,.08);
+      text-decoration: none;
+    }
+    .nav-dl {
+      margin-left: auto;
+      background: var(--gold);
+      color: var(--navy) !important;
+      font-weight: 700; font-size: 0.8rem;
+      padding: 8px 16px !important;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .nav-dl:hover { opacity: .85; background: var(--gold); text-decoration: none !important; }
+
+    /* PAGE WRAPPER */
+    .page-wrap { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    /* BREADCRUMB */
+    .breadcrumb { font-size: 0.82rem; color: var(--mid-gray); margin-bottom: 28px; }
+    .breadcrumb a { color: var(--teal); }
+
+    /* PAGE HEADER */
+    .page-header { margin-bottom: 36px; }
+    .page-header .industry-tag {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 999px;
+      color: var(--white); margin-bottom: 14px;
+    }
+    .page-header h1 {
+      font-size: clamp(1.6rem, 4vw, 2.3rem);
+      font-weight: 700; color: var(--navy);
+      line-height: 1.2; margin-bottom: 10px;
+    }
+    .page-header .subtitle {
+      font-size: 0.95rem; color: var(--mid-gray);
+      max-width: 680px;
+    }
+
+    /* CONTENT CARD */
+    .content-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 40px 44px;
+      margin-bottom: 32px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.05);
+    }
+    @media (max-width: 600px) { .content-card { padding: 24px 20px; } }
+
+    /* MARKDOWN CONTENT STYLES */
+    .md-content h1 { font-size: 1.6rem; color: var(--navy); margin: 0 0 20px; }
+    .md-content h2 {
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--navy); margin: 32px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--light-bg);
+    }
+    .md-content h3 { font-size: 1rem; font-weight: 700; color: var(--teal); margin: 20px 0 8px; }
+    .md-content h4 { font-size: 0.95rem; font-weight: 700; color: var(--dark-txt); margin: 16px 0 6px; }
+    .md-content p  { margin-bottom: 14px; font-size: 0.95rem; }
+    .md-content ul, .md-content ol { margin: 10px 0 16px 24px; }
+    .md-content li { margin-bottom: 5px; font-size: 0.95rem; }
+    .md-content strong { color: var(--dark-txt); }
+    .md-content em { color: var(--mid-gray); }
+    .md-content code {
+      background: var(--light-bg); border-radius: 3px;
+      padding: 2px 6px; font-size: 0.85rem; font-family: Consolas, monospace;
+    }
+    .md-content pre {
+      background: var(--light-bg); border-radius: 6px;
+      padding: 16px; overflow-x: auto; margin-bottom: 16px;
+    }
+    .md-content pre code { background: none; padding: 0; }
+    .md-content blockquote {
+      border-left: 4px solid var(--teal);
+      background: var(--light-bg);
+      padding: 12px 16px; margin: 16px 0;
+      border-radius: 0 6px 6px 0;
+      font-style: italic; color: var(--mid-gray);
+    }
+    .md-content hr { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+
+    /* TABLES */
+    .md-content table {
+      width: 100%; border-collapse: collapse;
+      margin: 16px 0 20px; font-size: 0.88rem;
+      display: block; overflow-x: auto;
+    }
+    .md-content th {
+      background: var(--navy); color: var(--white);
+      padding: 10px 14px; text-align: left; font-weight: 600;
+    }
+    .md-content td {
+      padding: 9px 14px; border-bottom: 1px solid var(--border);
+    }
+    .md-content tr:nth-child(even) td { background: var(--light-bg); }
+    .md-content tr:hover td { background: #E4EDFF; }
+
+    /* STAR SECTION — special styling */
+    .star-section {
+      background: linear-gradient(135deg, #0A1A50 0%, #1E2761 100%);
+      border-radius: 10px;
+      padding: 36px 40px;
+      margin-bottom: 32px;
+      color: var(--white);
+    }
+    @media (max-width: 600px) { .star-section { padding: 24px 20px; } }
+    .star-section .star-label {
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 6px;
+    }
+    .star-section h2 {
+      font-size: 1.3rem; color: var(--white);
+      margin-bottom: 6px; border: none; padding: 0;
+    }
+    .star-meta {
+      font-size: 0.83rem; color: var(--ice);
+      font-style: italic; margin-bottom: 28px;
+    }
+    .star-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 680px) { .star-grid { grid-template-columns: 1fr; } }
+    .star-block {
+      background: rgba(255,255,255,.07);
+      border-radius: 8px; padding: 18px 20px;
+    }
+    .star-block .star-block-label {
+      font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--teal); margin-bottom: 8px;
+    }
+    .star-block p, .star-block li {
+      font-size: 0.9rem; color: #D0DEFF; line-height: 1.6;
+    }
+    .star-block ul { margin-left: 16px; }
+    .star-block li { margin-bottom: 4px; }
+    .star-win {
+      background: var(--green);
+      border-radius: 8px; padding: 20px 24px;
+    }
+    .star-win .win-label {
+      font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--gold); margin-bottom: 8px;
+    }
+    .star-win .win-headline {
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--white); margin-bottom: 6px;
+    }
+    .star-win .win-detail { font-size: 0.88rem; color: #B2E8D0; }
+
+    /* BACK LINK */
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--teal); margin-bottom: 28px;
+    }
+    .back-link:hover { text-decoration: none; opacity: .8; }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark-txt); color: var(--ice);
+      text-align: center; padding: 28px 20px;
+      font-size: 0.82rem;
+    }
+    footer a { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">Anél Henning · GRC Portfolio</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="acceptable-use-policy.html">AUP</a>
+      <a href="data-classification-policy.html">Data Classification</a>
+      <a href="incident-response-policy.html">Incident Response</a>
+      <a href="nist-csf-gap-analysis.html">NIST CSF Analysis</a>
+      <a href="compliance-framework-mapping.html">Framework Mapping</a>
+      <a href="security-awareness-training.html">Security Training</a>
+      <a href="risk-register.html" class="active">Risk Register</a>
+      
+    </div>
+    <a class="nav-links nav-dl" href="GRC_Analyst_Portfolio_Anel_Henning.pptx" download>⬇ Download Deck</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <a class="back-link" href="index.html">← Back to Portfolio</a>
+  <div class="page-header">
+    <span class="industry-tag" style="background:#065A82;">Federal Health Contractor · ATO</span>
+    <h1>Risk Register & Methodology</h1>
+    <p class="subtitle">GRC work product · Includes full policy/framework and a STAR method scenario below.</p>
+  </div>
+  
+<div class="star-section">
+  <div class="star-label">STAR Method · Real-World Scenario</div>
+  <h2>Portfolio STAR Story</h2>
+  <div class="star-meta">Federal Health Agency (e.g., CMS / VA adjacent contractor) | **Role:** GRC Analyst (working with IT, Program Managers, and Risk Officers)</div>
+  <div class="star-grid">
+    <div class="star-block">
+      <div class="star-block-label">Situation</div>
+      <p>A federal health IT contractor supporting a CMS-adjacent program had never maintained a formal risk register. Risk decisions were being made informally by IT leads and program managers without a documented process, scoring methodology, or executive visibility. When a new Program Security Officer joined, she found that several known high-severity risks — including an unpatched vulnerability on a public-facing portal handling beneficiary data — had been informally accepted with no documentation trail. This created significant exposure ahead of an upcoming ATO reauthorization.</p>
+    </div>
+    <div class="star-block">
+      <div class="star-block-label">Task</div>
+      <p>I was assigned to build the organization's first formal risk register from scratch, working alongside the PSO, two IT leads, the Privacy Officer, and a program manager from the business side. My role was to design the scoring methodology, facilitate the initial risk identification sessions, and produce a register that the PSO could present to the Authorizing Official as part of the ATO package. I needed buy-in from IT leads who were skeptical of the process and a program manager who was worried that documenting risks would reflect poorly on her program.</p>
+    </div>
+    <div class="star-block" style="grid-column: 1 / -1;">
+      <div class="star-block-label">Actions I Took</div>
+      <p>Before building anything, I met individually with the IT leads and the program manager to understand their concerns. For the IT leads, I explained that the register would document what they already knew — getting it on paper actually protected them by showing awareness and a treatment plan. For the program manager, I reframed the register as evidence of mature risk governance rather than a list of failures. I designed the scoring methodology collaboratively — sharing draft likelihood and impact scales with the team for feedback before finalizing, so the scales reflected what "catastrophic" actually meant in their specific program context (beneficiary data exposure, CMS contract penalties). I facilitated two half-day risk identification workshops structured as open working sessions rather than interviews so the IT leads felt like co-authors, not subjects. Every risk treatment decision was made by the relevant risk owner, not by me.</p>
+    </div>
+  </div>
+  <div class="star-win">
+    <div class="win-label">🏆 The Win</div>
+    <div class="win-headline">The initial register captured 14 risks, including the previously undocumented unpatched portal vulnerability, which was formally accepted with a documented treatment plan and escalated to the Authorizing Official's attention. The ATO reauthorization was approved. The PSO reported that the Authorizing Official specifically noted the risk register as demonstrating program maturity. The two IT leads who had been most skeptical at the start became the register's most consistent updaters, submitting quarterly updates without prompting. The methodology document was included in the contractor's proposal library as a repeatable asset for future federal engagements.</div>
+    <div class="win-detail"></div>
+  </div>
+</div>
+
+  <div class="content-card">
+    <div class="md-content">
+      <p><strong>Framework Alignment:</strong> NIST SP 800-30 Rev. 1 / ISO/IEC 27005<br />
+<strong>Methodology:</strong> Qualitative Risk Assessment (Likelihood × Impact)</p>
+<hr />
+<h2>Overview</h2>
+<p>This risk register template is designed for use in small-to-medium organizations establishing or maturing their risk management program. It is aligned to NIST Special Publication 800-30 Rev. 1 (<em>Guide for Conducting Risk Assessments</em>) and ISO/IEC 27005 risk management principles.</p>
+<hr />
+<h2>Scoring Methodology</h2>
+<h3>Likelihood Scale (1–5)</h3>
+<table>
+<thead>
+<tr>
+<th>Score</th>
+<th>Rating</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Very Low</td>
+<td>Unlikely to occur; no known history; strong controls</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Low</td>
+<td>Unlikely but possible; some historical incidents</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Moderate</td>
+<td>Reasonably likely; known threat actor interest</td>
+</tr>
+<tr>
+<td>4</td>
+<td>High</td>
+<td>Likely to occur; frequently attempted</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Very High</td>
+<td>Near-certain; actively exploited in the wild</td>
+</tr>
+</tbody>
+</table>
+<h3>Impact Scale (1–5)</h3>
+<table>
+<thead>
+<tr>
+<th>Score</th>
+<th>Rating</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Negligible</td>
+<td>Minimal disruption; no data loss; no regulatory impact</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Minor</td>
+<td>Limited disruption; minor data exposure; low cost</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Moderate</td>
+<td>Significant disruption; sensitive data affected; regulatory notice</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Major</td>
+<td>Major operational impact; large data breach; regulatory fines</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Catastrophic</td>
+<td>Business-threatening; severe legal liability; reputational destruction</td>
+</tr>
+</tbody>
+</table>
+<h3>Risk Score = Likelihood × Impact</h3>
+<table>
+<thead>
+<tr>
+<th>Score Range</th>
+<th>Risk Level</th>
+<th>Recommended Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20–25</td>
+<td><strong>Critical</strong></td>
+<td>Immediate action required; escalate to executive leadership</td>
+</tr>
+<tr>
+<td>12–19</td>
+<td><strong>High</strong></td>
+<td>Address within 30–90 days; assign named owner</td>
+</tr>
+<tr>
+<td>6–11</td>
+<td><strong>Medium</strong></td>
+<td>Address within 90–180 days; track in risk program</td>
+</tr>
+<tr>
+<td>1–5</td>
+<td><strong>Low</strong></td>
+<td>Monitor and review annually; accept if within risk appetite</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Risk Treatment Options</h2>
+<table>
+<thead>
+<tr>
+<th>Treatment</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mitigate</strong></td>
+<td>Implement controls to reduce likelihood or impact</td>
+</tr>
+<tr>
+<td><strong>Transfer</strong></td>
+<td>Shift risk via insurance, contracts, or third parties</td>
+</tr>
+<tr>
+<td><strong>Avoid</strong></td>
+<td>Eliminate the activity or asset creating the risk</td>
+</tr>
+<tr>
+<td><strong>Accept</strong></td>
+<td>Document and accept the risk within defined risk appetite</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Files</h2>
+<ul>
+<li><code>risk-register.csv</code> — Working risk register with 10 example risks scored</li>
+<li><code>README.md</code> — This file (methodology and instructions)</li>
+</ul>
+<hr />
+<h2>How to Use</h2>
+<ol>
+<li>Open <code>risk-register.csv</code> in Excel, Google Sheets, or any CSV viewer</li>
+<li>Review existing example risks and customize for your organization</li>
+<li>Score each risk using the Likelihood × Impact methodology above</li>
+<li>Assign a Risk Owner for each identified risk</li>
+<li>Document current controls and assess their effectiveness</li>
+<li>Determine residual risk (risk remaining after controls)</li>
+<li>Select a treatment option and assign a target remediation date</li>
+<li>Review and update the register at least quarterly</li>
+</ol>
+<hr />
+<h2>References</h2>
+<ul>
+<li>NIST SP 800-30 Rev. 1: https://csrc.nist.gov/publications/detail/sp/800-30/rev-1/final</li>
+<li>ISO/IEC 27005:2022: https://www.iso.org/standard/80585.html</li>
+<li>NIST Cybersecurity Framework 2.0: https://www.nist.gov/cyberframework</li>
+</ul>
+<hr />
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>
+    <strong style="color:#fff;">Anél Henning</strong> &nbsp;·&nbsp; GRC Analyst
+    &nbsp;·&nbsp; <a href="mailto:logicalcoders@outlook.com">logicalcoders@outlook.com</a>
+  </p>
+  <p style="margin-top:8px;color:#55657A;">
+    NIST CSF 2.0 · NIST 800-53 Rev.5 · ISO 27001:2022 · SOC 2 TSC · HIPAA · NAIC · FedRAMP · FISMA
+  </p>
+</footer>
+
+</body>
+</html>
