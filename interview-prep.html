@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interview Prep · STAR Stories · Anél Henning</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    :root {
+      --navy: #1E2761;
+      --gold:  #F5C518;
+      --white: #FFFFFF;
+      --black: #000000;
+    }
+    body {
+      font-family: 'Segoe UI', Calibri, sans-serif;
+      background: var(--navy);
+      color: var(--black);
+      line-height: 1.7;
+    }
+
+    /* ── PASSWORD GATE ── */
+    #gate {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .gate-box {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 14px;
+      padding: 56px 48px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+    }
+    .gate-box .lock-icon {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+    }
+    .gate-box h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .gate-box p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,.65);
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+    .gate-box input[type="password"] {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 7px;
+      border: 2px solid rgba(255,255,255,.20);
+      background: rgba(255,255,255,.08);
+      color: var(--white);
+      font-size: 1.1rem;
+      letter-spacing: 3px;
+      text-align: center;
+      outline: none;
+      margin-bottom: 16px;
+      transition: border-color .2s;
+    }
+    .gate-box input[type="password"]:focus { border-color: var(--gold); }
+    .gate-box input[type="password"]::placeholder { letter-spacing: 0; color: rgba(255,255,255,.35); }
+    .gate-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      border-radius: 7px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity .2s;
+    }
+    .gate-btn:hover { opacity: .88; }
+    .gate-error {
+      margin-top: 14px;
+      font-size: 0.88rem;
+      color: #FF7070;
+      display: none;
+    }
+
+    /* ── MAIN CONTENT ── */
+    #content { display: none; background: #F4F6FB; min-height: 100vh; }
+
+    /* Top bar */
+    .topbar {
+      background: var(--navy);
+      padding: 18px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.25);
+    }
+    .topbar-brand { font-weight: 700; font-size: 1rem; color: var(--gold); }
+    .topbar-sub   { font-size: 0.85rem; color: rgba(255,255,255,.60); }
+    .topbar-right { display: flex; gap: 12px; align-items: center; }
+    .btn-print {
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      border-radius: 5px;
+      padding: 8px 18px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: opacity .2s;
+    }
+    .btn-print:hover { opacity: .85; }
+    .btn-lock {
+      background: rgba(255,255,255,.10);
+      color: rgba(255,255,255,.75);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 5px;
+      padding: 8px 14px;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .btn-lock:hover { background: rgba(255,255,255,.18); }
+
+    /* Page layout */
+    .page-wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 56px 32px 80px;
+    }
+    .page-intro {
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 12px;
+      padding: 36px 40px;
+      margin-bottom: 48px;
+    }
+    .page-intro .label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .page-intro h1 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .page-intro p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,.72);
+      max-width: 640px;
+      line-height: 1.7;
+    }
+    .toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+    .toc a {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--navy);
+      background: var(--gold);
+      padding: 5px 14px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: opacity .2s;
+    }
+    .toc a:hover { opacity: .82; }
+
+    /* STAR scenario card */
+    .star-card {
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 2px 16px rgba(30,39,97,.08);
+      margin-bottom: 40px;
+      overflow: hidden;
+    }
+    .star-card-header {
+      background: var(--navy);
+      padding: 24px 36px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .star-card-num {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .star-card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .star-card-industry {
+      font-size: 0.78rem;
+      font-weight: 700;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 5px 14px;
+      border-radius: 999px;
+      white-space: nowrap;
+      align-self: flex-start;
+      margin-top: 4px;
+    }
+
+    .star-card-body { padding: 32px 36px; }
+
+    /* Each STAR section */
+    .star-section { margin-bottom: 28px; }
+    .star-section:last-child { margin-bottom: 0; }
+    .section-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-pill .pill-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+    }
+    .pill-s .pill-dot { background: #4B6BFF; }
+    .pill-t .pill-dot { background: #FF8C42; }
+    .pill-a .pill-dot { background: var(--navy); }
+    .pill-r .pill-dot { background: #2DB76A; }
+    .pill-s { color: #3A5AE8; }
+    .pill-t { color: #D4691A; }
+    .pill-a { color: var(--navy); }
+    .pill-r { color: #1E8F52; }
+
+    .star-section p {
+      font-size: 0.95rem;
+      color: #1A1A2E;
+      line-height: 1.75;
+    }
+
+    /* Action steps */
+    .action-steps {
+      list-style: none;
+      counter-reset: step;
+    }
+    .action-steps li {
+      counter-increment: step;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(30,39,97,.08);
+      font-size: 0.95rem;
+      color: #1A1A2E;
+      line-height: 1.65;
+    }
+    .action-steps li:last-child { border-bottom: none; }
+    .action-steps li::before {
+      content: counter(step);
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      background: var(--navy);
+      color: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.75rem;
+      margin-top: 2px;
+    }
+
+    /* Win bar */
+    .win-box {
+      background: linear-gradient(135deg, var(--navy) 0%, #2A3580 100%);
+      border-radius: 10px;
+      padding: 22px 28px;
+      margin-top: 4px;
+    }
+    .win-box .win-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .win-box .win-text {
+      font-size: 1rem;
+      color: var(--white);
+      line-height: 1.65;
+      font-weight: 600;
+    }
+    .win-box .win-detail {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,.72);
+      line-height: 1.65;
+      margin-top: 6px;
+      font-weight: 400;
+    }
+
+    /* Interview tips panel */
+    .tips-card {
+      background: rgba(30,39,97,.06);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 10px 10px 0;
+      padding: 20px 24px;
+      margin-top: 20px;
+    }
+    .tips-card .tips-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .tips-card ul { margin-left: 18px; }
+    .tips-card li {
+      font-size: 0.88rem;
+      color: #333;
+      margin-bottom: 5px;
+      line-height: 1.6;
+    }
+
+    /* Divider between cards */
+    .scenario-anchor { display: block; margin-top: -80px; padding-top: 80px; }
+
+    /* Print styles */
+    @media print {
+      body { background: white; font-size: 11pt; }
+      #gate { display: none !important; }
+      #content { display: block !important; }
+      .topbar, .toc, .tips-card, .btn-print, .btn-lock { display: none !important; }
+      .star-card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+      .page-intro { background: #1E2761; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+
+    @media (max-width: 680px) {
+      .page-wrap { padding: 32px 16px 56px; }
+      .star-card-header { padding: 20px 22px; }
+      .star-card-body  { padding: 24px 22px; }
+      .topbar { padding: 14px 16px; }
+      .gate-box { padding: 36px 24px; }
+      .page-intro { padding: 24px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ PASSWORD GATE ══════════ -->
+<div id="gate">
+  <div class="gate-box">
+    <div class="lock-icon">🔒</div>
+    <h1>Interview Prep · Private Access</h1>
+    <p>All 7 STAR scenarios — step-by-step breakdown for interview practice. This page is not publicly listed.</p>
+    <input type="password" id="pwd-input" placeholder="Enter access code" autocomplete="off"/>
+    <button class="gate-btn" onclick="checkPassword()">Unlock →</button>
+    <div class="gate-error" id="gate-error">Incorrect access code. Try again.</div>
+  </div>
+</div>
+
+<!-- ══════════ PRIVATE CONTENT ══════════ -->
+<div id="content">
+
+  <div class="topbar">
+    <div>
+      <div class="topbar-brand">Anél Henning · GRC Portfolio</div>
+      <div class="topbar-sub">Interview Prep — STAR Scenarios (Private)</div>
+    </div>
+    <div class="topbar-right">
+      <button class="btn-print" onclick="window.print()">🖨 Print / Save PDF</button>
+      <button class="btn-lock" onclick="lockPage()">🔒 Lock</button>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+
+    <div class="page-intro">
+      <div class="label">Private · Interview Preparation</div>
+      <h1>7 STAR Scenarios · Step-by-Step</h1>
+      <p>Each scenario is broken into Situation → Task → numbered Action steps → Measurable Win. Use this page to rehearse your answers before interviews. Tip: practice out loud — aim for 2–3 minutes per story.</p>
+      <div class="toc">
+        <a href="#s1">1 · Acceptable Use Policy</a>
+        <a href="#s2">2 · Data Classification</a>
+        <a href="#s3">3 · Incident Response</a>
+        <a href="#s4">4 · NIST CSF Gap Analysis</a>
+        <a href="#s5">5 · Framework Mapping</a>
+        <a href="#s6">6 · Security Awareness Training</a>
+        <a href="#s7">7 · Risk Register</a>
+      </div>
+    </div>
+
+    <!-- ── STAR 1 ── -->
+    <span class="scenario-anchor" id="s1"></span>
+    <div class="star-card">
+      <div class="star-card-header">
+        <div>
+          <div class="star-card-num">STAR Story · 01 of 07</div>
+          <div class="star-card-title">Acceptable Use Policy</div>
+        </div>
+        <div class="star-card-industry">Health Insurance · HIPAA</div>
+      </div>
+      <div class="star-card-body">
+
+        <div class="star-section">
+          <div class="section-pill pill-s"><span class="pill-dot"></span> Situation</div>
+          <p>A regional health insurance carrier processing Medicare Advantage claims had never formalized an Acceptable Use Policy. Following a routine external audit, the auditor flagged the absence as a gap against HIPAA Security Rule §164.308(a)(1) — administrative safeguards. Leadership gave the GRC team <strong>60 days</strong> to produce, approve, and distribute a policy before the follow-up audit.</p>
+        </div>
+
+        <div class="star-section">
+          <div class="section-pill pill-t"><span class="pill-dot"></span> Task</div>
+          <p>As part of a three-person GRC team, I was responsible for drafting the policy language, coordinating review cycles across IT, HR, Legal, and Compliance, and ensuring the final document reflected input from all stakeholders — while aligning to both HIPAA requirements and the organization's existing NIST CSF roadmap.</p>
+        </div>
+
+        <div class="star-section">
+          <div class="section-pill pill-a"><span class="pill-dot"></span> Actions I Took</div>
+          <ol class="action-steps">
+            <li>Scheduled a kickoff workshop with representatives from IT, HR, Legal, and the Compliance Officer to identify the organization's biggest risk areas — specifically remote access to member PHI and BYOD usage by claims adjusters.</li>
+            <li>Drafted the initial policy and circulated it for comment using a shared document with tracked changes, so every team's edits were visible and attributed.</li>
+            <li>When HR and Legal had conflicting positions on personal device use, I facilitated a dedicated compromise session and documented the agreed language to prevent re-litigation later.</li>
+            <li>Built a SharePoint acknowledgment tracking sheet so HR could monitor completion rates in real time and produce evidence ahead of the audit.</li>
+          </ol>
+        </div>
+
+        <div class="star-section">
+          <div class="section-pill pill-r"><span class="pill-dot"></span> Result / The Win</div>
+          <div class="win-box">
+            <div class="win-label">🏆 Measurable Outcome</div>
+            <div class="win-text">AUP approved by CISO in 45 days — 15 days early. Employee acknowledgment reached 94% before the follow-up audit.</div>
+            <div class="win-detail">The auditor closed the HIPAA gap finding with no further conditions. The acknowledgment tracking sheet became a reusable template adopted for two subsequent policy rollouts.</div>
+          </div>
+        </div>
+
+        <div class="tips-card">
+          <div class="tips-label">Interview Tip · Use When Asked About…</div>
+          <ul>
+            <li>"Tell me about a time you worked cross-functionally to deliver a compliance deliverable."</li>
+            <li>"How do you handle disagreements between stakeholders during a project?"</li>
+            <li>"Give me an example of meeting a hard regulatory deadline."</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── STAR 2 ── -->
+    <span class="scenario-anchor" id="s2"></span>
+    <div class="star-card">
+      <div class="star-card-header">
+        <div>
+          <div class="star-card-num">STAR Story · 02 of 07</div>
+          <div class="star-card-title">Data Classification Policy</div>
+        </div>
+        <div class="star-card-industry">Healthcare · Hospital System</div>
+      </div>
+      <div class="star-card-body">
+
+        <div class="star-section">
+          <div class="section-pill pill-s"><span class="pill-dot"></span> Situation</div>
+          <p>A multi-site hospital system had recently migrated to a hybrid cloud environment. During the migration, HIM discovered clinical staff were storing de-identified research data, identifiable patient records, and administrative files in the same cloud folders with no consistent labeling — flagged as a potential HIPAA violation and breach notification liability.</p>
+        </div>
+
+        <div class="star-section">
+          <div class="section-pill pill-t"><span class="pill-dot"></span> Task</div>
+          <p>My role was to draft a data classification framework that clinical staff could realistically follow — not just IT staff. The critical constraint: speed of access to patient data is operationally critical, so a blanket "encrypt everything" approach would fail in practice.</p>
+        </div>
+
+        <div class="star-section">
+          <div class="section-pill pill-a"><span class="pill-dot"></span> Actions I Took</div>
+          <ol class="action-steps">
+            <li>Requested observation time with two nursing unit coordinators and a clinical informatics lead to understand how data actually moved in their workflows — before writing a single line of policy.</li>
+            <li>Discovered that blanket encryption requirements would break time-sensitive clinical workflows; brought these findings back to the working group with specific examples so the team could make an informed design decision.</li>
+            <li>Partnered with IT to identify encryption solutions that operated transparently in the background — adding no additional steps for clinical staff.</li>
+            <li>Collaborated with Legal to ensure the Restricted tier explicitly mapped to HIPAA Security Rule technical safeguard requirements.</li>
+            <li>Had the final policy plain-English reviewed by an HIM manager to confirm frontline staff could understand it without a cybersecurity background.</li>
+          </ol>
+        </div>
+
+        <div class="star-section">
+          <div class="section-pill pill-r"><span class="pill-dot"></span> Result / The Win</div>
+          <div class="win-box">
+            <div class="win-label">🏆 Measurable Outcome</div>
+            <div class="win-text">Policy ratified by CISO and CMO in 6 weeks. Background encryption deployed within 30 days of approval.</div>
+            <div class="win-detail">At the 90-day check, HIM reported zero complaints from clinical staff about workflow disruption. The Compliance Officer cited this process as a model for future policy development.</div>
+          </div>
+        </div>
+
+        <div class="tips-card">
+          <div class="tips-label">Interview Tip · Use When Asked About…</div>
+          <ul>
+            <li>"How do you balance security requirements with operational reality?"</li>
+            <li>"Tell me about a time you had to understand a non-technical audience's needs."</li>
+            <li>"How do you get buy-in from people who aren't in the security function?"</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── STAR 3 ── -->
+    <span class="scenario-anchor" id="s3"></span>
+    <div class="star-card">
+      <div class="star-card-header">
+        <div>
+          <div class="star-card-num">STAR Story · 03 of 07</div>
+          <div class="star-card-title">Incident Response Policy</div>
+        </div>
+        <div class="star-card-industry">Managed Care · Medicaid/CHIP</div>
+      </div>
+      <div class="star-card-body">
+
+        <div class="star-section">
+          <div class="section-pill pill-s"><span class="pill-dot"></span> Situation</div>
+          <p>A managed care organization serving Medicaid and CHIP populations discovered a third-party billing vendor had breached approximately 12,000 member records including names, Medicaid IDs, and diagnosis codes. The organization had an IR plan on paper but had never executed it in a real scenario — and the plan was two years out of date, predating the current cloud environment. The new IRT Lead had been on the job just two weeks.</p>
+        </div>
+
+        <div class="star-section">
+          <div class="section-pill pill-t"><span class="pill-dot"></span> Task</div>
+          <p>I was asked to work alongside the IRT Lead, Privacy Officer, Legal, and Communications to execute the response — mapping the live incident against the existing IR plan, identifying gaps in real time, and coordinating evidence gathering to support the HHS breach notification determination within the <strong>60-day HIPAA deadline</strong>.</p>
+        </div>
+
+        <div class="star-section">
+          <div class="section-pill pill-a"><span class="pill-dot"></span> Actions I Took</div>
+          <ol class="action-steps">
+            <li>Created a shared incident timeline document that all team members updated in real time, so no one was working from stale information across the cross-functional response.</li>
+            <li>Identified that the existing chain-of-custody procedure didn't account for vendor-side evidence — flagged this immediately to the IRT Lead and Legal rather than attempting to adapt the procedure on my own.</li>
+            <li>Coordinated with Legal to request a certified evidence package from the vendor and logged receipt through the ticketing system to maintain chain-of-custody documentation.</li>
+            <li>Drafted internal notification communications for the IRT Lead's review and sign-off.</li>
+            <li>Helped Legal structure the breach analysis against the HIPAA four-factor test required for the HHS notification determination.</li>
+            <li>Documented every identified gap in the existing IR plan in a running log so the post-incident review had a ready agenda — not just a conversation about impressions.</li>
+          </ol>
+        </div>
+
+        <div class="star-section">
+          <div class="section-pill pill-r"><span class="pill-dot"></span> Result / The Win</div>
+          <div class="win-box">
+            <div class="win-label">🏆 Measurable Outcome</div>
+            <div class="win-text">HHS breach notification filed within the 60-day window. No regulatory deficiencies noted in the submission.</div>
+            <div class="win-detail">Post-incident review identified 7 specific IR plan updates — all incorporated within 30 days. The plan was tested via tabletop exercise three months later and passed with no critical gaps. The new IRT Lead cited the shared timeline document as critical to cross-team coordination under pressure.</div>
+          </div>
+        </div>
+
+        <div class="tips-card">
+          <div class="tips-label">Interview Tip · Use When Asked About…</div>
+          <ul>
+            <li>"Tell me about a time you worked under a hard regulatory deadline."</li>
+            <li>"Describe a situation where you had to adapt a process on the fly."</li>
+            <li>"How do you keep multiple stakeholders coordinated during a crisis?"</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── STAR 4 ── -->
+    <span class="scenario-anchor" id="s4"></span>
+    <div class="star-card">
+      <div class="star-card-header">
+        <div>
+          <div class="star-card-num">STAR Story · 04 of 07</div>
+          <div class="star-card-title">NIST CSF 2.0 Gap Analysis</div>
+        </div>
+        <div class="star-card-industry">Federal Civilian Agency · FISMA</div>
+      </div>
+      <div class="star-card-body">
+
+        <div class="star-section">
+          <div class="section-pill pill-s"><span class="pill-dot"></span> Situation</div>
+          <p>A mid-size federal civilian agency was preparing for its annual FISMA assessment and wanted to use NIST CSF 2.0 as an overlay to communicate security posture to non-technical leadership. The last formal gap analysis was three years ago. The IT security team had deep technical knowledge but limited experience translating findings into risk language that program managers and the CIO could act on.</p>
+        </div>
+
+        <div class="star-section">
+          <div class="section-pill pill-t"><span class="pill-dot"></span> Task</div>
+          <p>My responsibility was to lead the structured gap analysis across all six CSF 2.0 functions, facilitate stakeholder interviews, score subcategories consistently, and write findings in language appropriate for both a technical audience and executive leadership — including a remediation roadmap the agency could repeat without contractor support the following year.</p>
+        </div>
+
+        <div class="star-section">
+          <div class="section-pill pill-a"><span class="pill-dot"></span> Actions I Took</div>
+          <ol class="action-steps">
+            <li>Developed the scoring rubric and interview guide before the first stakeholder session and shared drafts with the federal team leads for review — incorporating their feedback before any interviews were conducted.</li>
+            <li>During subcategory interviews, deferred all technical judgments to the contractor SME and federal IT staff; my role was to ask the right questions and document findings accurately, not impose conclusions.</li>
+            <li>When Detect function scores came in significantly lower than the team's informal impression, raised this in the internal debrief and proposed — and gained agreement for — a follow-up session with the SOC team rather than accepting initial scores.</li>
+            <li>Drafted the priority ranking for the remediation roadmap, then had the technical SME validate feasibility and timelines.</li>
+            <li>Had federal team leads confirm alignment with actual budget cycles before the roadmap was finalized, so recommendations were actionable — not aspirational.</li>
+          </ol>
+        </div>
+
+        <div class="star-section">
+          <div class="section-pill pill-r"><span class="pill-dot"></span> Result / The Win</div>
+          <div class="win-box">
+            <div class="win-label">🏆 Measurable Outcome</div>
+            <div class="win-text">Assessment report accepted by the agency CIO with zero revision requests — the first time on this contract.</div>
+            <div class="win-detail">The executive summary was specifically called out as clear and actionable by the Deputy CIO. Two remediation actions — MFA enforcement and endpoint encryption — were funded in the next budget cycle with the gap analysis cited as justification. The documented methodology was used verbatim by the agency's internal team the following year.</div>
+          </div>
+        </div>
+
+        <div class="tips-card">
+          <div class="tips-label">Interview Tip · Use When Asked About…</div>
+          <ul>
+            <li>"Tell me about a time you communicated technical findings to a non-technical audience."</li>
+            <li>"How do you ensure your analysis is objective and defensible?"</li>
+            <li>"Describe a deliverable you produced that made an immediate business impact."</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── STAR 5 ── -->
+    <span class="scenario-anchor" id="s5"></span>
+    <div class="star-card">
+      <div class="star-card-header">
+        <div>
+          <div class="star-card-num">STAR Story · 05 of 07</div>
+          <div class="star-card-title">Cross-Framework Compliance Mapping</div>
+        </div>
+        <div class="star-card-industry">Federal IT Contractor · FedRAMP</div>
+      </div>
+      <div class="star-card-body">
+
+        <div class="star-section">
+          <div class="section-pill pill-s"><span class="pill-dot"></span> Situation</div>
+          <p>A mid-sized federal IT contractor was simultaneously pursuing FedRAMP Moderate authorization, maintaining NIST 800-53 compliance, and demonstrating ISO 27001 alignment for a new contract. Each framework was being treated as a separate workstream — duplicated evidence collection, overlapping audit requests to the same control owners, and analyst burnout. The Program Security Officer escalated to leadership that the team was on track to <strong>miss the FedRAMP submission deadline</strong>.</p>
+        </div>
+
+        <div class="star-section">
+          <div class="section-pill pill-t"><span class="pill-dot"></span> Task</div>
+          <p>I was brought in to build a unified cross-framework control mapping enabling the team to collect evidence once and satisfy all three frameworks simultaneously — and to get buy-in from control owners who had been fielding three separate audit requests for the same underlying data.</p>
+        </div>
+
+        <div class="star-section">
+          <div class="section-pill pill-a"><span class="pill-dot"></span> Actions I Took</div>
+          <ol class="action-steps">
+            <li>Researched control overlap between NIST CSF 2.0, NIST 800-53 Rev. 5, ISO 27001:2022, and SOC 2 TSC using publicly available NIST and AICPA crosswalk documentation as the starting baseline.</li>
+            <li>Built the mapping table collaboratively — ran weekly 30-minute syncs with each control owner to validate that mappings were accurate in their specific environment, not just theoretically correct.</li>
+            <li>When I found gaps where a control satisfied one framework but not another, flagged these to the senior analysts for team decision rather than resolving them unilaterally.</li>
+            <li>Presented the "map once, comply many" methodology to the PSO and compliance director to secure leadership alignment before rolling it out to control owners.</li>
+          </ol>
+        </div>
+
+        <div class="star-section">
+          <div class="section-pill pill-r"><span class="pill-dot"></span> Result / The Win</div>
+          <div class="win-box">
+            <div class="win-label">🏆 Measurable Outcome</div>
+            <div class="win-text">Reduced evidence collection requests to control owners by approximately 40% — immediately relieving the operational pressure that had been escalated to leadership.</div>
+            <div class="win-detail">FedRAMP submission completed on schedule. The ISO 27001 readiness assessment used the same evidence package with minimal additions. The mapping document was formally adopted as a standing team asset updated every compliance cycle.</div>
+          </div>
+        </div>
+
+        <div class="tips-card">
+          <div class="tips-label">Interview Tip · Use When Asked About…</div>
+          <ul>
+            <li>"Tell me about a time you found a more efficient way to do something."</li>
+            <li>"How do you manage multiple frameworks or competing compliance requirements?"</li>
+            <li>"Describe a time you turned around a project that was at risk."</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── STAR 6 ── -->
+    <span class="scenario-anchor" id="s6"></span>
+    <div class="star-card">
+      <div class="star-card-header">
+        <div>
+          <div class="star-card-num">STAR Story · 06 of 07</div>
+          <div class="star-card-title">Security Awareness Training Redesign</div>
+        </div>
+        <div class="star-card-industry">P&amp;C Insurance · NAIC</div>
+      </div>
+      <div class="star-card-body">
+
+        <div class="star-section">
+          <div class="section-pill pill-s"><span class="pill-dot"></span> Situation</div>
+          <p>A regional P&amp;C insurance carrier had run annual security awareness training for three consecutive years with completion rates stuck at 55% and phishing click rates holding at <strong>23%</strong> — with no measurable improvement. Regulators under the NAIC Insurance Data Security Model Law were beginning to question the effectiveness of the program, not just its existence.</p>
+        </div>
+
+        <div class="star-section">
+          <div class="section-pill pill-t"><span class="pill-dot"></span> Task</div>
+          <p>Co-led a training redesign with the HR Learning &amp; Development Manager and an IT Security Engineer. My responsibilities: assess why the existing training was failing, redesign content to be relevant to insurance-specific workflows, and build in measurable outcomes the CISO could report to regulators.</p>
+        </div>
+
+        <div class="star-section">
+          <div class="section-pill pill-a"><span class="pill-dot"></span> Actions I Took</div>
+          <ol class="action-steps">
+            <li>Observed two existing training sessions to identify exactly where employees disengaged — rather than assuming I knew the problem before investigating.</li>
+            <li>Ran a short anonymous survey with a sample of claims and underwriting staff to understand which security risks felt real to them versus abstract — heard directly that generic examples meant nothing but insurance-specific scenarios resonated immediately.</li>
+            <li>Rewrote the phishing and social engineering modules using insurance-specific scenarios (fake policyholder ACH transfers, spear-phishing impersonating reinsurance partners), developed in collaboration with a senior underwriter who validated the examples for operational realism.</li>
+            <li>Worked with the HR lead to restructure from one 45-minute annual session into four 10-minute quarterly modules — consistent with adult learning best practices and what the LMS could actually support.</li>
+            <li>Coordinated with the IT engineer to schedule phishing simulations two weeks after each module, so employees could immediately apply what they had just learned.</li>
+          </ol>
+        </div>
+
+        <div class="star-section">
+          <div class="section-pill pill-r"><span class="pill-dot"></span> Result / The Win</div>
+          <div class="win-box">
+            <div class="win-label">🏆 Measurable Outcome</div>
+            <div class="win-text">Training completion rose to 91% (up 36 points). Phishing click rate dropped from 23% to 9% over four quarterly cycles.</div>
+            <div class="win-detail">State insurance regulator noted the program as a best-practice example in the examination report. The underwriter who co-designed the scenarios said it was the first time GRC had asked her opinion before writing policy — and she became an active security champion on her team.</div>
+          </div>
+        </div>
+
+        <div class="tips-card">
+          <div class="tips-label">Interview Tip · Use When Asked About…</div>
+          <ul>
+            <li>"Tell me about a time you improved a process that wasn't working."</li>
+            <li>"How do you make security relevant to non-technical employees?"</li>
+            <li>"Give me an example of a measurable result you drove."</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── STAR 7 ── -->
+    <span class="scenario-anchor" id="s7"></span>
+    <div class="star-card">
+      <div class="star-card-header">
+        <div>
+          <div class="star-card-num">STAR Story · 07 of 07</div>
+          <div class="star-card-title">Risk Register &amp; Methodology</div>
+        </div>
+        <div class="star-card-industry">Federal Health Contractor · ATO</div>
+      </div>
+      <div class="star-card-body">
+
+        <div class="star-section">
+          <div class="section-pill pill-s"><span class="pill-dot"></span> Situation</div>
+          <p>A federal health IT contractor supporting a CMS-adjacent program had never maintained a formal risk register. Risk decisions were being made informally with no documentation trail. A new Program Security Officer discovered that several known high-severity risks — including an unpatched vulnerability on a public-facing portal handling beneficiary data — had been informally accepted with no paper trail. An ATO reauthorization was approaching.</p>
+        </div>
+
+        <div class="star-section">
+          <div class="section-pill pill-t"><span class="pill-dot"></span> Task</div>
+          <p>Build the organization's first formal risk register from scratch — working alongside the PSO, two IT leads, the Privacy Officer, and a program manager. I needed to design the scoring methodology, facilitate risk identification, and produce a register the PSO could present to the Authorizing Official as part of the ATO package. Both the skeptical IT leads and a defensive program manager had to be brought on board.</p>
+        </div>
+
+        <div class="star-section">
+          <div class="section-pill pill-a"><span class="pill-dot"></span> Actions I Took</div>
+          <ol class="action-steps">
+            <li>Met individually with the IT leads and the program manager before any group sessions to understand their specific concerns — rather than launching straight into workshops where resistance would surface publicly.</li>
+            <li>For the IT leads: explained that documenting what they already knew actually protected them by demonstrating awareness and a treatment plan, rather than exposing them to blame.</li>
+            <li>For the program manager: reframed the risk register from "a list of failures" to "evidence of mature risk governance" — the framing that makes it an asset in an ATO package, not a liability.</li>
+            <li>Designed the scoring methodology collaboratively, sharing draft likelihood and impact scales for team feedback before finalizing — so "catastrophic" reflected what it actually meant in their specific program context (beneficiary data exposure, CMS contract penalties).</li>
+            <li>Facilitated two half-day risk identification workshops structured as open working sessions — making the IT leads feel like co-authors of the register, not subjects of an audit.</li>
+            <li>Ensured every risk treatment decision was made by the relevant risk owner, not by me — my role was to facilitate and document, not decide.</li>
+          </ol>
+        </div>
+
+        <div class="star-section">
+          <div class="section-pill pill-r"><span class="pill-dot"></span> Result / The Win</div>
+          <div class="win-box">
+            <div class="win-label">🏆 Measurable Outcome</div>
+            <div class="win-text">ATO reauthorization approved. The Authorizing Official specifically noted the risk register as demonstrating program maturity.</div>
+            <div class="win-detail">The initial register captured 14 risks including the previously undocumented portal vulnerability, which was formally accepted with a documented treatment plan and escalated to the AO. The two most skeptical IT leads became the register's most consistent updaters — submitting quarterly updates without prompting. The methodology was included in the contractor's proposal library as a reusable asset for future federal engagements.</div>
+          </div>
+        </div>
+
+        <div class="tips-card">
+          <div class="tips-label">Interview Tip · Use When Asked About…</div>
+          <ul>
+            <li>"Tell me about a time you had to overcome resistance to implement a new process."</li>
+            <li>"How do you build trust with stakeholders who are skeptical of GRC work?"</li>
+            <li>"Describe how you've contributed to an organization's risk management maturity."</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer inside content -->
+    <div style="text-align:center; padding: 20px 0; color: #777; font-size: 0.82rem;">
+      Anél Henning · GRC Portfolio · Private Interview Prep Page ·
+      <a href="index.html" style="color:var(--navy);">Return to Portfolio</a>
+    </div>
+
+  </div><!-- /.page-wrap -->
+</div><!-- /#content -->
+
+<script>
+  const ACCESS_CODE = "GRCanel25";
+
+  document.getElementById("pwd-input").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") checkPassword();
+  });
+
+  function checkPassword() {
+    const val = document.getElementById("pwd-input").value;
+    if (val === ACCESS_CODE) {
+      document.getElementById("gate").style.display = "none";
+      document.getElementById("content").style.display = "block";
+      document.getElementById("gate-error").style.display = "none";
+    } else {
+      document.getElementById("gate-error").style.display = "block";
+      document.getElementById("pwd-input").value = "";
+      document.getElementById("pwd-input").focus();
+    }
+  }
+
+  function lockPage() {
+    document.getElementById("content").style.display = "none";
+    document.getElementById("gate").style.display = "flex";
+    document.getElementById("pwd-input").value = "";
+  }
+</script>
+
+</body>
+</html>
