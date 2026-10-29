@@ -84,7 +84,7 @@ Internal audit readiness materials:
 
 **Anèl Henning** | GRC Analyst (seeking) | Tampa, FL
 
-MS Cybersecurity Management — Purdue Global *(in progress)*
+MS Cybersecurity Management — Purdue Global (2026)
 BS Computer Science — Rasmussen University
 
 📧 logicalcoders@outlook.com
