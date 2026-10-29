@@ -1,5 +1,5 @@
 # Risk Assessment Methodology
-**Author:** Anél Henning | GRC Analyst Portfolio  
+**Author:** Anèl Henning | GRC Analyst Portfolio  
 **Framework Reference:** NIST SP 800-37 (Risk Management Framework) · NIST SP 800-30  
 **Version:** 1.0 | May 2026
 

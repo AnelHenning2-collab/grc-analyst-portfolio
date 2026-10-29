@@ -1,7 +1,7 @@
 # NIST Cybersecurity Framework (CSF) Gap Analysis
 ## Mock Audit — Acme Corp (Fictional Organization)
 
-**Prepared By:** Anél Henning  
+**Prepared By:** Anèl Henning  
 **Date:** May 17, 2026  
 **Framework Version:** NIST CSF 2.0  
 **Assessment Scope:** Enterprise IT environment (excluding OT/ICS)  

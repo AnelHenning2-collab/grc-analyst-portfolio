@@ -1,5 +1,5 @@
 # SOC 2 Type II Audit Readiness — Gap Analysis
-**Author:** Anél Henning | GRC Analyst Portfolio  
+**Author:** Anèl Henning | GRC Analyst Portfolio  
 **Framework:** AICPA SOC 2 Trust Services Criteria (TSC) — Security (CC Series)  
 **Assessment Date:** May 2026  
 **Organization Type:** Mid-size SaaS company  

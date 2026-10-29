@@ -1,4 +1,4 @@
-# GRC Analyst Portfolio — Anél Henning
+# GRC Analyst Portfolio — Anèl Henning
 
 [![GRC](https://img.shields.io/badge/Focus-Governance_Risk_Compliance-22C55E?style=for-the-badge)](https://github.com/AnelHenning2-collab)
 [![Frameworks](https://img.shields.io/badge/Frameworks-NIST_·_ISO_27001_·_SOC_2-0A66C2?style=for-the-badge)](https://github.com/AnelHenning2-collab)
@@ -82,7 +82,7 @@ Internal audit readiness materials:
 
 ## About
 
-**Anél Henning** | GRC Analyst (seeking) | Tampa, FL
+**Anèl Henning** | GRC Analyst (seeking) | Tampa, FL
 
 MS Cybersecurity Management — Purdue Global *(in progress)*
 BS Computer Science — Rasmussen University

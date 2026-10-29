@@ -1,5 +1,5 @@
 # NIST CSF 2.0 Maturity Assessment — Sample Organization
-**Author:** Anél Henning | GRC Analyst Portfolio  
+**Author:** Anèl Henning | GRC Analyst Portfolio  
 **Framework:** NIST Cybersecurity Framework 2.0  
 **Assessment Date:** May 2026  
 **Organization Type:** Mid-size enterprise (~500 employees)

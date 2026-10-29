@@ -1,7 +1,7 @@
 # Cross-Framework Compliance Mapping
 ## NIST CSF 2.0 ↔ ISO/IEC 27001:2022 ↔ SOC 2 (TSC) ↔ NIST 800-53 Rev. 5
 
-**Prepared By:** Anél Henning  
+**Prepared By:** Anèl Henning  
 **Date:** May 17, 2026  
 **Purpose:** Demonstrate control equivalence across major cybersecurity frameworks to reduce audit duplication and support unified compliance programs.
 

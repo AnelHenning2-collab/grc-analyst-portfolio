@@ -289,7 +289,7 @@ SHARED_CSS = """
 NAV_HTML = """
 <nav>
   <div class="nav-inner">
-    <a class="nav-brand" href="index.html">Anél Henning · GRC Portfolio</a>
+    <a class="nav-brand" href="index.html">Anèl Henning · GRC Portfolio</a>
     <div class="nav-links">
       {links}
     </div>
@@ -301,7 +301,7 @@ NAV_HTML = """
 FOOTER_HTML = """
 <footer>
   <p>
-    <strong style="color:#fff;">Anél Henning</strong> &nbsp;·&nbsp; GRC Analyst
+    <strong style="color:#fff;">Anèl Henning</strong> &nbsp;·&nbsp; GRC Analyst
     &nbsp;·&nbsp; <a href="mailto:logicalcoders@outlook.com">logicalcoders@outlook.com</a>
   </p>
   <p style="margin-top:8px;color:rgba(255,255,255,.55);">
@@ -412,7 +412,7 @@ def build_page(md_file, title, industry, out_file, active_href):
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>{title} | Anél Henning GRC Portfolio</title>
+  <title>{title} | Anèl Henning GRC Portfolio</title>
   <style>{SHARED_CSS}</style>
 </head>
 <body>
