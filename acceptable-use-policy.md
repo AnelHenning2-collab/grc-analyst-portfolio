@@ -3,7 +3,7 @@
 **Document ID:** GRC-POL-001  
 **Version:** 1.0  
 **Classification:** Internal  
-**Effective Date:** [Date]  
+**Effective Date:** May 17, 2026  
 **Review Date:** [Date + 1 Year]  
 **Owner:** Information Security Team  
 **Approved By:** [CISO / IT Director]
