@@ -87,5 +87,5 @@ Internal audit readiness materials:
 MS Cybersecurity Management — Purdue Global *(in progress)*
 BS Computer Science — Rasmussen University
 
-📧 anelhenning2@student.purdueglobal.edu
+📧 logicalcoders@outlook.com
 🔗 [LinkedIn](https://www.linkedin.com/in/anel-henning-quantum) | [GitHub Profile](https://github.com/AnelHenning2-collab)
